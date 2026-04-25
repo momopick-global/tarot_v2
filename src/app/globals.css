@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+  /* Design System (from docs/design-system.md) */
+  --ds-primary: #6f42c1;
+  --ds-primary-light: #a992e2;
+  --ds-primary-dark: #4e2b8c;
+  --ds-accent: #f5c542;
+
+  --ds-neutral-90: #202139;
+  --ds-neutral-60: #666666;
+  --ds-neutral-30: #bbbbbb;
+  --ds-neutral-10: #f7f7f7;
+
+  --ds-error: #e94444;
+  --ds-success: #28a745;
+}
+
+@theme inline {
+  /* Tailwind theme colors (used by bg-*, text-*) */
+  --color-primary: var(--ds-primary);
+  --color-primary-light: var(--ds-primary-light);
+  --color-primary-dark: var(--ds-primary-dark);
+  --color-accent: var(--ds-accent);
+
+  --color-neutral-90: var(--ds-neutral-90);
+  --color-neutral-60: var(--ds-neutral-60);
+  --color-neutral-30: var(--ds-neutral-30);
+  --color-neutral-10: var(--ds-neutral-10);
+
+  --color-error: var(--ds-error);
+  --color-success: var(--ds-success);
+}
+
+body {
+  background: var(--ds-neutral-90);
+  color: var(--ds-neutral-10);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/*
+ * Focus ring: do NOT use a global :focus-visible — it also hits text inputs and draws
+ * a thick purple rectangle in Chrome. Only apply the brand ring to real controls.
+ */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible:not(input):not(textarea):not(select),
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible,
+input[type="reset"]:focus-visible,
+input[type="file"]:focus-visible,
+input[type="image"]:focus-visible {
+  outline: 2px solid var(--ds-primary-light);
+  outline-offset: 2px;
+}
+
+/* Text fields: no outline box while typing (underline / container styles handle focus). */
+input:is([type="email"], [type="text"], [type="search"], [type="tel"], [type="url"], [type="password"], [type="number"]):focus,
+input:is([type="email"], [type="text"], [type="search"], [type="tel"], [type="url"], [type="password"], [type="number"]):focus-visible,
+input:not([type]):focus,
+input:not([type]):focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.rotate-y-180 {
+  transform: perspective(900px) rotateY(180deg);
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-fade {
+  animation: none;
+}
+
+@keyframes selectionGlowPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(176, 98, 255, 0.75),
+      0 0 8px rgba(176, 98, 255, 0.65),
+      0 0 16px rgba(133, 46, 255, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(203, 134, 255, 0.95),
+      0 0 16px rgba(182, 104, 255, 0.95),
+      0 0 26px rgba(138, 54, 255, 0.85);
+  }
+}
+
+.selection-glow-pulse {
+  animation: selectionGlowPulse 0.85s ease-in-out infinite;
+}
+
+@keyframes cardStageUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-56px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-drop-in {
+  animation: cardDropIn 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes homeHeroLoading {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.home-hero-loading-bar {
+  animation: homeHeroLoading 1.2s ease-in-out infinite;
+}

@@ -1,0 +1,62 @@
+# GitHub Pages에 정적 사이트(out/) 배포
+# 저장소 Settings → Pages → Build: GitHub Actions 로 설정 필요
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+# deploy 잡은 반드시 job 단위로 pages + id-token (OIDC) 권한 필요
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write # upload-pages-artifact
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: GitHub Pages용 basePath (/저장소이름)
+        run: |
+          REPO="${GITHUB_REPOSITORY##*/}"
+          echo "NEXT_PUBLIC_BASE_PATH=/${REPO}" >> "$GITHUB_ENV"
+          echo "basePath will be /${REPO}"
+
+      - run: npm ci
+      # Repository secrets: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY (선택: NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY)
+      - run: npm run build
+        env:
+          # 메인 사이트(운영 도메인) — OG/JSON-LD·github.io→메인 리다이렉트 기준 (캐논 www).
+          NEXT_PUBLIC_SITE_URL: https://www.yourtarot.cc
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY }}
+      - name: Exclude non-deploy assets
+        run: rm -rf out/images/xxx
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
