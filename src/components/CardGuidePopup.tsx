@@ -24,7 +24,7 @@ export function CardGuidePopup({ onClose }: Readonly<CardGuidePopupProps>) {
             <Image src={POPUP_IMAGE_PATH} alt="가이드 마스터 이미지" fill className="object-cover" />
           </div>
         </div>
-        <div className="min-w-0 text-[16px] leading-[1.6] text-white">
+        <div className="min-w-0 text-[18px] leading-[1.7] text-white">
           천천히 카드를 움직여 보세요.
           <br />
           당신에게 끌리는 카드가 있을 것입니다.
@@ -33,7 +33,7 @@ export function CardGuidePopup({ onClose }: Readonly<CardGuidePopupProps>) {
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg bg-[#6422AB] px-3 py-2 text-center text-[16px] font-semibold text-white"
+            className="rounded-lg bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white"
           >
             닫기
           </button>

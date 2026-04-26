@@ -1,6 +1,6 @@
 export const MASTER_DIAGRAM_SRC = {
-  cassian: "/assets/master-diagrams/01_Cassian.svg",
-  aiden: "/assets/master-diagrams/02_Aiden.svg",
+  sera: "/assets/master-diagrams/01_Sera.svg",
+  kai: "/assets/master-diagrams/02_Kai.svg",
   morgana: "/assets/master-diagrams/03_Morgana.svg",
   noa: "/assets/master-diagrams/04_Noa.svg",
   erebus: "/assets/master-diagrams/05_Erebus.svg",
@@ -13,5 +13,5 @@ export const MASTER_DIAGRAM_SRC = {
 export type MasterDiagramId = keyof typeof MASTER_DIAGRAM_SRC;
 
 export function resolveMasterDiagramSrc(masterId: string): string {
-  return MASTER_DIAGRAM_SRC[masterId as MasterDiagramId] ?? MASTER_DIAGRAM_SRC.cassian;
+  return MASTER_DIAGRAM_SRC[masterId as MasterDiagramId] ?? MASTER_DIAGRAM_SRC.sera;
 }

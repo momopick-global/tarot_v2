@@ -254,7 +254,7 @@ export function ResultActionButtons({
       <div className="grid grid-cols-2 gap-3">
         <Link
           href={tarotDrawWithMaster(masterId)}
-          className="rounded-xl bg-[#6422AB] px-4 py-3 text-center text-[15px] font-semibold text-white"
+          className="rounded-xl bg-[#7B3BC7] px-4 py-3 text-center text-[15px] font-semibold text-white"
         >
           같은 마스터로 카드 다시 뽑기
         </Link>
@@ -300,7 +300,7 @@ export function ResultActionButtons({
               <button
                 type="button"
                 onClick={confirmGuestLoginForSave}
-                className="rounded-xl bg-[#6422AB] px-3 py-2.5 text-[16px] font-semibold text-white"
+                className="rounded-xl bg-[#7B3BC7] px-3 py-2.5 text-[16px] font-semibold text-white"
               >
                 로그인하기
               </button>

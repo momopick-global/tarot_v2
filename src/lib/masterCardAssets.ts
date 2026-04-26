@@ -1,13 +1,13 @@
 import { withAssetBase } from "./publicPath";
 
 /**
- * 마스터 id ↔ 폴더명 (01_Cassian … 09_Pipi)
+ * 마스터 id ↔ 폴더명 (01_Sera … 09_Pipi)
  * 앞면: /images/cards/{folder}/{0-77}.webp
  * 뒷면: /images/masters/{folder}/card-back.webp
  */
 export const MASTER_CARD_FOLDER: Record<string, string> = {
-  cassian: "01_Cassian",
-  aiden: "02_Aiden",
+  sera: "01_Sera",
+  kai: "02_Kai",
   morgana: "03_Morgana",
   noa: "04_Noa",
   erebus: "05_Erebus",
@@ -21,7 +21,7 @@ export const MASTER_CARD_FOLDER: Record<string, string> = {
 export const DEFAULT_CARD_BACK_SRC = withAssetBase("/assets/card-back-page04.png");
 
 export function getMasterCardFolder(masterId: string): string {
-  return MASTER_CARD_FOLDER[masterId] ?? MASTER_CARD_FOLDER.cassian;
+  return MASTER_CARD_FOLDER[masterId] ?? MASTER_CARD_FOLDER.sera;
 }
 
 /** 카드 앞면 이미지 URL (0~77) */
@@ -50,9 +50,9 @@ export function getMasterBackgroundSrc(masterId: string, slot: 1 | 2 | 3): strin
 
 /** 마스터별 배경 동영상 — public/images/masters/{folder}/bg_0{slot}.mp4 (없으면 undefined) */
 const MASTER_BG_VIDEO: Record<string, Record<number, string>> = {
-  cassian: {
-    1: "/images/masters/01_Cassian/bg_01.mp4",
-    2: "/images/masters/01_Cassian/bg_02.mp4",
+  sera: {
+    1: "/images/masters/01_Sera/bg_01.mp4",
+    2: "/images/masters/01_Sera/bg_02.mp4",
   },
 };
 
@@ -69,7 +69,7 @@ export function getMasterBackgroundVideoPoster(masterId: string, slot: 1 | 2 = 1
 }
 
 /** FlowScene 등에서 master 미지정 시 기본 배경 */
-export const DEFAULT_FLOW_BACKGROUND_SRC = withAssetBase("/images/masters/01_Cassian/bg_02.png");
+export const DEFAULT_FLOW_BACKGROUND_SRC = withAssetBase("/images/masters/01_Sera/bg_02.png");
 
 /** 마스터 리스트/프로필 등 썸네일 — public/images/masters/{folder}/thumb.png */
 export function getMasterThumbSrc(masterId: string): string {

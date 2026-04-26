@@ -16,7 +16,7 @@ import { Suspense, useMemo, useState } from "react";
 function Page05MastersList5Inner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const masterId = (searchParams?.get("master") ?? "cassian").toLowerCase();
+  const masterId = (searchParams?.get("master") ?? "sera").toLowerCase();
   const card = searchParams?.get("card") ?? "40";
   const [isOpening, setIsOpening] = useState(false);
   const current = useMemo(
@@ -70,7 +70,7 @@ function Page05MastersList5Inner() {
             type="button"
             onClick={onOpenCard}
             disabled={isOpening}
-            className="rounded-xl bg-[#6422AB] px-3 py-3 text-center text-[20px] font-semibold text-white"
+            className="rounded-xl bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white"
           >
             {isOpening ? "카드 여는 중..." : "카드 열기"}
           </button>

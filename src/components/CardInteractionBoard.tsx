@@ -600,7 +600,7 @@ export function CardInteractionBoard({
           type="button"
           onClick={startOpenFlow}
           disabled={isOpening}
-          className="rounded-2xl bg-[#6422AB] px-3 py-3 text-center text-[20px] font-semibold text-white"
+          className="rounded-2xl bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white"
         >
           {isOpening ? "카드 여는 중..." : "카드 열기"}
         </button>

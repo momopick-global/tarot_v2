@@ -155,6 +155,15 @@ select:focus-visible {
   animation: homeHeroLoading 1.2s ease-in-out infinite;
 }
 
+/* 카드 등장 애니메이션 (위에서 아래로) */
+@keyframes cardDropIn {
+  0% { opacity: 0; transform: translateY(-60px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-drop-in {
+  animation: cardDropIn 0.5s ease-out both;
+}
+
 /* 카드 스크롤 가이드 애니메이션 */
 @keyframes scrollGuideSwipeUp {
   0% { transform: translateY(30px); opacity: 0; }
@@ -172,6 +181,24 @@ select:focus-visible {
 }
 .scroll-guide-hand {
   animation: scrollGuideSwipeUp 1.8s ease-in-out infinite;
+}
+
+/* 폭죽 파티클 애니메이션 */
+@keyframes confettiPop {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { opacity: 0; }
+}
+.confetti-container {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+}
+.confetti-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: confettiPop 0.8s ease-out forwards;
 }
 
 /* 얇은 커스텀 스크롤바 */

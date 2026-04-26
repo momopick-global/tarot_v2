@@ -1,6 +1,6 @@
 /** `/masters/[slug]` 정적 생성과 동일한 슬러그 (sitemap·메타와 일치) */
 export const MASTERS_DETAIL_SLUGS = [
-  "cassian",
+  "sera",
   "luna",
   "elin",
   "ari",

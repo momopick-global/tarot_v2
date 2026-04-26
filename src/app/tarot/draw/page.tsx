@@ -12,12 +12,51 @@ import { ROUTES, tarotAnalyzeWith } from "@/lib/routes";
 const TOTAL_CARDS = 74;
 const COLS = 4;
 
+function spawnConfetti(x: number, y: number) {
+  const colors = ["#FFD700", "#FF6B8A", "#7B3BC7", "#4FC3F7", "#69F0AE", "#FF8A65", "#E040FB"];
+  const container = document.createElement("div");
+  container.className = "confetti-container";
+  container.style.left = `${x}px`;
+  container.style.top = `${y}px`;
+  document.body.appendChild(container);
+
+  for (let i = 0; i < 36; i++) {
+    const particle = document.createElement("div");
+    particle.className = "confetti-particle";
+    const angle = (Math.PI * 2 * i) / 36 + (Math.random() - 0.5) * 0.5;
+    const distance = 80 + Math.random() * 120;
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance - 30;
+    const size = 6 + Math.random() * 10;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+    particle.style.animation = `confettiPop ${0.6 + Math.random() * 0.4}s ease-out forwards`;
+    particle.style.transform = `translate(${tx}px, ${ty}px) scale(0)`;
+    // Use custom keyframes per particle via style
+    particle.animate(
+      [
+        { transform: "translate(0, 0) scale(1)", opacity: 1 },
+        { transform: `translate(${tx}px, ${ty}px) scale(0.3)`, opacity: 0 },
+      ],
+      { duration: 600 + Math.random() * 400, easing: "cubic-bezier(0,.8,.5,1)", fill: "forwards" },
+    );
+    container.appendChild(particle);
+  }
+
+  setTimeout(() => container.remove(), 1200);
+}
+
 function Page03CardSelection1Inner() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const master = (searchParams?.get("master") ?? "cassian").toLowerCase();
+  const master = (searchParams?.get("master") ?? "sera").toLowerCase();
   const [isCardStage, setIsCardStage] = useState(false);
+  const [cardImageReady, setCardImageReady] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [typedCount, setTypedCount] = useState(0);
+  const introText = "반가워요, 저는 타로 마스터 세라예요.\n다가올 미래가 궁금하지 않나요?\n카드받기를 누르고 카드를 골라 두 번 터치해 선택해 주세요.";
   const scrollRef = useRef<HTMLDivElement>(null);
   const current = FLOW_MASTERS.find((m) => m.id === master) ?? FLOW_MASTERS[0];
 
@@ -78,7 +117,24 @@ function Page03CardSelection1Inner() {
   }, [isCardStage]);
 
   const cardBackUrl = getMasterCardBackSrc(current.id);
-  const rows = Math.ceil(TOTAL_CARDS / COLS);
+
+  // 타이핑 애니메이션
+  useEffect(() => {
+    if (isCardStage) return;
+    if (typedCount >= introText.length) return;
+    const timer = setTimeout(() => {
+      setTypedCount((c) => c + 1);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [typedCount, isCardStage, introText.length]);
+
+  // 카드 뒷면 이미지 미리 로드
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = cardBackUrl;
+    img.onload = () => setCardImageReady(true);
+    if (img.complete) setCardImageReady(true);
+  }, [cardBackUrl]);
 
   return (
     <main className="h-[100dvh] w-full overflow-hidden">
@@ -88,15 +144,23 @@ function Page03CardSelection1Inner() {
         backgroundVideoPoster={isCardStage ? getMasterBackgroundVideoPoster(current.id, 2) : getMasterBackgroundVideoPoster(current.id, 1)}
         backgroundVideoLoop={isCardStage}
         backgroundSrc={isCardStage ? getMasterBackgroundSrc(current.id, 2) : getMasterBackgroundSrc(current.id, 1)}
-        backgroundRepeatSrc={withAssetBase("/images/masters/01_Cassian/bg.png")}
+        backgroundRepeatSrc={withAssetBase("/images/masters/01_Sera/bg.png")}
         sceneClassName="h-[100dvh] min-h-[100dvh] overflow-hidden"
         contentClassName="px-0"
         backVariant="page03"
         hideDimOverlay
       >
         <div className="relative z-0 h-[calc(100dvh-68px)] min-h-0 w-full overflow-hidden">
-          {/* 카드 스크롤 영역: 화면 50%부터 하단까지 */}
-          {isCardStage ? (
+          {/* 배경 동영상 위 불투명 블렌딩 레이어 */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
+            style={{
+              top: "45%",
+              background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%)",
+            }}
+          />
+          {/* 카드 스크롤 영역: 화면 55%부터 하단까지 */}
+          {isCardStage && cardImageReady ? (
             <div className="absolute inset-x-0 top-[55%] bottom-0 z-20 overflow-hidden"
               style={{ maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 100%)" }}
             >
@@ -109,33 +173,39 @@ function Page03CardSelection1Inner() {
                   className="mx-auto grid gap-3 py-2"
                   style={{ gridTemplateColumns: `repeat(${COLS}, 1fr)` }}
                 >
-                  {deckOrder.map((cardIdx) => (
+                  {deckOrder.map((cardIdx, i) => (
                     <button
                       key={cardIdx}
                       type="button"
-                      onClick={() => {
+                      onClick={(e) => {
                         if (selectedCard === cardIdx) {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          spawnConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
                           router.push(tarotAnalyzeWith(current.id, String(cardIdx)));
                         } else {
                           setSelectedCard(cardIdx);
                         }
                       }}
-                      className={`relative aspect-[2/3] w-[85%] mx-auto transition-transform duration-200 ${
+                      className={`card-drop-in relative aspect-[2/3] w-[85%] mx-auto transition-all duration-200 ${
                         selectedCard === cardIdx
-                          ? "scale-110 z-50 ring-2 ring-[#BFA8FF]"
+                          ? "scale-110 z-50"
                           : ""
                       }`}
                       style={{
+                        animationDelay: `${i * 30}ms`,
                         borderRadius: "7px",
-                        border: "1px solid rgba(255, 233, 160, 0.86)",
+                        border: selectedCard === cardIdx
+                          ? "2px solid rgba(191, 168, 255, 1)"
+                          : "1px solid rgba(255, 233, 160, 0.86)",
                         backgroundImage: `
                           linear-gradient(145deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.02) 28%, rgba(0,0,0,0.2) 100%),
                           url("${cardBackUrl}")
                         `,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
-                        boxShadow:
-                          "0 4px 10px rgba(4,3,14,0.52), 0 0 0 1px rgba(255,228,142,0.22), inset 0 1px 0 rgba(255,249,214,0.35)",
+                        boxShadow: selectedCard === cardIdx
+                          ? "0 0 16px rgba(191,168,255,0.7), 0 0 30px rgba(123,59,199,0.4), 0 4px 10px rgba(4,3,14,0.52)"
+                          : "0 4px 10px rgba(4,3,14,0.52), 0 0 0 1px rgba(255,228,142,0.22), inset 0 1px 0 rgba(255,249,214,0.35)",
                       } as CSSProperties}
                     >
                       <span className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-[rgba(7,6,20,0.65)] border border-[rgba(210,186,255,0.55)] px-1.5 py-0.5 text-[8px] font-bold text-white">
@@ -151,24 +221,25 @@ function Page03CardSelection1Inner() {
           {/* 스크롤 가이드 애니메이션 */}
           {isCardStage ? (
             <div className="scroll-guide-overlay pointer-events-none absolute inset-x-0 top-[55%] bottom-0 z-30 flex items-center justify-center">
-              <span className="scroll-guide-hand text-[44px]" role="img" aria-label="위로 스와이프">👆</span>
+              <span className="scroll-guide-hand text-[88px]" role="img" aria-label="위로 스와이프">👆</span>
             </div>
           ) : null}
 
           {/* 하단 메시지 + 버튼 */}
           {!isCardStage ? (
             <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center px-5 pb-10">
-              <div className="w-full max-w-[350px] rounded-2xl border border-[#8E63FF]/40 bg-[rgba(9,7,28,0.85)] px-5 py-4 text-center text-[15px] leading-[1.6] text-white backdrop-blur-sm">
-                별들은 이미 답을 알고 있습니다.
-                <br />
-                이제 당신의 카드를 확인해 봅시다.
+              <div className="w-full max-w-[350px] rounded-2xl border border-[#8E63FF]/40 bg-[rgba(9,7,28,0.85)] px-5 py-4 text-center text-[18px] leading-[1.7] text-white backdrop-blur-sm whitespace-pre-line">
+                {introText.slice(0, typedCount)}
+                {typedCount < introText.length ? (
+                  <span className="inline-block w-[2px] h-[1em] bg-white/80 align-middle animate-pulse ml-[1px]" />
+                ) : null}
               </div>
               <button
                 type="button"
                 onClick={() => {
                   setIsCardStage(true);
                 }}
-                className="mt-3 w-full max-w-[350px] rounded-2xl bg-[#6422AB] py-3 text-center text-[16px] font-semibold text-white"
+                className="mt-3 w-full max-w-[350px] rounded-2xl bg-[#7B3BC7] py-4 text-center text-[20px] font-semibold text-white"
               >
                 카드받기
               </button>

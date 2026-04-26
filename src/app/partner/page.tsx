@@ -162,7 +162,7 @@ export default function PartnerPage() {
             <button
               type="submit"
               disabled={!canSubmit}
-              className="mt-5 w-full rounded-xl bg-[#6422AB] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-5 w-full rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "submitting" ? "보내는 중..." : "문의 보내기"}
             </button>
@@ -217,7 +217,7 @@ export default function PartnerPage() {
                 setShowSuccessPopup(false);
                 setStatus("idle");
               }}
-              className="mt-4 w-full rounded-lg bg-[#6422AB] px-3 py-2.5 text-center text-[16px] font-semibold"
+              className="mt-4 w-full rounded-lg bg-[#7B3BC7] px-3 py-2.5 text-center text-[16px] font-semibold"
             >
               확인
             </button>

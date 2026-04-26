@@ -15,7 +15,7 @@ const POPUP_IMAGE_PATH = withAssetBase("/images/ch.png");
 function Page06AnalyzingInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const master = (searchParams?.get("master") ?? "cassian").toLowerCase();
+  const master = (searchParams?.get("master") ?? "sera").toLowerCase();
   const card = searchParams?.get("card") ?? "05";
   const cardIndex = clampCardIndex(card, 5);
   const frontCardSrc = getMasterCardFrontSrc(master, cardIndex);
@@ -68,7 +68,7 @@ function Page06AnalyzingInner() {
             </div>
             <Link
               href={resultHref}
-              className="mt-4 block rounded-lg bg-[#6422AB] px-4 py-2.5 text-center text-[16px] font-semibold text-white"
+              className="mt-4 block rounded-lg bg-[#7B3BC7] px-4 py-2.5 text-center text-[16px] font-semibold text-white"
             >
               결과화면보기
             </Link>

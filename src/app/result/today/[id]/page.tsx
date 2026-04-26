@@ -72,7 +72,7 @@ export default function ResultTodayPage({
         <div className="mt-8">
           <Link
             href="/"
-            className="block rounded-xl bg-[#6422AB] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10"
+            className="block rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10"
           >
             홈으로
           </Link>

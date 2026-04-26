@@ -97,7 +97,7 @@ export default function RecommendedPage() {
                 type="checkbox"
                 checked={needResponse}
                 onChange={(e) => setNeedResponse(e.target.checked)}
-                className="h-4 w-4 rounded border-neutral-30 bg-transparent accent-[#6422AB]"
+                className="h-4 w-4 rounded border-neutral-30 bg-transparent accent-[#7B3BC7]"
               />
               답장이 필요한 경우 체크해 주세요. 💬
             </label>
@@ -113,7 +113,7 @@ export default function RecommendedPage() {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="mt-2 w-full rounded-xl bg-[#6422AB] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-2 w-full rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "보내는 중..." : "의견 보내기"}
           </button>
@@ -164,7 +164,7 @@ export default function RecommendedPage() {
                 setShowSuccessPopup(false);
                 setStatus("idle");
               }}
-              className="mt-4 w-full rounded-lg bg-[#6422AB] px-3 py-2.5 text-center text-[16px] font-semibold"
+              className="mt-4 w-full rounded-lg bg-[#7B3BC7] px-3 py-2.5 text-center text-[16px] font-semibold"
             >
               확인
             </button>

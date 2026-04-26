@@ -410,7 +410,7 @@ export function CardSwipeDeck({
               router.push(tarotAnalyzeWith(masterId, chosen));
             }}
             disabled={isShuffling}
-            className="rounded-2xl bg-[#6422AB] px-3 py-3 text-center text-[20px] font-semibold text-white disabled:opacity-70"
+            className="rounded-2xl bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white disabled:opacity-70"
           >
             {isRevealed ? "카드해석" : "카드열기"}
           </button>

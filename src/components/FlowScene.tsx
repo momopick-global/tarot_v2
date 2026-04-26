@@ -105,7 +105,10 @@ export function FlowScene({
             loop={backgroundVideoLoop}
             muted
             playsInline
+            preload="auto"
             ref={(el) => { if (el) el.playbackRate = 0.5; }}
+            onLoadedData={(e) => { (e.currentTarget as HTMLVideoElement).playbackRate = 0.5; }}
+            onPlay={(e) => { (e.currentTarget as HTMLVideoElement).playbackRate = 0.5; }}
             className={`absolute top-0 left-0 w-full object-cover object-top ${backgroundImageClassName ?? ""}`}
             style={{ height: "auto", minWidth: "100%" }}
           />

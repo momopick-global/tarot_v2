@@ -111,7 +111,7 @@ export default function Page01MastersList1() {
           {selected ? (
             <Link
               href={tarotDrawWithMaster(selected)}
-              className="block w-full max-w-[350px] min-h-[52px] rounded-xl bg-[#6422AB] px-5 py-3.5 text-center text-[20px] font-semibold text-white"
+              className="block w-full max-w-[350px] min-h-[52px] rounded-xl bg-[#7B3BC7] px-5 py-3.5 text-center text-[20px] font-semibold text-white"
             >
               마스터선택 완료
             </Link>
@@ -119,7 +119,7 @@ export default function Page01MastersList1() {
             <button
               type="button"
               disabled
-              className="block w-full max-w-[350px] min-h-[52px] rounded-xl bg-[#6422AB]/55 px-5 py-3.5 text-center text-[20px] font-semibold text-white/75"
+              className="block w-full max-w-[350px] min-h-[52px] rounded-xl bg-[#7B3BC7]/55 px-5 py-3.5 text-center text-[20px] font-semibold text-white/75"
             >
               마스터선택 완료
             </button>
@@ -163,7 +163,7 @@ export default function Page01MastersList1() {
               <button
                 type="button"
                 onClick={() => setShowGuide(false)}
-                className="mt-4 w-full rounded-lg bg-[#6422AB] px-3 py-2.5 text-center text-[16px] font-semibold"
+                className="mt-4 w-full rounded-lg bg-[#7B3BC7] px-3 py-2.5 text-center text-[16px] font-semibold"
               >
                 확인
               </button>
@@ -228,7 +228,7 @@ export default function Page01MastersList1() {
               <div className="mt-3 grid grid-cols-2 gap-2">
                 <Link
                   href={tarotDrawWithMaster(current.id)}
-                  className="rounded-lg bg-[#6422AB] px-3 py-2 text-center text-[16px] font-semibold text-white"
+                  className="rounded-lg bg-[#7B3BC7] px-3 py-2 text-center text-[16px] font-semibold text-white"
                 >
                   캐릭터 선택
                 </Link>

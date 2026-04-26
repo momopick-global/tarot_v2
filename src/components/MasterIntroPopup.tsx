@@ -40,7 +40,7 @@ export function MasterIntroPopup({
             <Image src={POPUP_IMAGE_PATH} alt="가이드 마스터 이미지" fill className="object-cover" />
           </div>
         </div>
-        <div className="min-w-0 text-[16px] leading-[1.6] text-white">
+        <div className="min-w-0 text-[18px] leading-[1.7] text-white">
           별들은 이미 답을 알고 있습니다.
           <br />
           이제 당신의 카드를 확인해 봅시다.
@@ -57,13 +57,13 @@ export function MasterIntroPopup({
                 }
                 window.location.href = tarotRevealWith(master.id, 40);
               }}
-              className="rounded-lg bg-[#6422AB] px-3 py-2 text-center text-[16px] font-semibold"
+              className="rounded-lg bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold"
             >
               카드받기
             </button>
             <Link
               href={ROUTES.tarotStart}
-              className="rounded-lg border border-primary px-3 py-2 text-center text-[16px] text-[#d6cbff]"
+              className="rounded-lg border border-primary px-3 py-3 text-center text-[20px] text-[#d6cbff]"
             >
               마스터 선택
             </Link>

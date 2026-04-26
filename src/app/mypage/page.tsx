@@ -203,7 +203,7 @@ export default function MyPage() {
           <p>로그인하면 타로 결과가 클라우드에 저장되고, 여기에서 모아볼 수 있어요.</p>
           <Link
             href="/login"
-            className="inline-block rounded-lg bg-[#6422AB] px-4 py-2 text-center text-[16px] font-semibold text-white"
+            className="inline-block rounded-lg bg-[#7B3BC7] px-4 py-2 text-center text-[16px] font-semibold text-white"
           >
             로그인하기
           </Link>
@@ -303,7 +303,7 @@ export default function MyPage() {
           <button
             type="button"
             onClick={onLogout}
-            className="block w-full rounded-xl bg-[#6422AB] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10"
+            className="block w-full rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10"
           >
             로그아웃
           </button>

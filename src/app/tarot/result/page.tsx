@@ -317,7 +317,7 @@ function Page07ReadingResultTypeAInner() {
         <div className="mx-auto w-full max-w-[350px] pb-6 pt-6">
           <Link
             href="/"
-            className="mx-auto block w-[350px] max-w-full rounded-xl bg-[#6422AB] px-4 py-3 text-center text-[15px] font-semibold text-white"
+            className="mx-auto block w-[350px] max-w-full rounded-xl bg-[#7B3BC7] px-4 py-3 text-center text-[15px] font-semibold text-white"
           >
             유어타로 홈 — 오늘의 운세 다시 시작하기
           </Link>
