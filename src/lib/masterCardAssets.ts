@@ -48,14 +48,24 @@ export function getMasterBackgroundSrc(masterId: string, slot: 1 | 2 | 3): strin
   return withAssetBase(`/images/masters/${folder}/bg_0${slot}.png`);
 }
 
-/** 마스터별 배경 동영상 — public/images/masters/{folder}/bg_01.mp4 (없으면 undefined) */
-const MASTER_BG_VIDEO: Record<string, string> = {
-  cassian: "/images/masters/01_Cassian/bg_01.mp4",
+/** 마스터별 배경 동영상 — public/images/masters/{folder}/bg_0{slot}.mp4 (없으면 undefined) */
+const MASTER_BG_VIDEO: Record<string, Record<number, string>> = {
+  cassian: {
+    1: "/images/masters/01_Cassian/bg_01.mp4",
+    2: "/images/masters/01_Cassian/bg_02.mp4",
+  },
 };
 
-export function getMasterBackgroundVideoSrc(masterId: string): string | undefined {
-  const path = MASTER_BG_VIDEO[masterId];
+export function getMasterBackgroundVideoSrc(masterId: string, slot: 1 | 2 = 1): string | undefined {
+  const path = MASTER_BG_VIDEO[masterId]?.[slot];
   return path ? withAssetBase(path) : undefined;
+}
+
+/** 동영상 포스터(첫 프레임) — bg_0{slot}_poster.jpg */
+export function getMasterBackgroundVideoPoster(masterId: string, slot: 1 | 2 = 1): string | undefined {
+  if (!MASTER_BG_VIDEO[masterId]?.[slot]) return undefined;
+  const folder = getMasterCardFolder(masterId);
+  return withAssetBase(`/images/masters/${folder}/bg_0${slot}_poster.jpg`);
 }
 
 /** FlowScene 등에서 master 미지정 시 기본 배경 */

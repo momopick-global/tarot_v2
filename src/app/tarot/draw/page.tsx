@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { FlowScene } from "@/components/FlowScene";
 import { FLOW_MASTERS } from "@/lib/flowData";
-import { getMasterBackgroundSrc, getMasterBackgroundVideoSrc, getMasterCardBackSrc } from "@/lib/masterCardAssets";
+import { getMasterBackgroundSrc, getMasterBackgroundVideoSrc, getMasterBackgroundVideoPoster, getMasterCardBackSrc } from "@/lib/masterCardAssets";
 import { withAssetBase } from "@/lib/publicPath";
 import { ROUTES, tarotAnalyzeWith } from "@/lib/routes";
 
@@ -42,6 +42,41 @@ function Page03CardSelection1Inner() {
     };
   }, []);
 
+  // 카드 자동 스크롤 (천천히 위로)
+  useEffect(() => {
+    if (!isCardStage) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    let rafId: number;
+    let paused = false;
+    let resumeTimer: ReturnType<typeof setTimeout>;
+
+    const step = () => {
+      if (!paused && el.scrollTop < el.scrollHeight - el.clientHeight) {
+        el.scrollTop += 0.3;
+      }
+      rafId = requestAnimationFrame(step);
+    };
+
+    // 터치/스크롤 시 일시정지 후 2초 뒤 재개
+    const pause = () => {
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, 2000);
+    };
+
+    el.addEventListener("touchstart", pause);
+    el.addEventListener("wheel", pause);
+    rafId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(resumeTimer);
+      el.removeEventListener("touchstart", pause);
+      el.removeEventListener("wheel", pause);
+    };
+  }, [isCardStage]);
+
   const cardBackUrl = getMasterCardBackSrc(current.id);
   const rows = Math.ceil(TOTAL_CARDS / COLS);
 
@@ -49,7 +84,9 @@ function Page03CardSelection1Inner() {
     <main className="h-[100dvh] w-full overflow-hidden">
       <FlowScene
         backHref={ROUTES.tarotStart}
-        backgroundVideoSrc={isCardStage ? undefined : getMasterBackgroundVideoSrc(current.id)}
+        backgroundVideoSrc={isCardStage ? getMasterBackgroundVideoSrc(current.id, 2) : getMasterBackgroundVideoSrc(current.id, 1)}
+        backgroundVideoPoster={isCardStage ? getMasterBackgroundVideoPoster(current.id, 2) : getMasterBackgroundVideoPoster(current.id, 1)}
+        backgroundVideoLoop={isCardStage}
         backgroundSrc={isCardStage ? getMasterBackgroundSrc(current.id, 2) : getMasterBackgroundSrc(current.id, 1)}
         backgroundRepeatSrc={withAssetBase("/images/masters/01_Cassian/bg.png")}
         sceneClassName="h-[100dvh] min-h-[100dvh] overflow-hidden"
@@ -108,6 +145,13 @@ function Page03CardSelection1Inner() {
                   ))}
                 </div>
               </div>
+            </div>
+          ) : null}
+
+          {/* 스크롤 가이드 애니메이션 */}
+          {isCardStage ? (
+            <div className="scroll-guide-overlay pointer-events-none absolute inset-x-0 top-[55%] bottom-0 z-30 flex items-center justify-center">
+              <span className="scroll-guide-hand text-[44px]" role="img" aria-label="위로 스와이프">👆</span>
             </div>
           ) : null}
 

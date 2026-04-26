@@ -16,6 +16,8 @@ export function FlowScene({
   hideBackgroundImage = false,
   backgroundSrc,
   backgroundVideoSrc,
+  backgroundVideoPoster,
+  backgroundVideoLoop = false,
   backgroundFit = "cover",
   bottomFadeToBody = false,
   allowOverflow = false,
@@ -36,6 +38,8 @@ export function FlowScene({
   hideBackgroundImage?: boolean;
   backgroundSrc?: string;
   backgroundVideoSrc?: string;
+  backgroundVideoPoster?: string;
+  backgroundVideoLoop?: boolean;
   backgroundFit?: "cover" | "contain";
   bottomFadeToBody?: boolean;
   allowOverflow?: boolean;
@@ -94,10 +98,14 @@ export function FlowScene({
       {!hideBackgroundImage && !useSpillBackground ? (
         backgroundVideoSrc ? (
           <video
+            key={backgroundVideoSrc}
             src={backgroundVideoSrc}
+            poster={backgroundVideoPoster}
             autoPlay
+            loop={backgroundVideoLoop}
             muted
             playsInline
+            ref={(el) => { if (el) el.playbackRate = 0.5; }}
             className={`absolute top-0 left-0 w-full object-cover object-top ${backgroundImageClassName ?? ""}`}
             style={{ height: "auto", minWidth: "100%" }}
           />
