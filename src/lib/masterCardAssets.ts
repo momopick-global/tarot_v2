@@ -48,6 +48,16 @@ export function getMasterBackgroundSrc(masterId: string, slot: 1 | 2 | 3): strin
   return withAssetBase(`/images/masters/${folder}/bg_0${slot}.png`);
 }
 
+/** 마스터별 배경 동영상 — public/images/masters/{folder}/bg_01.mp4 (없으면 undefined) */
+const MASTER_BG_VIDEO: Record<string, string> = {
+  cassian: "/images/masters/01_Cassian/bg_01.mp4",
+};
+
+export function getMasterBackgroundVideoSrc(masterId: string): string | undefined {
+  const path = MASTER_BG_VIDEO[masterId];
+  return path ? withAssetBase(path) : undefined;
+}
+
 /** FlowScene 등에서 master 미지정 시 기본 배경 */
 export const DEFAULT_FLOW_BACKGROUND_SRC = withAssetBase("/images/masters/01_Cassian/bg_02.png");
 

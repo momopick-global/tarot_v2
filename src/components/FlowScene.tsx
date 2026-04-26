@@ -15,6 +15,7 @@ export function FlowScene({
   backHref,
   hideBackgroundImage = false,
   backgroundSrc,
+  backgroundVideoSrc,
   backgroundFit = "cover",
   bottomFadeToBody = false,
   allowOverflow = false,
@@ -28,11 +29,13 @@ export function FlowScene({
   backImageSize,
   backLinkClassName,
   backgroundSpillColor,
+  backgroundRepeatSrc,
 }: Readonly<{
   children: React.ReactNode;
   backHref?: string;
   hideBackgroundImage?: boolean;
   backgroundSrc?: string;
+  backgroundVideoSrc?: string;
   backgroundFit?: "cover" | "contain";
   bottomFadeToBody?: boolean;
   allowOverflow?: boolean;
@@ -48,6 +51,8 @@ export function FlowScene({
   /** 뒤로가기 링크에만 적용 (예: /tarot/draw 에서 왼쪽 20px 간격) */
   backLinkClassName?: string;
   backgroundSpillColor?: string;
+  /** 배경 이미지/동영상 아래에 반복되는 타일 배경 */
+  backgroundRepeatSrc?: string;
 }>) {
   const pathname = usePathname() ?? "";
   const resolvedBackImageSrc =
@@ -77,17 +82,33 @@ export function FlowScene({
               backgroundPosition: "top center",
               backgroundSize: "100% auto",
             }
-          : undefined
+          : backgroundRepeatSrc
+            ? {
+                backgroundImage: `url("${backgroundRepeatSrc}")`,
+                backgroundRepeat: "repeat",
+                backgroundSize: "100% auto",
+              }
+            : undefined
       }
     >
       {!hideBackgroundImage && !useSpillBackground ? (
-        <Image
-          src={resolvedBgSrc}
-          alt=""
-          fill
-          className={`${backgroundFit === "contain" ? "object-contain object-top" : "object-cover object-top"} ${backgroundImageClassName ?? ""}`}
-          priority
-        />
+        backgroundVideoSrc ? (
+          <video
+            src={backgroundVideoSrc}
+            autoPlay
+            muted
+            playsInline
+            className={`absolute top-0 left-0 w-full object-cover object-top ${backgroundImageClassName ?? ""}`}
+            style={{ height: "auto", minWidth: "100%" }}
+          />
+        ) : (
+          <img
+            src={resolvedBgSrc}
+            alt=""
+            className={`absolute top-0 left-0 w-full object-top ${backgroundImageClassName ?? ""}`}
+            style={{ height: "auto", minWidth: "100%" }}
+          />
+        )
       ) : null}
       {!hideDimOverlay ? (
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,3,20,0.35)_0%,rgba(10,8,30,0.85)_100%)]" />

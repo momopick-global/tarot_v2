@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { HomeHeroBackground } from "@/components/HomeHeroBackground";
 import { HomeParticipantCount } from "@/components/HomeParticipantCount";
 import { HomeShareSection } from "@/components/HomeShareSection";
+import { FLOW_MASTERS } from "@/lib/flowData";
 import { ROUTES } from "@/lib/routes";
 import { canonicalPath, OG_IMAGE_PATH } from "@/lib/seo/pageMeta";
 
@@ -64,19 +66,35 @@ export default function Home() {
             카드가 전하는 오늘의 감정 흐름과 행동 힌트를 1분 안에 확인해 보세요.
           </p>
 
-          <div className="mt-8 flex items-center justify-center">
-            <Link
-              href={ROUTES.tarotStart}
-              className="w-full rounded-xl bg-[#6422AB] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10"
-            >
-              오늘의 운세 보기
-            </Link>
-          </div>
-
           <HomeParticipantCount />
         </div>
       </section>
       <section className="mx-auto w-full max-w-[390px] bg-[#17182E] px-5 pb-8 pt-8">
+        {/* 타로 마스터 9인 썸네일 */}
+        <div className="mb-6 grid grid-cols-2 gap-4">
+          {FLOW_MASTERS.map((m) => (
+            <Link
+              key={m.id}
+              href={`/tarot/draw?master=${m.id}`}
+              className="flex flex-col items-center"
+            >
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                <Image
+                  src={m.image}
+                  alt={m.name}
+                  width={200}
+                  height={200}
+                  className="h-auto w-full rounded-xl"
+                />
+              </div>
+              <span className="mt-2 text-center text-[14px] text-white">
+                {m.name}
+                <br />
+                <span className="text-[#cfc4ff]">({m.type})</span>
+              </span>
+            </Link>
+          ))}
+        </div>
         <nav aria-label="주요 페이지로 이동">
           <p className="text-center text-[14px] font-semibold text-[#c9b8ff]">더 알아보기</p>
           <ul className="mt-4 flex flex-col gap-3">
