@@ -74,11 +74,9 @@ export function HomeHeroBackground() {
         onCanPlay={markVideoOk}
         onPlaying={markVideoOk}
         onError={markVideoFailed}
-        onEnded={(e) => {
-          playCountRef.current += 1;
-          if (playCountRef.current < 3) {
-            e.currentTarget.currentTime = 0;
-            void e.currentTarget.play();
+        onTimeUpdate={(e) => {
+          if (e.currentTarget.currentTime >= 3) {
+            e.currentTarget.pause();
           }
         }}
         className={`absolute inset-0 z-[1] h-full w-full object-cover object-top transition-opacity duration-500 ${
