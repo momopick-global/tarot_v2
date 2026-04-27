@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { AuthReturnRedirect } from "@/components/AuthReturnRedirect";
 import { MenuContent } from "@/components/MenuContent";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { MYPAGE_PATH } from "@/lib/authReturnPath";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -25,6 +26,11 @@ export function SiteFrame({
     pathname?.startsWith("/tarot/analyze") ||
     pathname?.startsWith("/page_03_card-selection_1") ||
     pathname?.startsWith("/page_06_analyzing");
+  const hideScrollTop =
+    pathname?.startsWith("/tarot/draw") ||
+    pathname?.startsWith("/tarot/analyze") ||
+    pathname?.startsWith("/tarot/reveal") ||
+    pathname?.startsWith("/tarot/result");
   const mypageHref = MYPAGE_PATH;
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMenuMounted, setIsMenuMounted] = React.useState(false);
@@ -63,6 +69,8 @@ export function SiteFrame({
           <Footer />
         </>
       ) : null}
+
+      {!hideScrollTop ? <ScrollToTopButton /> : null}
 
       {isMenuMounted ? (
         <div
