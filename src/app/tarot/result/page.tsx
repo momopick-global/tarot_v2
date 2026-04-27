@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 import { FlowScene } from "@/components/FlowScene";
 import { ResultActionButtons } from "@/components/ResultActionButtons";
-import { ShareSection } from "@/components/ShareSection";
+import { KakaoShareButton, ShareSection } from "@/components/ShareSection";
 import { clampCardIndex, getMasterCardFrontSrc } from "@/lib/masterCardAssets";
 import { resolveCardReading } from "@/lib/resolveCardReading";
 import { buildInterpretationText } from "@/lib/tarotResultsDb";
@@ -245,6 +245,15 @@ function Page07ReadingResultTypeAInner() {
             <Section icon="💎" title="핵심 키워드">
               <p>{kw}</p>
             </Section>
+          </div>
+
+          <div className="mt-6">
+            <KakaoShareButton
+              shareUrl={tarotResultWith(current.id, card)}
+              shareTitle="유어타로 결과"
+              shareDescription="당신의 운세를 확인하세요"
+              shareImageUrl={frontCardSrc}
+            />
           </div>
 
           <ResultActionButtons

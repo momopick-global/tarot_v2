@@ -84,6 +84,7 @@ export default function Home() {
               <span>🔮</span>
               <span>1,284명 참여</span>
             </span>
+            <span className="mt-3 w-full rounded-lg bg-[#ff6b9d] py-2 text-center text-sm font-semibold text-white">시작하기</span>
           </Link>
           <Link
             href="/tarot/draw?master=kai"
@@ -104,6 +105,7 @@ export default function Home() {
               <span>✨</span>
               <span>2,517명 참여</span>
             </span>
+            <span className="mt-3 w-full rounded-lg bg-[#4a9eff] py-2 text-center text-sm font-semibold text-white">시작하기</span>
           </Link>
         </div>
         <nav aria-label="주요 페이지로 이동" className="mt-6">

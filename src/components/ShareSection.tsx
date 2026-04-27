@@ -13,6 +13,38 @@ const ICON_SHARE_FACEBOOK = withAssetBase(
 );
 const ICON_SHARE_X = withAssetBase("/assets/svg-ic-share-x.svg-4ef9a083-7b44-439e-bfa4-3c305b5bf580.png");
 
+export function KakaoShareButton({
+  shareTitle,
+  shareDescription,
+  shareImageUrl,
+  shareUrl,
+}: Readonly<{
+  shareTitle?: string;
+  shareDescription?: string;
+  shareImageUrl?: string;
+  shareUrl?: string;
+}>) {
+  return (
+    <button
+      type="button"
+      onClick={async () => {
+        await shareToKakao({
+          title: shareTitle,
+          description: shareDescription,
+          imageUrl: shareImageUrl,
+          url: shareUrl,
+          resultUrl: shareUrl,
+          testUrl: shareUrl,
+        });
+      }}
+      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#FEE500] py-3 font-semibold text-[#3C1E1E] transition-colors hover:bg-[#FDD835]"
+    >
+      <Image src={ICON_SHARE_TALK} alt="" width={24} height={24} />
+      <span>친구에게 공유하기</span>
+    </button>
+  );
+}
+
 export function ShareSection({
   title = "친구에게 공유하기",
   shareUrl,
