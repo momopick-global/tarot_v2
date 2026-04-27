@@ -16,6 +16,42 @@
 
   --ds-error: #e94444;
   --ds-success: #28a745;
+
+  /* 글자 크기 — 이 값만 바꾸면 전체 반영 */
+  --ds-font-base: 16px;
+  --ds-font-sm: 15px;
+  --ds-font-md: 18px;
+  --ds-font-lg: 20px;
+  --ds-font-xl: 22px;
+  --ds-font-2xl: 24px;
+  --ds-font-3xl: 28px;
+
+  /* 텍스트 색상 */
+  --ds-text-white: #f7f7f7;
+  --ds-text-muted: #d8ccff;
+  --ds-text-sub: #b8b3c9;
+  --ds-text-dim: #aa9dce;
+  --ds-text-highlight: #f0e8ff;
+  --ds-text-pink: #ffd1e0;
+  --ds-text-pink-sub: #ff9dbe;
+  --ds-text-blue: #c8e2ff;
+  --ds-text-blue-sub: #7db8ff;
+  --ds-text-purple-link: #8E63FF;
+  --ds-text-lavender: #e0d6ff;
+  --ds-text-placeholder: #999;
+
+  /* 버튼 */
+  --ds-btn-primary: #7B3BC7;
+  --ds-btn-primary-hover: #9655e0;
+
+  /* 카드/패널 배경 */
+  --ds-surface: rgba(7, 6, 22, 0.8);
+  --ds-surface-light: rgba(255, 255, 255, 0.03);
+  --ds-surface-light-hover: rgba(255, 255, 255, 0.06);
+
+  /* 테두리 */
+  --ds-border: rgba(255, 255, 255, 0.1);
+  --ds-border-purple: rgba(142, 99, 255, 0.4);
 }
 
 @theme inline {
@@ -35,11 +71,41 @@
 
   --color-bg-content: var(--ds-bg-content);
   --color-bg-outer: var(--ds-bg-outer);
+
+  --font-size-base: var(--ds-font-base);
+  --font-size-sm: var(--ds-font-sm);
+  --font-size-md: var(--ds-font-md);
+  --font-size-lg: var(--ds-font-lg);
+  --font-size-xl: var(--ds-font-xl);
+  --font-size-2xl: var(--ds-font-2xl);
+  --font-size-3xl: var(--ds-font-3xl);
+
+  --color-text-white: var(--ds-text-white);
+  --color-text-muted: var(--ds-text-muted);
+  --color-text-sub: var(--ds-text-sub);
+  --color-text-dim: var(--ds-text-dim);
+  --color-text-highlight: var(--ds-text-highlight);
+  --color-text-pink: var(--ds-text-pink);
+  --color-text-pink-sub: var(--ds-text-pink-sub);
+  --color-text-blue: var(--ds-text-blue);
+  --color-text-blue-sub: var(--ds-text-blue-sub);
+  --color-text-purple-link: var(--ds-text-purple-link);
+  --color-text-lavender: var(--ds-text-lavender);
+  --color-text-placeholder: var(--ds-text-placeholder);
+
+  --color-btn-primary: var(--ds-btn-primary);
+  --color-btn-primary-hover: var(--ds-btn-primary-hover);
+  --color-surface: var(--ds-surface);
+  --color-surface-light: var(--ds-surface-light);
+  --color-surface-light-hover: var(--ds-surface-light-hover);
+  --color-ds-border: var(--ds-border);
+  --color-ds-border-purple: var(--ds-border-purple);
 }
 
 body {
   background: var(--ds-bg-outer);
   color: var(--ds-neutral-10);
+  font-size: var(--ds-font-base);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
@@ -182,7 +248,7 @@ select:focus-visible {
   }
   .page-body {
     color: #b8b3c9;
-    font-size: 0.95rem;
+    font-size: var(--ds-font-base);
     line-height: 1.75;
   }
 }

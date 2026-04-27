@@ -60,7 +60,7 @@ export function HomeParticipantCount() {
   }, []);
 
   return (
-    <p className="mb-[40px] mt-5 min-h-[24px] text-center text-[16px] text-white">
+    <p className="mb-[40px] mt-5 min-h-[24px] text-center text-white">
       {label ?? " "}
     </p>
   );

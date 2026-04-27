@@ -70,13 +70,13 @@ function Page05MastersList5Inner() {
             type="button"
             onClick={onOpenCard}
             disabled={isOpening}
-            className="rounded-xl bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white"
+            className="rounded-xl bg-btn-primary px-3 py-3 text-center text-lg font-semibold text-white"
           >
             {isOpening ? "카드 여는 중..." : "카드 열기"}
           </button>
           <Link
             href={tarotDrawWithMaster(current.id)}
-            className="rounded-xl border border-primary bg-[rgba(12,10,36,0.92)] px-3 py-3 text-center text-[16px] text-[#d8ccff]"
+            className="rounded-xl border border-primary bg-surface px-3 py-3 text-center text-text-muted"
           >
             이 마스터로 카드 다시 섞기
           </Link>
@@ -86,7 +86,7 @@ function Page05MastersList5Inner() {
       <div className="mx-auto w-full max-w-[390px] px-4 pb-2">
         <Link
           href={tarotAnalyzeWith(current.id, card)}
-          className="block min-h-[48px] rounded-xl border border-primary bg-[rgba(12,10,36,0.92)] px-4 py-3 text-center text-sm font-semibold text-[#d8ccff]"
+          className="block min-h-[48px] rounded-xl border border-primary bg-surface px-4 py-3 text-center text-sm font-semibold text-text-muted"
         >
           오늘의 운세 해석(분석) 단계로 이동
         </Link>

@@ -31,8 +31,7 @@ export function SiteFrame({
   const hideScrollTop =
     pathname?.startsWith("/tarot/draw") ||
     pathname?.startsWith("/tarot/analyze") ||
-    pathname?.startsWith("/tarot/reveal") ||
-    pathname?.startsWith("/tarot/result");
+    pathname?.startsWith("/tarot/reveal");
   const mypageHref = MYPAGE_PATH;
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMenuMounted, setIsMenuMounted] = React.useState(false);
@@ -64,7 +63,7 @@ export function SiteFrame({
     <div className="min-h-screen w-full bg-bg-outer text-neutral-10">
       <AuthReturnRedirect />
       {!hideHeader ? <Header onMenuClick={() => setIsMenuOpen(true)} autoHide={!hideScrollTop} /> : null}
-      {!hideHeader ? <div className="h-[42px]" /> : null}
+      {!hideHeader ? <div className="h-[52px]" /> : null}
       <div className="mx-auto min-h-[1px] max-w-[390px] bg-bg-content">{children}</div>
       {!hideFooter && !hideFooterByPath ? (
         <>
@@ -106,10 +105,10 @@ export function SiteFrame({
                 <button
                   type="button"
                   onClick={closeMenu}
-                  className="absolute left-0 top-0 grid h-[42px] w-[42px] place-items-center bg-transparent"
+                  className="absolute left-0 top-0 grid h-[52px] w-[42px] place-items-center bg-transparent"
                   aria-label="메뉴 닫기"
                 >
-                  <span className="inline-block origin-center scale-150 text-[16px] leading-none">×</span>
+                  <span className="inline-block origin-center scale-150 leading-none">×</span>
                 </button>
                 <MenuContent mypageHref={mypageHref} onLinkClick={closeMenu} />
               </aside>

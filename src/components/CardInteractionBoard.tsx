@@ -593,14 +593,14 @@ export function CardInteractionBoard({
         })}
       </div>
 
-      <div className="pb-6 text-center text-[11px] text-[#b9abdf]">선택 카드: #{displayCardNo}</div>
+      <div className="pb-6 text-center text-sm text-text-sub">선택 카드: #{displayCardNo}</div>
 
       <div className="grid grid-cols-2 gap-3">
         <button
           type="button"
           onClick={startOpenFlow}
           disabled={isOpening}
-          className="rounded-2xl bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white"
+          className="rounded-2xl bg-btn-primary px-3 py-3 text-center text-lg font-semibold text-white"
         >
           {isOpening ? "카드 여는 중..." : "카드 열기"}
         </button>
@@ -608,7 +608,7 @@ export function CardInteractionBoard({
           type="button"
           onClick={startShuffleFlow}
           disabled={isOpening}
-          className="rounded-2xl border border-primary bg-[rgba(12,10,36,0.92)] px-3 py-3 text-center text-[16px] text-[#d8ccff]"
+          className="rounded-2xl border border-primary bg-surface px-3 py-3 text-center text-text-muted"
         >
           {isFlowing ? "흐름 중..." : "카드섞기"}
         </button>

@@ -156,7 +156,7 @@ export function FlowScene({
             aria-label="뒤로가기"
           >
             {backStyle === "custom" ? (
-              <span className="text-[22px] font-semibold leading-none text-[#BFA8FF]">←</span>
+              <span className="text-xl font-semibold leading-none text-text-purple-link">←</span>
             ) : (
               <Image
                 src={resolvedBackImageSrc}

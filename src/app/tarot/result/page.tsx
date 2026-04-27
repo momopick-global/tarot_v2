@@ -22,7 +22,7 @@ function formatBoldSegments(text: string): ReactNode {
     const m = /^\*\*(.+?)\*\*$/.exec(part);
     if (m) {
       return (
-        <strong key={i} className="font-semibold text-[#f5eeff]">
+        <strong key={i} className="font-semibold text-text-highlight">
           {m[1]}
         </strong>
       );
@@ -42,12 +42,12 @@ function Section({
 }>) {
   return (
     <div>
-      <div className="mb-2 flex items-center gap-2 text-[17px] font-semibold text-white">
+      <div className="mb-2 flex items-center gap-2 text-md font-semibold text-white">
         <span aria-hidden>{icon}</span>
         {title}
       </div>
       <div className="rounded-xl border border-[#5c4a8a]/60 bg-[rgba(10,8,28,0.88)] px-3 py-3">
-        <div className="text-[15px] leading-[1.65] text-[#e8e0ff]">{children}</div>
+        <div className="leading-[1.65] text-text-highlight">{children}</div>
       </div>
     </div>
   );
@@ -78,7 +78,7 @@ function Page07ReadingResultTypeAInner() {
         hideDimOverlay
       >
         <div className="relative min-h-[560px]">
-          <div className="absolute left-1/2 -top-[10px] z-10 -translate-x-1/2 px-3 text-center text-[24px] font-semibold text-white">
+          <div className="absolute left-1/2 -top-[10px] z-10 -translate-x-1/2 px-3 text-center text-2xl font-semibold text-white">
             {reading.titleKo}
           </div>
           <div className="card-reveal-spin absolute left-1/2 top-[27px] z-10">
@@ -92,10 +92,10 @@ function Page07ReadingResultTypeAInner() {
             />
           </div>
           <div className="absolute bottom-[2px] left-1/2 z-10 w-full max-w-[350px] -translate-x-1/2 p-3">
-            <div className="pt-3 text-center text-[24px] font-semibold tracking-tight text-white">
+            <div className="pt-3 text-center text-2xl font-semibold tracking-tight text-white">
               {reading.titleEn}
             </div>
-            <div className="pt-1 text-center text-[18px] leading-snug text-[#d4c8ff]">
+            <div className="pt-1 text-center text-md leading-snug text-text-muted">
               {reading.cardSubtitle}
             </div>
           </div>
@@ -116,7 +116,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>💕</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">현재 연애</span>
+                        <span className="font-semibold text-text-highlight">현재 연애</span>
                         <br />
                         {formatBoldSegments(cats.currentLove || cats.love || "—")}
                       </span>
@@ -124,7 +124,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>👫</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">상대방</span>
+                        <span className="font-semibold text-text-highlight">상대방</span>
                         <br />
                         {formatBoldSegments(cats.partner || cats.relationship || "—")}
                       </span>
@@ -132,7 +132,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>💬</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">소통</span>
+                        <span className="font-semibold text-text-highlight">소통</span>
                         <br />
                         {formatBoldSegments(cats.communication || cats.work || "—")}
                       </span>
@@ -140,7 +140,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>💗</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">감정</span>
+                        <span className="font-semibold text-text-highlight">감정</span>
                         <br />
                         {formatBoldSegments(cats.emotion || cats.money || "—")}
                       </span>
@@ -148,7 +148,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>🧘</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">자기 돌봄</span>
+                        <span className="font-semibold text-text-highlight">자기 돌봄</span>
                         <br />
                         {formatBoldSegments(cats.selfCare || cats.health || "—")}
                       </span>
@@ -156,7 +156,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>🌹</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">연애운</span>
+                        <span className="font-semibold text-text-highlight">연애운</span>
                         <br />
                         {formatBoldSegments(cats.loveChance || cats.luck || "—")}
                       </span>
@@ -167,7 +167,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>💼</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">업무/학업</span>
+                        <span className="font-semibold text-text-highlight">업무/학업</span>
                         <br />
                         {formatBoldSegments(cats.work || "—")}
                       </span>
@@ -175,7 +175,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>❤️</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">애정</span>
+                        <span className="font-semibold text-text-highlight">애정</span>
                         <br />
                         {formatBoldSegments(cats.love || "—")}
                       </span>
@@ -183,7 +183,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>💰</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">금전</span>
+                        <span className="font-semibold text-text-highlight">금전</span>
                         <br />
                         {formatBoldSegments(cats.money || "—")}
                       </span>
@@ -191,7 +191,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>👥</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">인간관계</span>
+                        <span className="font-semibold text-text-highlight">인간관계</span>
                         <br />
                         {formatBoldSegments(cats.relationship || "—")}
                       </span>
@@ -199,7 +199,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>🏥</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">건강</span>
+                        <span className="font-semibold text-text-highlight">건강</span>
                         <br />
                         {formatBoldSegments(cats.health || "—")}
                       </span>
@@ -207,7 +207,7 @@ function Page07ReadingResultTypeAInner() {
                     <p className="flex gap-2">
                       <span aria-hidden>🍀</span>
                       <span>
-                        <span className="font-semibold text-[#f0e8ff]">기회/행운</span>
+                        <span className="font-semibold text-text-highlight">기회/행운</span>
                         <br />
                         {formatBoldSegments(cats.luck || "—")}
                       </span>
@@ -219,23 +219,23 @@ function Page07ReadingResultTypeAInner() {
 
             <Section icon="💡" title="오늘의 조언">
               {reading.advice.quote ? (
-                <p className="mb-3 border-b border-white/10 pb-3 text-[15px] font-medium leading-relaxed text-[#f2ecff] underline decoration-[#9b7dff]/50 underline-offset-4">
+                <p className="mb-3 border-b border-ds-border pb-3 font-medium leading-relaxed text-text-highlight underline decoration-[#9b7dff]/50 underline-offset-4">
                   {reading.advice.quote}
                 </p>
               ) : null}
-              <ul className="list-none space-y-2 text-[15px]">
+              <ul className="list-none space-y-2">
                 <li>
-                  <span className="font-semibold text-[#d8ccff]">행운의 아이템</span>
+                  <span className="font-semibold text-text-muted">행운의 아이템</span>
                   <br />
                   {reading.advice.luckyItem || "—"}
                 </li>
                 <li>
-                  <span className="font-semibold text-[#d8ccff]">행운의 장소</span>
+                  <span className="font-semibold text-text-muted">행운의 장소</span>
                   <br />
                   {reading.advice.luckyPlace || "—"}
                 </li>
                 <li>
-                  <span className="font-semibold text-[#d8ccff]">주의할 점</span>
+                  <span className="font-semibold text-text-muted">주의할 점</span>
                   <br />
                   {reading.advice.caution || "—"}
                 </li>
@@ -266,7 +266,7 @@ function Page07ReadingResultTypeAInner() {
 
           {/* 다른 테스트하기 */}
           <div className="mt-7">
-            <div className="text-[15px] font-semibold text-center text-white mb-4">다른 테스트하기</div>
+            <div className="font-semibold text-center text-white mb-4">다른 테스트하기</div>
             <div className="flex justify-center">
               {current.id !== "sera" ? (
                 <Link
@@ -276,8 +276,8 @@ function Page07ReadingResultTypeAInner() {
                   <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                     <Image src={FLOW_MASTERS[0].image} alt="세라" width={150} height={150} className="h-auto w-full rounded-xl" />
                   </div>
-                  <span className="mt-2 text-center text-[15px] font-semibold text-[#ffd1e0]">연애 운세</span>
-                  <span className="mt-1 text-center text-[12px] text-[#ff9dbe]">세라와 함께</span>
+                  <span className="mt-2 text-center font-semibold text-text-pink">연애 운세</span>
+                  <span className="mt-1 text-center text-text-pink-sub">세라와 함께</span>
                 </Link>
               ) : (
                 <Link
@@ -287,8 +287,8 @@ function Page07ReadingResultTypeAInner() {
                   <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                     <Image src={FLOW_MASTERS[1].image} alt="카이" width={150} height={150} className="h-auto w-full rounded-xl" />
                   </div>
-                  <span className="mt-2 text-center text-[15px] font-semibold text-[#c8e2ff]">오늘의 운세</span>
-                  <span className="mt-1 text-center text-[12px] text-[#7db8ff]">카이와 함께</span>
+                  <span className="mt-2 text-center font-semibold text-text-blue">오늘의 운세</span>
+                  <span className="mt-1 text-center text-text-blue-sub">카이와 함께</span>
                 </Link>
               )}
             </div>
@@ -298,17 +298,17 @@ function Page07ReadingResultTypeAInner() {
           <div className="mt-6 grid grid-cols-2 gap-3">
             <Link
               href="/masters"
-              className="flex items-center gap-2 rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] px-3 py-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
+              className="flex items-center gap-2 rounded-xl border border-ds-border bg-surface-light px-3 py-3 transition-colors hover:bg-surface-light-hover"
             >
-              <span className="text-[18px]">👤</span>
-              <span className="text-[13px] font-semibold text-white">마스터 프로필</span>
+              <span className="text-md">👤</span>
+              <span className="font-semibold text-white">마스터 프로필</span>
             </Link>
             <Link
               href="/recommended"
-              className="flex items-center gap-2 rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] px-3 py-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
+              className="flex items-center gap-2 rounded-xl border border-ds-border bg-surface-light px-3 py-3 transition-colors hover:bg-surface-light-hover"
             >
-              <span className="text-[18px]">💬</span>
-              <span className="text-[13px] font-semibold text-white">의견 보내기</span>
+              <span className="text-md">💬</span>
+              <span className="font-semibold text-white">의견 보내기</span>
             </Link>
           </div>
         </section>
@@ -316,7 +316,7 @@ function Page07ReadingResultTypeAInner() {
         <div className="mx-auto w-full max-w-[350px] pb-8 pt-4">
           <Link
             href="/"
-            className="block rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[16px] font-semibold text-white"
+            className="block rounded-xl bg-btn-primary px-5 py-4 text-center font-semibold text-white"
           >
             홈으로 돌아가기
           </Link>

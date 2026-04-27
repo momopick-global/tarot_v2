@@ -35,7 +35,7 @@ export function ShareSection({
 
   return (
     <div className={`w-full px-5 py-8 ${className ?? ""}`}>
-      <div className="text-center text-[22px] text-white">{title}</div>
+      <div className="text-center text-xl text-white">{title}</div>
       <div className="mt-4 flex items-center justify-center gap-5">
         <button type="button" onClick={onCopy} aria-label="링크 복사" className="inline-flex">
           <Image src={ICON_SHARE_LINK} alt="" width={44} height={44} />

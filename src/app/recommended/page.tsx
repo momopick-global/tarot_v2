@@ -63,10 +63,10 @@ export default function RecommendedPage() {
 
         <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
           <div>
-            <div className="flex items-center gap-2 text-[16px] font-semibold">
+            <div className="flex items-center gap-2 font-semibold">
               <span aria-hidden>✉️</span> 연락처
             </div>
-            <div className="mt-2 border-b border-neutral-30 px-0.5 py-2 text-[16px] leading-[1.35] text-neutral-10 focus-within:border-[#8B5CF6]">
+            <div className="mt-2 border-b border-neutral-30 px-0.5 py-2 leading-[1.35] text-neutral-10 focus-within:border-[#8B5CF6]">
               <input
                 type="email"
                 value={contact}
@@ -80,10 +80,10 @@ export default function RecommendedPage() {
           </div>
 
           <div>
-            <div className="flex items-center gap-2 text-[16px] font-semibold">
+            <div className="flex items-center gap-2 font-semibold">
               <span aria-hidden>📝</span> 내용
             </div>
-            <div className="mt-2 rounded-lg bg-[#151622] px-3 py-3 text-[16px] leading-[1.4] text-neutral-10">
+            <div className="mt-2 rounded-lg bg-[#151622] px-3 py-3 leading-[1.4] text-neutral-10">
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
@@ -92,18 +92,18 @@ export default function RecommendedPage() {
               />
             </div>
 
-            <label className="mt-3 flex items-center gap-2 text-[12px] text-neutral-10">
+            <label className="mt-3 flex items-center gap-2 text-neutral-10">
               <input
                 type="checkbox"
                 checked={needResponse}
                 onChange={(e) => setNeedResponse(e.target.checked)}
-                className="h-4 w-4 rounded border-neutral-30 bg-transparent accent-[#7B3BC7]"
+                className="h-4 w-4 rounded border-neutral-30 bg-transparent accent-btn-primary"
               />
               답장이 필요한 경우 체크해 주세요. 💬
             </label>
 
             {status === "error" && (
-              <div className="mt-2 text-[12px] text-red-300">
+              <div className="mt-2 text-red-300">
                 {errorMessage ?? "의견 전송에 실패했어요. 잠시 후 다시 시도해 주세요."}
               </div>
             )}
@@ -113,7 +113,7 @@ export default function RecommendedPage() {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="mt-2 w-full rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-2 w-full rounded-xl bg-btn-primary px-5 py-4 text-center text-lg font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "보내는 중..." : "의견 보내기"}
           </button>
@@ -129,7 +129,7 @@ export default function RecommendedPage() {
           aria-labelledby="recommended-success-title"
         >
           <div className="absolute inset-0 bg-[rgba(2,1,10,0.55)] backdrop-blur-[3px]" aria-hidden />
-          <div className="relative z-10 w-full max-w-[350px] rounded-xl border border-primary bg-[rgba(9,7,28,0.94)] p-4 text-white shadow-2xl">
+          <div className="relative z-10 w-full max-w-[350px] rounded-xl border border-primary bg-surface p-4 text-white shadow-2xl">
             <div className="mb-1 flex justify-end">
               <button
                 type="button"
@@ -138,7 +138,7 @@ export default function RecommendedPage() {
                   setStatus("idle");
                 }}
                 aria-label="안내 닫기"
-                className="text-[22px] leading-none text-white/90 hover:text-white"
+                className="text-xl leading-none text-white/90 hover:text-white"
               >
                 ×
               </button>
@@ -153,7 +153,7 @@ export default function RecommendedPage() {
                 />
               </div>
             </div>
-            <p id="recommended-success-title" className="min-w-0 text-[16px] leading-[1.6] text-white">
+            <p id="recommended-success-title" className="min-w-0 leading-[1.6] text-white">
               소중한 의견이 전달되었습니다.
               <br />
               더 좋은 유어타로를 만드는 데 반영하겠습니다.
@@ -164,7 +164,7 @@ export default function RecommendedPage() {
                 setShowSuccessPopup(false);
                 setStatus("idle");
               }}
-              className="mt-4 w-full rounded-lg bg-[#7B3BC7] px-3 py-2.5 text-center text-[16px] font-semibold"
+              className="mt-4 w-full rounded-lg bg-btn-primary px-3 py-2.5 text-center font-semibold"
             >
               확인
             </button>

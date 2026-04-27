@@ -161,26 +161,26 @@ export function ResultActionButtons({
   const cloudHint = () => {
     if (!hasSupabase) return null;
     if (authLoading) {
-      return <p className="mt-2 text-center text-[11px] text-[#aa9dce]">로그인 확인 중…</p>;
+      return <p className="mt-2 text-center text-sm text-text-dim">로그인 확인 중…</p>;
     }
     if (cloudUi === "guest") {
       return (
-        <p className="mt-2 text-center text-[11px] leading-snug text-[#aa9dce]">
-          보관하려면 로그인한 뒤 <span className="text-[#d8ccff]">저장하기</span>를 눌러 주세요.
+        <p className="mt-2 text-center text-sm leading-snug text-text-dim">
+          보관하려면 로그인한 뒤 <span className="text-text-muted">저장하기</span>를 눌러 주세요.
         </p>
       );
     }
     if (cloudUi === "error") {
       return (
-        <p className="mt-2 text-center text-[11px] text-[#e8a598]">
+        <p className="mt-2 text-center text-sm text-error">
           저장에 실패했습니다. 연결을 확인한 뒤 다시 눌러 주세요.
         </p>
       );
     }
     const recordsHref = user ? MYPAGE_PATH : loginUrlWithReturnTo(MYPAGE_PATH);
     return (
-      <p className="mt-2 text-center text-[11px] text-[#aa9dce]">
-        <Link href={recordsHref} className="text-[#d8ccff] underline underline-offset-2">
+      <p className="mt-2 text-center text-sm text-text-dim">
+        <Link href={recordsHref} className="text-text-muted underline underline-offset-2">
           마이페이지에서 기록 보기
         </Link>
       </p>
@@ -195,7 +195,7 @@ export function ResultActionButtons({
         <button
           type="button"
           disabled
-          className="rounded-xl border border-primary/50 bg-[rgba(12,10,36,0.6)] px-4 py-3 text-center text-[15px] text-[#d8ccff]/60"
+          className="rounded-xl border border-primary/50 bg-[rgba(12,10,36,0.6)] px-4 py-3 text-center text-sm text-text-muted/60"
         >
           확인 중…
         </button>
@@ -207,7 +207,7 @@ export function ResultActionButtons({
         <button
           type="button"
           onClick={openGuestSaveDialog}
-          className="rounded-xl border border-primary bg-[rgba(12,10,36,0.92)] px-4 py-3 text-center text-[15px] font-semibold text-[#d8ccff]"
+          className="rounded-xl border border-primary bg-surface px-4 py-3 text-center text-sm font-semibold text-text-muted"
         >
           저장하기
         </button>
@@ -219,7 +219,7 @@ export function ResultActionButtons({
         <button
           type="button"
           disabled
-          className="rounded-xl border border-[#6b5a9e] bg-[rgba(12,10,36,0.55)] px-4 py-3 text-center text-[15px] font-medium text-[#c4b8e8]"
+          className="rounded-xl border border-[#6b5a9e] bg-[rgba(12,10,36,0.55)] px-4 py-3 text-center text-sm font-medium text-text-dim"
         >
           저장됨
         </button>
@@ -231,7 +231,7 @@ export function ResultActionButtons({
         <button
           type="button"
           disabled
-          className="rounded-xl border border-primary/60 bg-[rgba(12,10,36,0.75)] px-4 py-3 text-center text-[15px] text-[#d8ccff]"
+          className="rounded-xl border border-primary/60 bg-[rgba(12,10,36,0.75)] px-4 py-3 text-center text-sm text-text-muted"
         >
           저장 중…
         </button>
@@ -242,7 +242,7 @@ export function ResultActionButtons({
       <button
         type="button"
         onClick={onCloudSave}
-        className="rounded-xl border border-primary bg-[rgba(12,10,36,0.92)] px-4 py-3 text-center text-[15px] font-semibold text-[#d8ccff]"
+        className="rounded-xl border border-primary bg-surface px-4 py-3 text-center text-sm font-semibold text-text-muted"
       >
         저장하기
       </button>
@@ -254,7 +254,7 @@ export function ResultActionButtons({
       <div className="grid grid-cols-2 gap-3">
         <Link
           href={tarotDrawWithMaster(masterId)}
-          className="rounded-xl bg-[#7B3BC7] px-4 py-3 text-center text-[15px] font-semibold text-white"
+          className="rounded-xl bg-btn-primary px-4 py-3 text-center text-sm font-semibold text-white"
         >
           카드 다시 뽑기
         </Link>
@@ -264,7 +264,7 @@ export function ResultActionButtons({
           <button
             type="button"
             onClick={onSaveLocal}
-            className="rounded-xl border border-primary bg-[rgba(12,10,36,0.92)] px-4 py-3 text-[15px] text-[#d8ccff]"
+            className="rounded-xl border border-primary bg-surface px-4 py-3 text-sm text-text-muted"
           >
             {savedLocal ? "저장 취소" : "기기에 저장"}
           </button>
@@ -272,7 +272,7 @@ export function ResultActionButtons({
       </div>
       {cloudHint()}
       {toast ? (
-        <div className="pointer-events-none fixed inset-x-0 bottom-6 z-[700] mx-auto w-[calc(100%-32px)] max-w-[358px] rounded-xl border border-[#8d6cd8]/70 bg-[rgba(22,16,48,0.94)] px-3 py-2 text-center text-[12px] text-[#efe7ff] shadow-[0_10px_30px_rgba(0,0,0,0.35)] animate-[toastIn_160ms_ease-out]">
+        <div className="pointer-events-none fixed inset-x-0 bottom-6 z-[700] mx-auto w-[calc(100%-32px)] max-w-[358px] rounded-xl border border-[#8d6cd8]/70 bg-[rgba(22,16,48,0.94)] px-3 py-2 text-center text-sm text-text-highlight shadow-[0_10px_30px_rgba(0,0,0,0.35)] animate-[toastIn_160ms_ease-out]">
           {toast}
         </div>
       ) : null}
@@ -284,23 +284,23 @@ export function ResultActionButtons({
           aria-modal="true"
           aria-labelledby="save-login-dialog-title"
         >
-          <div className="w-full max-w-[320px] rounded-2xl border border-[#6b4aa8] bg-[rgba(14,12,36,0.98)] p-5 text-center shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
-            <p id="save-login-dialog-title" className="text-[15px] font-semibold leading-snug text-white">
+          <div className="w-full max-w-[320px] rounded-2xl border border-[#6b4aa8] bg-surface p-5 text-center shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
+            <p id="save-login-dialog-title" className="text-sm font-semibold leading-snug text-white">
               로그인하면 테스트한 결과를 저장할 수 있습니다.
             </p>
-            <p className="mt-2 text-[13px] leading-relaxed text-[#d8ccff]">로그인 하시겠습니까?</p>
+            <p className="mt-2 text-sm leading-relaxed text-text-muted">로그인 하시겠습니까?</p>
             <div className="mt-5 grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => setSaveLoginDialogOpen(false)}
-                className="rounded-xl border border-white/25 bg-transparent px-3 py-2.5 text-[16px] font-medium text-[#e8e0ff]"
+                className="rounded-xl border border-white/25 bg-transparent px-3 py-2.5 font-medium text-text-highlight"
               >
                 취소
               </button>
               <button
                 type="button"
                 onClick={confirmGuestLoginForSave}
-                className="rounded-xl bg-[#7B3BC7] px-3 py-2.5 text-[16px] font-semibold text-white"
+                className="rounded-xl bg-btn-primary px-3 py-2.5 font-semibold text-white"
               >
                 로그인하기
               </button>

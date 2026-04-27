@@ -163,7 +163,7 @@ a:hover {
   transform: translateY(-100%);
 }
 .blog-header-spacer {
-  height: 42px;
+  height: 52px;
 }
 
 /* 스크롤 프로그레스 바 */
@@ -256,7 +256,7 @@ a:hover {
 
 .blog-site-header-inner {
   display: flex;
-  height: 42px;
+  height: 52px;
   width: 100%;
   max-width: var(--frame);
   margin: 0 auto;
@@ -267,7 +267,7 @@ a:hover {
 .blog-icon-btn {
   display: flex;
   width: 42px;
-  height: 42px;
+  height: 52px;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -637,7 +637,7 @@ button.blog-icon-btn {
   top: 0;
   display: grid;
   width: 42px;
-  height: 42px;
+  height: 52px;
   place-items: center;
   margin: 0;
   padding: 0;

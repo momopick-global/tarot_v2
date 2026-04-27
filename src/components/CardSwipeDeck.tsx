@@ -393,7 +393,7 @@ export function CardSwipeDeck({
 
       {/* UI 영역: 카드 영역과 분리된 패딩 레이어 */}
       <div className="mt-auto px-0 pb-[calc(env(safe-area-inset-bottom)+16px)] pt-2">
-        <div className="pb-3 text-center text-[11px] text-[#b9abdf]">
+        <div className="pb-3 text-center text-sm text-text-sub">
           선택 카드: #{String(deckIndex + 1).padStart(2, "0")}
         </div>
 
@@ -410,7 +410,7 @@ export function CardSwipeDeck({
               router.push(tarotAnalyzeWith(masterId, chosen));
             }}
             disabled={isShuffling}
-            className="rounded-2xl bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold text-white disabled:opacity-70"
+            className="rounded-2xl bg-btn-primary px-3 py-3 text-center text-lg font-semibold text-white disabled:opacity-70"
           >
             {isRevealed ? "카드해석" : "카드열기"}
           </button>
@@ -466,7 +466,7 @@ export function CardSwipeDeck({
               setIsShuffling(false);
             }}
             disabled={isShuffling}
-            className="rounded-2xl border border-primary bg-[rgba(12,10,36,0.92)] px-3 py-3 text-center text-[16px] text-[#d8ccff] disabled:opacity-70"
+            className="rounded-2xl border border-primary bg-surface px-3 py-3 text-center text-text-muted disabled:opacity-70"
           >
             {isShuffling ? "카드 섞는 중..." : "카드섞기"}
           </button>

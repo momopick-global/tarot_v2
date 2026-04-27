@@ -18,7 +18,7 @@ export function DismissibleGuide({
         type="button"
         onClick={() => setOpened(false)}
         aria-label="안내 닫기"
-        className="absolute right-3 top-2 text-[20px] leading-none text-white/90 hover:text-white"
+        className="absolute right-3 top-2 text-lg leading-none text-white/90 hover:text-white"
       >
         ×
       </button>

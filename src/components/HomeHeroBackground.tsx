@@ -105,7 +105,7 @@ export function HomeHeroBackground() {
         <div className="pointer-events-none absolute inset-0 z-[15]" aria-hidden>
           <div className="absolute left-1/2 top-[26%] w-[100px] -translate-x-1/2">
             <div className="relative h-1 w-full overflow-hidden rounded-full bg-white/15">
-              <div className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-[#7B3BC7] home-hero-loading-bar" />
+              <div className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-btn-primary home-hero-loading-bar" />
             </div>
           </div>
         </div>

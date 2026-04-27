@@ -13,7 +13,7 @@ function LegacyPathRedirectInner({ hrefBase }: { hrefBase: string }) {
   }, [hrefBase, router, sp]);
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-5 py-16 text-center text-[15px] text-[#d8ccff]">
+    <main className="flex flex-1 flex-col items-center justify-center px-5 py-16 text-center text-sm text-text-muted">
       <p>새 주소로 이동 중…</p>
     </main>
   );
@@ -24,7 +24,7 @@ export function LegacyPathRedirect({ hrefBase }: { hrefBase: string }) {
   return (
     <Suspense
       fallback={
-        <main className="flex flex-1 flex-col items-center justify-center px-5 py-16 text-center text-[15px] text-[#d8ccff]">
+        <main className="flex flex-1 flex-col items-center justify-center px-5 py-16 text-center text-sm text-text-muted">
           <p>이동 중…</p>
         </main>
       }

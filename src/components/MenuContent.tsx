@@ -13,12 +13,12 @@ export function MenuContent({
   const blogHref = withAssetBase("/blog/");
 
   const navLinkClass =
-    "flex items-center gap-3 text-[18px] font-semibold text-neutral-90 transition-colors hover:text-primary";
+    "flex items-center gap-3 text-md font-semibold text-neutral-90 transition-colors hover:text-primary";
 
   return (
     <>
       <div className="mt-2 flex items-center">
-        <div className="text-[22px] font-semibold">YourTarot</div>
+        <div className="text-xl font-semibold">YourTarot</div>
       </div>
 
       <div className="mt-[30px] space-y-7">
@@ -74,7 +74,7 @@ export function MenuContent({
           </Link>
         </div>
 
-        <div className="mt-6 pt-2 text-[16px] text-neutral-60">
+        <div className="mt-6 pt-2 text-neutral-60">
           <Link href="/terms" onClick={onLinkClick} className="transition-colors hover:text-primary hover:underline">
             이용약관
           </Link>
@@ -89,7 +89,7 @@ export function MenuContent({
         </div>
       </div>
 
-      <div className="mt-16 text-[16px]">
+      <div className="mt-16">
         <div className="text-neutral-60">😄</div>
         <Link
           href={mypageHref}

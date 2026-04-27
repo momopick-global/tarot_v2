@@ -38,10 +38,10 @@ export function ScrollProgressBar() {
   return (
     <div
       className="fixed left-1/2 z-[45] h-[2px] w-full max-w-[390px] -translate-x-1/2 transition-[top] duration-300"
-      style={{ top: headerVisible ? "42px" : "0px" }}
+      style={{ top: headerVisible ? "52px" : "0px" }}
     >
       <div
-        className="h-full bg-[#7B3BC7] transition-[width] duration-100"
+        className="h-full bg-btn-primary transition-[width] duration-100"
         style={{ width: `${progress}%` }}
       />
     </div>

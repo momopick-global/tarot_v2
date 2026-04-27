@@ -114,7 +114,7 @@ export default function MyPage() {
   if (supabaseConfigured && !authLoading && !user) {
     return (
       <main className="flex-1">
-        <section className="mx-auto w-full max-w-[390px] px-5 pt-14 text-center text-[16px] text-[#d8ccff]">
+        <section className="mx-auto w-full max-w-[390px] px-5 pt-14 text-center text-text-muted">
           로그인 페이지로 이동 중…
         </section>
       </main>
@@ -155,7 +155,7 @@ export default function MyPage() {
   const renderLocalList = () => (
     <>
       {savedLocal.length === 0 ? (
-        <p className="text-[13px] text-[#d8ccff]">아직 저장된 결과가 없습니다.</p>
+        <p className="text-text-muted">아직 저장된 결과가 없습니다.</p>
       ) : (
         <div className="space-y-2">
           {savedLocal.map((item) => {
@@ -164,7 +164,7 @@ export default function MyPage() {
             return (
               <div
                 key={item.id}
-                className="flex items-center gap-3 rounded-lg border border-white/10 bg-[rgba(255,255,255,0.03)] p-2"
+                className="flex items-center gap-3 rounded-lg border border-ds-border bg-surface-light p-2"
               >
                 <div className="relative h-[64px] w-[43px] overflow-hidden rounded-md border border-white/20">
                   <Image
@@ -177,19 +177,19 @@ export default function MyPage() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <Link href={href} className="block">
-                    <div className="truncate text-[13px] font-semibold text-white">
+                    <div className="truncate font-semibold text-white">
                       {item.titleEn || `Card #${item.card}`}
                     </div>
-                    <div className="truncate text-[12px] text-[#d8ccff]">
+                    <div className="truncate text-text-muted">
                       {master.name} · {item.titleKo || `${item.card}번 카드`}
                     </div>
                   </Link>
-                  <div className="pt-1 text-[11px] text-[#aa9dce]">{formatSavedAt(item.createdAt)}</div>
+                  <div className="pt-1 text-text-dim">{formatSavedAt(item.createdAt)}</div>
                 </div>
                 <button
                   type="button"
                   onClick={() => onDeleteOneLocal(item.id)}
-                  className="shrink-0 rounded-md border border-white/20 px-2 py-1 text-[11px] text-[#e8deff]"
+                  className="shrink-0 rounded-md border border-white/20 px-2 py-1 text-text-lavender"
                 >
                   삭제
                 </button>
@@ -203,15 +203,15 @@ export default function MyPage() {
 
   const renderCloudList = () => {
     if (authLoading || (user && cloudLoading)) {
-      return <p className="text-[13px] text-[#d8ccff]">불러오는 중…</p>;
+      return <p className="text-text-muted">불러오는 중…</p>;
     }
     if (!user) {
       return (
-        <div className="space-y-3 text-[13px] leading-relaxed text-[#d8ccff]">
+        <div className="space-y-3 leading-relaxed text-text-muted">
           <p>로그인하면 타로 결과가 클라우드에 저장되고, 여기에서 모아볼 수 있어요.</p>
           <Link
             href="/login"
-            className="inline-block rounded-lg bg-[#7B3BC7] px-4 py-2 text-center text-[16px] font-semibold text-white"
+            className="inline-block rounded-lg bg-btn-primary px-4 py-2 text-center font-semibold text-white"
           >
             로그인하기
           </Link>
@@ -219,10 +219,10 @@ export default function MyPage() {
       );
     }
     if (cloudError) {
-      return <p className="text-[13px] text-[#e8a598]">{cloudError}</p>;
+      return <p className="text-error">{cloudError}</p>;
     }
     if (cloudRows.length === 0) {
-      return <p className="text-[13px] text-[#d8ccff]">아직 저장된 타로 기록이 없습니다.</p>;
+      return <p className="text-text-muted">아직 저장된 타로 기록이 없습니다.</p>;
     }
     return (
       <div className="space-y-3">
@@ -238,7 +238,7 @@ export default function MyPage() {
           return (
             <div
               key={String(row.id)}
-              className="rounded-lg border border-white/10 bg-[rgba(255,255,255,0.03)] p-3"
+              className="rounded-lg border border-ds-border bg-surface-light p-3"
             >
               <div className="flex items-start gap-3">
                 <div className="relative h-[72px] w-[48px] shrink-0 overflow-hidden rounded-md border border-white/20">
@@ -246,18 +246,18 @@ export default function MyPage() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <Link href={href} className="block">
-                    <div className="text-[13px] font-semibold text-white">{row.card_name}</div>
-                    <div className="text-[12px] text-[#d8ccff]">{row.master_name}</div>
+                    <div className="font-semibold text-white">{row.card_name}</div>
+                    <div className="text-text-muted">{row.master_name}</div>
                   </Link>
-                  <div className="pt-1 text-[11px] text-[#aa9dce]">{formatSavedAt(row.created_at)}</div>
+                  <div className="pt-1 text-text-dim">{formatSavedAt(row.created_at)}</div>
                   {preview ? (
-                    <p className="mt-2 line-clamp-2 text-[11px] leading-snug text-[#c4b8e8]">{preview}</p>
+                    <p className="mt-2 line-clamp-2 leading-snug text-text-dim">{preview}</p>
                   ) : null}
                 </div>
                 <button
                   type="button"
                   onClick={() => void onDeleteOneCloud(row.id)}
-                  className="shrink-0 rounded-md border border-white/20 px-2 py-1 text-[11px] text-[#e8deff]"
+                  className="shrink-0 rounded-md border border-white/20 px-2 py-1 text-text-lavender"
                 >
                   삭제
                 </button>
@@ -286,7 +286,7 @@ export default function MyPage() {
               className="h-full w-full object-cover object-top"
               style={{ objectPosition: "center 15%", transform: "scale(1.3)" }}
             />
-            <div className="absolute inset-x-0 bottom-0 bg-black/50 py-0.5 text-[10px] text-white">변경</div>
+            <div className="absolute inset-x-0 bottom-0 bg-black/50 py-0.5 text-white">변경</div>
           </button>
           {showProfilePicker ? (
             <div className="flex gap-3">
@@ -312,20 +312,20 @@ export default function MyPage() {
                     height={60}
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-black/60 py-0.5 text-[9px] text-white">{m.name}</div>
+                  <div className="absolute inset-x-0 bottom-0 bg-black/60 py-0.5 text-white">{m.name}</div>
                 </button>
               ))}
             </div>
           ) : null}
           <div className="text-center">
-            <div className="text-[20px] font-semibold text-white">YourTarot</div>
-            <div className="mt-1 text-[13px] text-[#d7ccff]">{user?.email ?? "게스트"}</div>
+            <div className="text-lg font-semibold text-white">YourTarot</div>
+            <div className="mt-1 text-text-muted">{user?.email ?? "게스트"}</div>
           </div>
         </div>
 
-        <div className="mt-6 rounded-xl border border-primary/40 bg-[rgba(10,8,28,0.82)] p-4">
+        <div className="mt-6 rounded-xl border border-ds-border-purple bg-surface p-4">
           <div className="mb-3 flex items-center justify-between gap-3">
-            <div className="text-[16px] font-semibold text-white">
+            <div className="font-semibold text-white">
               {supabaseConfigured ? "저장된 타로 기록" : "저장된 결과"}
             </div>
             {supabaseConfigured ? (
@@ -333,7 +333,7 @@ export default function MyPage() {
                 type="button"
                 onClick={() => void onDeleteAllCloud()}
                 disabled={!user || cloudRows.length === 0 || cloudLoading}
-                className="rounded-md border border-white/20 px-2 py-1 text-[11px] text-[#d8ccff] disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/20 px-2 py-1 text-text-muted disabled:cursor-not-allowed disabled:opacity-50"
               >
                 전체 삭제
               </button>
@@ -342,7 +342,7 @@ export default function MyPage() {
                 type="button"
                 onClick={onDeleteAllLocal}
                 disabled={savedLocal.length === 0}
-                className="rounded-md border border-white/20 px-2 py-1 text-[11px] text-[#d8ccff] disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-md border border-white/20 px-2 py-1 text-text-muted disabled:cursor-not-allowed disabled:opacity-50"
               >
                 전체 삭제
               </button>
@@ -355,7 +355,7 @@ export default function MyPage() {
           <button
             type="button"
             onClick={onLogout}
-            className="block w-full rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10"
+            className="block w-full rounded-xl bg-btn-primary px-5 py-4 text-center text-lg font-semibold text-neutral-10"
           >
             로그아웃
           </button>

@@ -25,7 +25,7 @@ export function HeroHeadline() {
   }, []);
 
   return (
-    <h1 className="text-center text-[24px] font-semibold leading-[34px] text-neutral-10">
+    <h1 className="text-center text-2xl font-semibold leading-[34px] text-neutral-10">
       {headline[0]}
       <br />
       {headline[1]}

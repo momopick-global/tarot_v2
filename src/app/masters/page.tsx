@@ -35,8 +35,8 @@ export default function MastersPage() {
                 <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                   <Image src={m.image} alt={m.name} width={200} height={200} className="h-auto w-full rounded-xl" />
                 </div>
-                <div className="mt-2 text-[16px] font-semibold">{m.name}</div>
-                <div className="text-[12px] text-[#cfc4ff]">({m.type})</div>
+                <div className="mt-2 font-semibold">{m.name}</div>
+                <div className="text-text-muted">({m.type})</div>
               </Link>
             ))}
           </div>

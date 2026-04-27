@@ -10,7 +10,7 @@
   // 프로그레스 바 생성
   var progressBar = document.createElement("div");
   progressBar.className = "blog-progress-bar";
-  progressBar.style.top = "42px";
+  progressBar.style.top = "52px";
   var progressInner = document.createElement("div");
   progressInner.className = "blog-progress-bar-inner";
   progressBar.appendChild(progressInner);
@@ -83,7 +83,7 @@
 
     if (headerVisible) {
       header.classList.remove("is-hidden");
-      progressBar.style.top = "42px";
+      progressBar.style.top = "52px";
     } else {
       header.classList.add("is-hidden");
       progressBar.style.top = "0px";

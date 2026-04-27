@@ -51,13 +51,13 @@ function Page06AnalyzingInner() {
         sceneClassName="!min-h-[calc(100dvh-42px)]"
       >
         <div className="flex min-h-[max(460px,calc(100dvh-58px))] flex-col items-center justify-center pb-8">
-          <div className="mt-7 w-full max-w-[350px] rounded-xl bg-[rgba(9,7,28,0.94)] p-4 text-white shadow-2xl">
+          <div className="mt-7 w-full max-w-[350px] rounded-xl bg-surface p-4 text-white shadow-2xl">
             <div className="mb-3 flex justify-center">
               <div className="relative h-[124px] w-[124px] overflow-hidden rounded-full">
                 <Image src={POPUP_IMAGE_PATH} alt="가이드 마스터 이미지" fill className="object-cover" />
               </div>
             </div>
-            <div className="text-center text-[16px] leading-[1.6] text-white">
+            <div className="text-center leading-[1.6] text-white">
               카드 마스터가 카드의 의미를 해석하고 있습니다.
             </div>
             <div className="mt-4 h-[14px] w-full rounded-full bg-[#3b2a66]">
@@ -68,7 +68,7 @@ function Page06AnalyzingInner() {
             </div>
             <Link
               href={resultHref}
-              className="mt-4 block rounded-lg bg-[#7B3BC7] px-4 py-2.5 text-center text-[16px] font-semibold text-white"
+              className="mt-4 block rounded-lg bg-btn-primary px-4 py-2.5 text-center font-semibold text-white"
             >
               결과화면보기
             </Link>

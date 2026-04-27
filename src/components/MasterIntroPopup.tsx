@@ -34,13 +34,13 @@ export function MasterIntroPopup({
     <div className="fixed inset-0 z-40 flex items-center justify-center px-5" role="dialog" aria-modal="true">
       {/* 배경 탭으로 닫히지 않음 — 카드받기 / 마스터 선택으로만 진행 */}
       <div className="absolute inset-0 bg-[rgba(2,1,10,0.55)] backdrop-blur-[3px]" aria-hidden />
-      <div className="relative z-10 w-full max-w-[350px] rounded-xl border border-primary bg-[rgba(9,7,28,0.94)] p-4 text-white shadow-2xl">
+      <div className="relative z-10 w-full max-w-[350px] rounded-xl border border-primary bg-surface p-4 text-white shadow-2xl">
         <div className="mb-3 flex justify-center">
           <div className="relative h-[124px] w-[124px] overflow-hidden rounded-full">
             <Image src={POPUP_IMAGE_PATH} alt="가이드 마스터 이미지" fill className="object-cover" />
           </div>
         </div>
-        <div className="min-w-0 text-[18px] leading-[1.7] text-white">
+        <div className="min-w-0 text-md leading-[1.7] text-white">
           별들은 이미 답을 알고 있습니다.
           <br />
           이제 당신의 카드를 확인해 봅시다.
@@ -57,13 +57,13 @@ export function MasterIntroPopup({
                 }
                 window.location.href = tarotRevealWith(master.id, 40);
               }}
-              className="rounded-lg bg-[#7B3BC7] px-3 py-3 text-center text-[20px] font-semibold"
+              className="rounded-lg bg-btn-primary px-3 py-3 text-center text-lg font-semibold"
             >
               카드받기
             </button>
             <Link
               href={ROUTES.tarotStart}
-              className="rounded-lg border border-primary px-3 py-3 text-center text-[20px] text-[#d6cbff]"
+              className="rounded-lg border border-primary px-3 py-3 text-center text-lg text-text-muted"
             >
               마스터 선택
             </Link>

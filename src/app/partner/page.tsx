@@ -74,11 +74,11 @@ export default function PartnerPage() {
           className="mt-8 p-0"
           onSubmit={handleSubmit}
         >
-          <div className="flex items-center gap-2 text-[16px] font-semibold">
+          <div className="flex items-center gap-2 font-semibold">
             <span aria-hidden>👤</span> 외화하시는 본의 정보를 알려주세요
           </div>
 
-          <div className="mt-4 space-y-4 text-[16px]">
+          <div className="mt-4 space-y-4">
             <div className="space-y-1">
               <div className="text-neutral-30">회사명 / 브랜드명</div>
               <div className="min-h-[44px] border-b border-neutral-30 px-0.5 py-2.5 leading-[1.35] text-neutral-10 focus-within:border-[#8B5CF6]">
@@ -133,7 +133,7 @@ export default function PartnerPage() {
           </div>
 
           <div className="mt-8">
-            <div className="text-[16px] font-semibold">📌 제휴 유형</div>
+            <div className="font-semibold">📌 제휴 유형</div>
             <div className="mt-4 grid grid-cols-2 gap-3">
               {(["콘텐츠 제휴", "브랜드 협업", "광고 제휴", "기타"] as const).map((label) => {
                 const isSelected = type === label;
@@ -143,8 +143,8 @@ export default function PartnerPage() {
                   type="button"
                   onClick={() => setType(label)}
                   className={[
-                    "h-12 rounded-xl border text-[16px] transition",
-                    isSelected ? "border-white bg-white text-[#151622]" : "border-neutral-30 bg-transparent text-neutral-10",
+                    "h-12 rounded-xl border transition",
+                    isSelected ? "border-white bg-white text-neutral-90" : "border-neutral-30 bg-transparent text-neutral-10",
                   ].join(" ")}
                 >
                   {label}
@@ -154,7 +154,7 @@ export default function PartnerPage() {
             </div>
 
             {status === "error" && (
-              <div className="mt-3 text-[12px] text-red-300">
+              <div className="mt-3 text-red-300">
                 {errorMessage ?? "문의 전송에 실패했어요. 잠시 후 다시 시도해 주세요."}
               </div>
             )}
@@ -162,12 +162,12 @@ export default function PartnerPage() {
             <button
               type="submit"
               disabled={!canSubmit}
-              className="mt-5 w-full rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[20px] font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-5 w-full rounded-xl bg-btn-primary px-5 py-4 text-center text-lg font-semibold text-neutral-10 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "submitting" ? "보내는 중..." : "문의 보내기"}
             </button>
 
-            <div className="mt-4 text-[12px] text-neutral-10">
+            <div className="mt-4 text-neutral-10">
               제휴 문의는 1주 내로 답변 드립니다.
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function PartnerPage() {
           aria-labelledby="partner-success-title"
         >
           <div className="absolute inset-0 bg-[rgba(2,1,10,0.55)] backdrop-blur-[3px]" aria-hidden />
-          <div className="relative z-10 w-full max-w-[350px] rounded-xl border border-primary bg-[rgba(9,7,28,0.94)] p-4 text-white shadow-2xl">
+          <div className="relative z-10 w-full max-w-[350px] rounded-xl border border-primary bg-surface p-4 text-white shadow-2xl">
             <div className="mb-1 flex justify-end">
               <button
                 type="button"
@@ -191,7 +191,7 @@ export default function PartnerPage() {
                   setStatus("idle");
                 }}
                 aria-label="안내 닫기"
-                className="text-[22px] leading-none text-white/90 hover:text-white"
+                className="text-xl leading-none text-white/90 hover:text-white"
               >
                 ×
               </button>
@@ -206,7 +206,7 @@ export default function PartnerPage() {
                 />
               </div>
             </div>
-            <p id="partner-success-title" className="min-w-0 text-[16px] leading-[1.6] text-white">
+            <p id="partner-success-title" className="min-w-0 leading-[1.6] text-white">
               제휴 문의가 전달되었습니다.
               <br />
               확인 후 빠르게 연락드리겠습니다.
@@ -217,7 +217,7 @@ export default function PartnerPage() {
                 setShowSuccessPopup(false);
                 setStatus("idle");
               }}
-              className="mt-4 w-full rounded-lg bg-[#7B3BC7] px-3 py-2.5 text-center text-[16px] font-semibold"
+              className="mt-4 w-full rounded-lg bg-btn-primary px-3 py-2.5 text-center font-semibold"
             >
               확인
             </button>

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 function IconHome({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "#7B3BC7" : "#999"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "var(--ds-btn-primary)" : "var(--ds-text-placeholder)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
       <polyline points="9 22 9 12 15 12 15 22" />
     </svg>
@@ -14,7 +14,7 @@ function IconHome({ active }: { active: boolean }) {
 
 function IconTarot({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "#7B3BC7" : "#999"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "var(--ds-btn-primary)" : "var(--ds-text-placeholder)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="4" y="2" width="16" height="20" rx="2" />
       <circle cx="12" cy="12" r="4" />
       <line x1="12" y1="2" x2="12" y2="6" />
@@ -25,7 +25,7 @@ function IconTarot({ active }: { active: boolean }) {
 
 function IconBlog({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "#7B3BC7" : "#999"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "var(--ds-btn-primary)" : "var(--ds-text-placeholder)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
     </svg>
@@ -34,7 +34,7 @@ function IconBlog({ active }: { active: boolean }) {
 
 function IconFaq({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "#7B3BC7" : "#999"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? "var(--ds-btn-primary)" : "var(--ds-text-placeholder)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
       <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -66,8 +66,8 @@ export function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center gap-[2px] px-3 py-1 text-[10px] transition-colors ${
-                active ? "text-[#7B3BC7] font-semibold" : "text-[#999] hover:text-[#7B3BC7]"
+              className={`flex flex-col items-center gap-[2px] px-3 py-1 text-sm transition-colors ${
+                active ? "text-primary font-semibold" : "text-text-placeholder hover:text-primary"
               }`}
             >
               <item.Icon active={active} />

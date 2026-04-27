@@ -18,40 +18,40 @@ export function Footer() {
 
         <nav
           aria-label="푸터 링크"
-          className="flex flex-wrap items-center justify-center gap-2 text-center text-[13px] text-neutral-60"
+          className="flex flex-wrap items-center justify-center gap-2 text-center text-sm text-neutral-60"
         >
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/masters">
+          <Link className="text-white hover:text-neutral-10" href="/masters">
             타로 마스터 소개
           </Link>
-          <span className="text-[#666666]">|</span>
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/about">
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/about">
             서비스 소개
           </Link>
-          <span className="text-[#666666]">|</span>
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/faq/">
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/faq/">
             FAQ
           </Link>
-          <span className="text-[#666666]">|</span>
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/terms">
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/terms">
             이용약관
           </Link>
-          <span className="text-[#666666]">|</span>
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/personal">
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/personal">
             개인정보처리방침
           </Link>
-          <span className="text-[#666666]">|</span>
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/disclaimer">
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/disclaimer">
             면책조항
           </Link>
-          <span className="text-[#666666]">|</span>
-          <Link className="text-[16px] text-white hover:text-neutral-10" href="/partner">
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/partner">
             제휴문의
           </Link>
         </nav>
 
         <div className="w-[86%] border-t border-[#666666] pt-4" />
 
-        <div className="w-[86%] text-left text-[11px] leading-[18px] text-neutral-60">
+        <div className="w-[86%] text-left text-sm leading-[18px] text-neutral-60">
           <div>ASOG Co., Ltd. | CEO: jungyoungcheol</div>
           <div>Address: Hancheon-Ro, Gangbuk-Gu, Seoul, Republic Of Korea</div>
           <div>Business Registration Number: 370-54-00601</div>

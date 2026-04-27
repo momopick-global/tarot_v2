@@ -60,12 +60,12 @@ function HeaderInner({
     <header className={`fixed top-0 left-0 w-full bg-bg-outer z-40 transition-transform duration-300 ${
       autoHide && !headerVisible ? "-translate-y-full" : "translate-y-0"
     }`}>
-      <div className="mx-auto flex h-[42px] w-full max-w-[390px] items-center justify-between bg-bg-content px-0">
+      <div className="mx-auto flex h-[52px] w-full max-w-[390px] items-center justify-between bg-bg-content px-0">
         <button
           type="button"
           onClick={onMenuClick}
           aria-label="메뉴 열기"
-          className="flex h-[42px] w-[42px] items-center justify-center"
+          className="flex h-[52px] w-[42px] items-center justify-center"
         >
           <Image src={ICON_MENU} alt="" width={42} height={42} />
         </button>
@@ -77,7 +77,7 @@ function HeaderInner({
         {isLoggedIn ? (
           <Link
             href="/mypage"
-            className="relative flex h-[42px] w-[42px] items-center justify-center"
+            className="relative flex h-[52px] w-[42px] items-center justify-center"
             aria-label="마이페이지로 이동"
           >
             <Image src={ICON_GUEST} alt="" width={42} height={42} />
@@ -86,7 +86,7 @@ function HeaderInner({
         ) : (
           <Link
             href={loginHref}
-            className="flex h-[42px] w-[42px] items-center justify-center"
+            className="flex h-[52px] w-[42px] items-center justify-center"
             aria-label="로그인 페이지로 이동"
           >
             <Image src={ICON_GUEST} alt="" width={42} height={42} />
