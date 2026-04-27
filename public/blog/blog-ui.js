@@ -26,6 +26,35 @@
   });
   document.body.appendChild(scrollBtn);
 
+  // 하단 고정 메뉴
+  var bottomNav = document.createElement("nav");
+  bottomNav.className = "blog-bottom-nav";
+  var navItems = [
+    { href: "/", label: "홈", path: "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10" },
+    { href: "/tarot/draw/?master=sera", label: "운세보기", path: "M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z M12 2v4 M12 18v4" },
+    { href: "/blog/", label: "블로그", path: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" },
+    { href: "/faq/", label: "FAQ", path: "M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3 M12 17h.01" },
+  ];
+  var currentPath = window.location.pathname;
+  var navInner = document.createElement("div");
+  navInner.className = "blog-bottom-nav-inner";
+  navItems.forEach(function (item) {
+    var a = document.createElement("a");
+    a.href = item.href;
+    var isActive = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href.split("?")[0]);
+    a.className = "blog-bottom-nav-item" + (isActive ? " is-active" : "");
+    var color = isActive ? "#7B3BC7" : "#999";
+    a.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="' + color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="' + item.path + '"/></svg><span>' + item.label + "</span>";
+    navInner.appendChild(a);
+  });
+  bottomNav.appendChild(navInner);
+  document.body.appendChild(bottomNav);
+
+  // 하단 여백
+  var navSpacer = document.createElement("div");
+  navSpacer.style.height = "68px";
+  document.body.appendChild(navSpacer);
+
   // 스크롤 이벤트
   var lastY = 0;
   var headerVisible = true;

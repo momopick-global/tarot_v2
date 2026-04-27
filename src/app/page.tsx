@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroHeadline } from "@/components/HeroHeadline";
 import { HomeHeroBackground } from "@/components/HomeHeroBackground";
 import { HomeParticipantCount } from "@/components/HomeParticipantCount";
 import { HomeShareSection } from "@/components/HomeShareSection";
@@ -54,11 +55,7 @@ export default function Home() {
         <HomeHeroBackground />
         <div className="absolute inset-0 z-[5] bg-[linear-gradient(180deg,rgba(8,6,25,0.12)_0%,rgba(8,6,25,0.24)_45%,rgba(8,6,25,0.72)_100%)]" />
         <div className="absolute inset-x-0 bottom-8 z-20 px-5">
-          <h1 className="text-center text-[24px] font-semibold leading-[34px] text-neutral-10">
-            오늘 당신의 마음은
-            <br />
-            어떤 별을 품고 있나요?
-          </h1>
+          <HeroHeadline />
 
           <p className="mt-3 text-center text-[16px] leading-[24px] text-[#d6d2ea]">
             카드가 전하는 오늘의 감정 흐름과 행동 힌트를 1분 안에 확인해 보세요.
