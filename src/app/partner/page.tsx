@@ -60,7 +60,7 @@ export default function PartnerPage() {
     <main className="flex-1">
       <section className="mx-auto w-full max-w-[390px] px-5 pt-8 pb-4">
         <h1 className="page-title">
-          📩 제휴 문의(Partnership)
+          제휴 문의(Partnership)
         </h1>
 
         <p className="page-lead">

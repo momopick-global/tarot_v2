@@ -50,7 +50,7 @@ export default function RecommendedPage() {
     <main className="flex-1">
       <section className="mx-auto w-full max-w-[390px] px-5 pt-8">
         <h1 className="page-title">
-          💡 작은 아이디어라도 큰 힘이 됩니다
+          작은 아이디어라도 큰 힘이 됩니다
         </h1>
 
         <p className="page-lead">

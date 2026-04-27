@@ -15,31 +15,20 @@
 
 .intro {
   margin-bottom: 1.75rem;
-  padding: 1.25rem 1.25rem 1.35rem;
-  border-radius: 1rem;
-  background: linear-gradient(
-    145deg,
-    rgba(100, 34, 171, 0.18) 0%,
-    rgba(14, 10, 36, 0.92) 45%,
-    rgba(9, 7, 28, 0.95) 100%
-  );
-  border: 1px solid rgba(142, 99, 255, 0.35);
-  box-shadow: 0 12px 40px rgba(2, 1, 10, 0.35);
 }
 
 .introTitle {
-  margin: 0 0 0.75rem;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #fff;
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  color: #f7f7f7;
 }
 
 .introText {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 0.95rem;
   line-height: 1.75;
-  color: rgba(230, 222, 255, 0.9);
+  color: #b8b3c9;
 }
 
 .introText + .introText {

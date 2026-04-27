@@ -163,7 +163,7 @@ select:focus-visible {
 /* 페이지 공통 타이포그래피 (블로그 기준) */
 @layer base {
   .page-title {
-    font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     font-weight: 600;
     color: #f7f7f7;
     margin: 0 0 0.5rem;
