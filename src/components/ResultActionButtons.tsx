@@ -256,7 +256,7 @@ export function ResultActionButtons({
           href={tarotDrawWithMaster(masterId)}
           className="rounded-xl bg-[#7B3BC7] px-4 py-3 text-center text-[15px] font-semibold text-white"
         >
-          같은 마스터로 카드 다시 뽑기
+          카드 다시 뽑기
         </Link>
         {hasSupabase ? (
           cloudSaveButton()

@@ -46,8 +46,6 @@ export const metadata: Metadata = {
   },
 };
 
-const homeOutlineNavLinkClass =
-  "block w-full rounded-xl border-2 border-[#7B3BC7] bg-transparent px-5 py-4 text-center text-[18px] font-semibold leading-snug text-[#c9b8ff] transition-colors hover:border-[#8d4ddb] hover:text-[#ddd6fe]";
 
 export default function Home() {
   return (
@@ -70,50 +68,80 @@ export default function Home() {
         </div>
       </section>
       <section className="mx-auto w-full max-w-[390px] bg-[#17182E] px-5 pb-8 pt-8">
-        {/* 타로 마스터 9인 썸네일 */}
         <div className="mb-6 grid grid-cols-2 gap-4">
-          {FLOW_MASTERS.slice(0, 2).map((m) => (
-            <Link
-              key={m.id}
-              href={`/tarot/draw?master=${m.id}`}
-              className="flex flex-col items-center"
-            >
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-                <Image
-                  src={m.image}
-                  alt={m.name}
-                  width={200}
-                  height={200}
-                  className="h-auto w-full rounded-xl"
-                />
-              </div>
-              <span className="mt-2 text-center text-[14px] text-white">
-                {m.name}
-                <br />
-                <span className="text-[#cfc4ff]">({m.type})</span>
-              </span>
-            </Link>
-          ))}
+          <Link
+            href="/tarot/draw?master=sera"
+            className="flex flex-col items-center rounded-xl border border-[#ff6b9d]/30 bg-[rgba(255,107,157,0.06)] p-3 transition-colors hover:bg-[rgba(255,107,157,0.12)]"
+          >
+            <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+              <Image
+                src={FLOW_MASTERS[0].image}
+                alt="세라"
+                width={200}
+                height={200}
+                className="h-auto w-full rounded-xl"
+              />
+            </div>
+            <span className="mt-2 text-center text-[15px] font-semibold text-white">연애 운세</span>
+            <span className="mt-1 text-center text-[12px] text-[#ff9dbe]">세라와 함께</span>
+          </Link>
+          <Link
+            href="/tarot/draw?master=kai"
+            className="flex flex-col items-center rounded-xl border border-[#7B3BC7]/30 bg-[rgba(123,59,199,0.06)] p-3 transition-colors hover:bg-[rgba(123,59,199,0.12)]"
+          >
+            <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+              <Image
+                src={FLOW_MASTERS[1].image}
+                alt="카이"
+                width={200}
+                height={200}
+                className="h-auto w-full rounded-xl"
+              />
+            </div>
+            <span className="mt-2 text-center text-[15px] font-semibold text-white">오늘의 운세</span>
+            <span className="mt-1 text-center text-[12px] text-[#c9b8ff]">카이와 함께</span>
+          </Link>
         </div>
-        <nav aria-label="주요 페이지로 이동">
-          <ul className="mt-4 flex flex-col gap-3">
-            <li>
-              <Link href="/masters" className={homeOutlineNavLinkClass}>
-                타로 마스터 프로필 보기
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className={homeOutlineNavLinkClass}>
-                유어타로 서비스 소개 읽기
-              </Link>
-            </li>
-            <li>
-              <Link href="/recommended" className={homeOutlineNavLinkClass}>
-                개선 아이디어·의견 보내기
-              </Link>
-            </li>
-          </ul>
+        <nav aria-label="주요 페이지로 이동" className="mt-6">
+          <Link href="/masters" className="flex items-center gap-3 rounded-xl bg-[rgba(123,59,199,0.15)] px-4 py-4 transition-colors hover:bg-[rgba(123,59,199,0.25)]">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#7B3BC7] text-[18px]">👤</span>
+            <div>
+              <div className="text-[15px] font-semibold text-white">타로 마스터 프로필 보기</div>
+              <div className="text-[12px] text-[#c9b8ff]">세라와 카이의 리딩 스타일을 비교해 보세요</div>
+            </div>
+          </Link>
+
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <Link href="/about" className="rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-4 text-center transition-colors hover:bg-[rgba(255,255,255,0.06)]">
+              <div className="text-[20px]">✨</div>
+              <div className="mt-1 text-[13px] font-semibold text-white">서비스 소개</div>
+            </Link>
+            <Link href="/recommended" className="rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-4 text-center transition-colors hover:bg-[rgba(255,255,255,0.06)]">
+              <div className="text-[20px]">💬</div>
+              <div className="mt-1 text-[13px] font-semibold text-white">의견 보내기</div>
+            </Link>
+          </div>
         </nav>
+      </section>
+      <section className="mx-auto w-full max-w-[390px] bg-[#17182E] px-5 pb-8">
+        <p className="text-center text-[14px] font-semibold text-[#c9b8ff]">인기 블로그 글</p>
+        <div className="mt-4 flex flex-col gap-3">
+          <Link href="/blog/attachment-anxiety-in-love/" className="block rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] p-4 transition-colors hover:bg-[rgba(255,255,255,0.06)]">
+            <div className="text-[15px] font-semibold text-white">불안형 애착이 연애에 미치는 영향</div>
+            <p className="mt-1 text-[13px] text-[#d7ccff]">확인 욕구와 거리감에 민감한 패턴을 이해하고 다루는 법</p>
+          </Link>
+          <Link href="/blog/love-failure-pattern/" className="block rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] p-4 transition-colors hover:bg-[rgba(255,255,255,0.06)]">
+            <div className="text-[15px] font-semibold text-white">연애가 항상 실패하는 이유</div>
+            <p className="mt-1 text-[13px] text-[#d7ccff]">연애 패턴이 반복되는 이유를 심리적으로 분석합니다</p>
+          </Link>
+          <Link href="/blog/tarot-daily-one-card-meaning/" className="block rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] p-4 transition-colors hover:bg-[rgba(255,255,255,0.06)]">
+            <div className="text-[15px] font-semibold text-white">오늘의 타로 한 장, 어떻게 읽으면 좋을까</div>
+            <p className="mt-1 text-[13px] text-[#d7ccff]">질문과 맥락으로 읽는 방법을 단계별로 설명합니다</p>
+          </Link>
+          <Link href="/blog/" className="mt-1 block text-center text-[13px] text-[#8E63FF] hover:text-[#BFA8FF]">
+            블로그 전체 보기 →
+          </Link>
+        </div>
       </section>
       <HomeShareSection />
     </main>

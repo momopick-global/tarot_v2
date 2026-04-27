@@ -154,12 +154,45 @@ function PageMasterProfile01Inner() {
           </div>
         ) : null}
 
-        {/* 상담 안내 */}
+        {/* 상담 안내 + 시작 버튼 */}
         {detail.counselNote ? (
           <div className="mt-4 rounded-xl border border-primary/40 bg-[rgba(7,6,22,0.8)] p-4 text-center">
             <p className="text-[13px] leading-[1.7] text-[#d7ccff] whitespace-pre-line">{detail.counselNote}</p>
           </div>
         ) : null}
+        <Link
+          href={tarotDrawWithMaster(current.id)}
+          className="mt-4 mb-8 block rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[18px] font-semibold text-white"
+        >
+          지금 시작하기
+        </Link>
+
+        <div className="mt-6 mb-6 rounded-xl border border-primary/40 bg-[rgba(8,7,22,0.72)] p-4 text-white">
+          <div className="text-[15px] font-semibold text-center">다른 마스터 소개 보기</div>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            {FLOW_MASTERS.filter((m) => m.id !== current.id).map((m) => (
+              <Link
+                key={m.id}
+                href={masterProfileWith(m.id)}
+                className="flex flex-col items-center gap-2 rounded-xl bg-[rgba(255,255,255,0.03)] p-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
+              >
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                  <Image
+                    src={m.image}
+                    alt={`${m.name} 소개 보기`}
+                    width={150}
+                    height={150}
+                    className="h-auto w-full rounded-xl"
+                  />
+                </div>
+                <div className="text-center">
+                  <div className="text-[14px] font-semibold">{m.name}</div>
+                  <div className="text-[12px] text-[#cfc4ff]">({m.type})</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
 
         {/* 기존 마스터용 폴백 (성향/세계관/추천) */}
         {detail.tendencyLines.length > 0 || detail.worldviewLines.length > 0 ? (
@@ -196,38 +229,6 @@ function PageMasterProfile01Inner() {
         ) : null}
       </FlowScene>
 
-      <div className="mx-auto w-full max-w-[390px] px-4 py-6">
-        <Link
-          href={tarotDrawWithMaster(current.id)}
-          className="block rounded-xl bg-[#7B3BC7] px-4 py-3 text-center text-sm font-semibold text-white"
-        >
-          지금 시작하기
-        </Link>
-
-        <div className="mt-4 rounded-xl border border-primary/40 bg-[rgba(8,7,22,0.72)] p-3 text-white">
-          <div className="text-[16px] font-semibold">✅ 다른 마스터 소개 보기</div>
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            {FLOW_MASTERS.map((m) => (
-              <Link
-                key={m.id}
-                href={masterProfileWith(m.id)}
-                className={`block overflow-hidden rounded-lg ring-offset-2 ring-offset-[rgba(8,7,22,0.72)] transition-opacity hover:opacity-95 ${
-                  m.id === current.id ? "ring-2 ring-[#c4a8ff]" : "ring-0"
-                }`}
-                aria-current={m.id === current.id ? "page" : undefined}
-              >
-                <Image
-                  src={m.image}
-                  alt={`${m.name} 소개 보기`}
-                  width={96}
-                  height={96}
-                  className="h-auto w-full rounded-lg"
-                />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
     </main>
   );
 }

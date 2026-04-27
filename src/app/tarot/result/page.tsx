@@ -88,7 +88,7 @@ function Page07ReadingResultTypeAInner() {
           <div className="absolute left-1/2 -top-[10px] z-10 -translate-x-1/2 px-3 text-center text-[24px] font-semibold text-white">
             {reading.titleKo}
           </div>
-          <div className="absolute left-1/2 top-[27px] z-10 -translate-x-1/2">
+          <div className="card-reveal-spin absolute left-1/2 top-[27px] z-10">
             <Image
               src={frontCardSrc}
               alt={`${reading.titleEn} 카드`}
@@ -112,60 +112,115 @@ function Page07ReadingResultTypeAInner() {
       <div className="relative z-10 -mt-[100px]">
         <section className="mx-auto w-full max-w-[350px] space-y-3 pb-2 pt-[110px]">
           <div className="space-y-[30px]">
-            <Section icon="✨" title="오늘의 운세 요약">
+            <Section icon="✨" title={current.id === "sera" ? "연애 운세 요약" : "오늘의 운세 요약"}>
               <p className="whitespace-pre-wrap">{formatBoldSegments(reading.summary)}</p>
             </Section>
 
-            <Section icon="⚖️" title="부문별 운세">
+            <Section icon="⚖️" title={current.id === "sera" ? "연애 부문별 해석" : "부문별 운세"}>
               <div className="grid grid-cols-2 gap-2">
-                <p className="flex gap-2">
-                  <span aria-hidden>💼</span>
-                  <span>
-                    <span className="font-semibold text-[#f0e8ff]">업무/학업</span>
-                    <br />
-                    {formatBoldSegments(reading.categories.work)}
-                  </span>
-                </p>
-                <p className="flex gap-2">
-                  <span aria-hidden>❤️</span>
-                  <span>
-                    <span className="font-semibold text-[#f0e8ff]">애정</span>
-                    <br />
-                    {formatBoldSegments(reading.categories.love)}
-                  </span>
-                </p>
-                <p className="flex gap-2">
-                  <span aria-hidden>💰</span>
-                  <span>
-                    <span className="font-semibold text-[#f0e8ff]">금전</span>
-                    <br />
-                    {formatBoldSegments(reading.categories.money)}
-                  </span>
-                </p>
-                <p className="flex gap-2">
-                  <span aria-hidden>👥</span>
-                  <span>
-                    <span className="font-semibold text-[#f0e8ff]">인간관계</span>
-                    <br />
-                    {formatBoldSegments(reading.categories.relationship || "—")}
-                  </span>
-                </p>
-                <p className="flex gap-2">
-                  <span aria-hidden>🏥</span>
-                  <span>
-                    <span className="font-semibold text-[#f0e8ff]">건강</span>
-                    <br />
-                    {formatBoldSegments(reading.categories.health || "—")}
-                  </span>
-                </p>
-                <p className="flex gap-2">
-                  <span aria-hidden>🍀</span>
-                  <span>
-                    <span className="font-semibold text-[#f0e8ff]">기회/행운</span>
-                    <br />
-                    {formatBoldSegments(reading.categories.luck || "—")}
-                  </span>
-                </p>
+                {current.id === "sera" ? (
+                  <>
+                    <p className="flex gap-2">
+                      <span aria-hidden>💕</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">현재 연애</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.currentLove || reading.categories.love || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>👫</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">상대방</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.partner || reading.categories.relationship || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>💬</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">소통</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.communication || reading.categories.work || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>💗</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">감정</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.emotion || reading.categories.money || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>🧘</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">자기 돌봄</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.selfCare || reading.categories.health || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>🌹</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">연애운</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.loveChance || reading.categories.luck || "—")}
+                      </span>
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="flex gap-2">
+                      <span aria-hidden>💼</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">업무/학업</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.work || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>❤️</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">애정</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.love || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>💰</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">금전</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.money || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>👥</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">인간관계</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.relationship || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>🏥</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">건강</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.health || "—")}
+                      </span>
+                    </p>
+                    <p className="flex gap-2">
+                      <span aria-hidden>🍀</span>
+                      <span>
+                        <span className="font-semibold text-[#f0e8ff]">기회/행운</span>
+                        <br />
+                        {formatBoldSegments(reading.categories.luck || "—")}
+                      </span>
+                    </p>
+                  </>
+                )}
               </div>
             </Section>
 
@@ -244,82 +299,59 @@ function Page07ReadingResultTypeAInner() {
             </button>
           </div>
 
-          <div className="mt-7 rounded-xl border border-primary/40 bg-[rgba(8,7,22,0.72)] p-3">
-            <div className="text-[16px] font-semibold">
-              ✅ 같은 카드, 다른 마스터 해석 보기 ({current.name} 선택 중)
-            </div>
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              {FLOW_MASTERS.map((m) => (
+          {/* 다른 마스터 해석 보기 */}
+          <div className="mt-7 rounded-xl border border-primary/40 bg-[rgba(8,7,22,0.72)] p-4">
+            <div className="text-[15px] font-semibold text-center text-white">다른 마스터 해석 보기</div>
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              {FLOW_MASTERS.filter((m) => m.id !== current.id).map((m) => (
                 <Link
                   key={m.id}
                   href={tarotResultWith(m.id, card)}
-                  className={`block overflow-hidden rounded-lg ring-offset-2 ring-offset-[rgba(8,7,22,0.72)] transition-opacity hover:opacity-95 ${
-                    m.id === current.id ? "ring-2 ring-[#c4a8ff]" : "ring-0"
-                  }`}
-                  aria-current={m.id === current.id ? "page" : undefined}
-                  aria-label={`${m.name} 마스터의 같은 카드 오늘의 운세 해석 보기`}
+                  className="flex flex-col items-center gap-2 rounded-xl bg-[rgba(255,255,255,0.03)] p-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
                 >
-                  <Image
-                    src={m.image}
-                    alt=""
-                    aria-hidden
-                    width={96}
-                    height={96}
-                    className="h-auto w-full rounded-lg"
-                  />
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                    <Image
+                      src={m.image}
+                      alt={`${m.name} 해석 보기`}
+                      width={150}
+                      height={150}
+                      className="h-auto w-full rounded-xl"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[14px] font-semibold text-white">{m.name}</div>
+                    <div className="text-[12px] text-[#cfc4ff]">({m.type})</div>
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
 
-          <nav
-            aria-label="다른 타로·페이지로 이동"
-            className="mt-6 rounded-xl border border-primary/35 bg-[rgba(8,7,22,0.55)] p-4"
-          >
-            <p className="text-[15px] font-semibold text-[#f0e8ff]">이어서 하기</p>
-            <ul className="mt-3 space-y-2.5 text-[14px] leading-snug text-[#d8ccff]">
-              <li>
-                <Link
-                  href={ROUTES.tarotStart}
-                  className="underline decoration-[#9b7dff]/50 underline-offset-4 hover:text-white"
-                >
-                  다른 마스터 고르고 오늘의 타로 다시 보기
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/masters"
-                  className="underline decoration-[#9b7dff]/50 underline-offset-4 hover:text-white"
-                >
-                  리딩 스타일별 마스터 프로필 둘러보기
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/result/today/demo"
-                  className="underline decoration-[#9b7dff]/50 underline-offset-4 hover:text-white"
-                >
-                  오늘의 결과 요약 데모 페이지 보기
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/recommended"
-                  className="underline decoration-[#9b7dff]/50 underline-offset-4 hover:text-white"
-                >
-                  리딩 경험 개선 의견 보내기
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          {/* 하단 네비게이션 */}
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <Link
+              href="/masters"
+              className="flex items-center gap-2 rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] px-3 py-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
+            >
+              <span className="text-[18px]">👤</span>
+              <span className="text-[13px] font-semibold text-white">마스터 프로필</span>
+            </Link>
+            <Link
+              href="/recommended"
+              className="flex items-center gap-2 rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] px-3 py-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
+            >
+              <span className="text-[18px]">💬</span>
+              <span className="text-[13px] font-semibold text-white">의견 보내기</span>
+            </Link>
+          </div>
         </section>
 
-        <div className="mx-auto w-full max-w-[350px] pb-6 pt-6">
+        <div className="mx-auto w-full max-w-[350px] pb-8 pt-4">
           <Link
             href="/"
-            className="mx-auto block w-[350px] max-w-full rounded-xl bg-[#7B3BC7] px-4 py-3 text-center text-[15px] font-semibold text-white"
+            className="block rounded-xl bg-[#7B3BC7] px-5 py-4 text-center text-[16px] font-semibold text-white"
           >
-            유어타로 홈 — 오늘의 운세 다시 시작하기
+            홈으로 돌아가기
           </Link>
         </div>
       </div>

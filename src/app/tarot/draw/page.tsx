@@ -56,9 +56,9 @@ function Page03CardSelection1Inner() {
   const [cardImageReady, setCardImageReady] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [typedCount, setTypedCount] = useState(0);
-  const introText = "반가워요, 저는 타로 마스터 세라예요.\n다가올 미래가 궁금하지 않나요?\n카드받기를 누르고 카드를 골라 두 번 터치해 선택해 주세요.";
   const scrollRef = useRef<HTMLDivElement>(null);
   const current = FLOW_MASTERS.find((m) => m.id === master) ?? FLOW_MASTERS[0];
+  const introText = `반가워요, 저는 타로 마스터 ${current.name}예요.\n다가올 미래가 궁금하지 않나요?\n카드받기를 누르고 카드를 골라 두 번 터치해 선택해 주세요.`;
 
   // Shuffle card order on mount
   const [deckOrder] = useState(() => {

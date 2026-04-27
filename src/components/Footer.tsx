@@ -63,7 +63,9 @@ export function Footer() {
 
         <div className="flex items-center justify-center gap-2 pt-2">
           <a
-            href="#"
+            href="https://www.instagram.com/yourtarot.global/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="인스타그램"
             className="inline-flex h-10 w-10 items-center justify-center rounded-md"
           >

@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUser } from "@/hooks/useUser";
 import { loginUrlWithReturnTo, MYPAGE_PATH } from "@/lib/authReturnPath";
 import { FLOW_MASTERS } from "@/lib/flowData";
-import { getMasterCardFrontSrc } from "@/lib/masterCardAssets";
+import { getMasterCardFrontSrc, getMasterThumbSrc } from "@/lib/masterCardAssets";
 import {
   cardIndexFromStoredImagePath,
   deleteAllTarotResultsForUser,
@@ -55,6 +55,14 @@ export default function MyPage() {
   const [cloudRows, setCloudRows] = useState<TarotResultRow[]>([]);
   const [cloudLoading, setCloudLoading] = useState(false);
   const [cloudError, setCloudError] = useState<string | null>(null);
+
+  const [profileMaster, setProfileMaster] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("profile-master") ?? "sera";
+    }
+    return "sera";
+  });
+  const [showProfilePicker, setShowProfilePicker] = useState(false);
 
   const masterMap = useMemo(() => new Map(FLOW_MASTERS.map((m) => [m.id, m])), []);
   const masterIdByName = useMemo(() => new Map(FLOW_MASTERS.map((m) => [m.name, m.id])), []);
@@ -263,15 +271,58 @@ export default function MyPage() {
 
   return (
     <main className="flex-1">
-      <section className="mx-auto w-full max-w-[390px] px-5 pt-14">
-        <div className="flex flex-col items-center gap-4">
-          <div className="grid h-24 w-24 place-items-center rounded-full bg-[radial-gradient(circle_at_30%_30%,#b79cff_0%,#6f42c1_60%,#2b173f_100%)] text-[34px]">
-            🦄
+      <section className="mx-auto w-full max-w-[390px] px-5 pt-10">
+        <div className="flex flex-col items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setShowProfilePicker(!showProfilePicker)}
+            className="relative h-[100px] w-[100px] overflow-hidden rounded-full border-2 border-[#8E63FF]/60 shadow-[0_0_20px_rgba(123,59,199,0.3)] transition-transform hover:scale-105"
+          >
+            <Image
+              src={getMasterThumbSrc(profileMaster)}
+              alt="프로필"
+              width={100}
+              height={100}
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-black/50 py-0.5 text-[10px] text-white">변경</div>
+          </button>
+          {showProfilePicker ? (
+            <div className="flex gap-3">
+              {FLOW_MASTERS.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    setProfileMaster(m.id);
+                    localStorage.setItem("profile-master", m.id);
+                    setShowProfilePicker(false);
+                  }}
+                  className={`relative h-[60px] w-[60px] overflow-hidden rounded-full border-2 transition-all ${
+                    profileMaster === m.id
+                      ? "border-[#BFA8FF] scale-110 shadow-[0_0_12px_rgba(191,168,255,0.5)]"
+                      : "border-white/20 hover:border-white/40"
+                  }`}
+                >
+                  <Image
+                    src={m.image}
+                    alt={m.name}
+                    width={60}
+                    height={60}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-black/60 py-0.5 text-[9px] text-white">{m.name}</div>
+                </button>
+              ))}
+            </div>
+          ) : null}
+          <div className="text-center">
+            <div className="text-[20px] font-semibold text-white">YourTarot</div>
+            <div className="mt-1 text-[13px] text-[#d7ccff]">{user?.email ?? "게스트"}</div>
           </div>
-          <div className="text-[18px] text-neutral-10">YourTarot</div>
         </div>
 
-        <div className="mt-8 rounded-xl border border-primary/40 bg-[rgba(10,8,28,0.82)] p-4">
+        <div className="mt-6 rounded-xl border border-primary/40 bg-[rgba(10,8,28,0.82)] p-4">
           <div className="mb-3 flex items-center justify-between gap-3">
             <div className="text-[16px] font-semibold text-white">
               {supabaseConfigured ? "저장된 타로 기록" : "저장된 결과"}

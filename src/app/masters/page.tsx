@@ -32,8 +32,8 @@ export default function MastersPage() {
                 href={masterProfileWith(m.id)}
                 className="rounded-xl bg-[rgba(255,255,255,0.02)] p-3 text-center text-neutral-10 transition-colors hover:bg-[rgba(255,255,255,0.05)]"
               >
-                <div className="relative mx-auto h-[122px] w-[122px] overflow-hidden rounded-xl">
-                  <Image src={m.image} alt={m.name} fill className="object-cover" />
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                  <Image src={m.image} alt={m.name} width={200} height={200} className="h-auto w-full rounded-xl" />
                 </div>
                 <div className="mt-2 text-[16px] font-semibold">{m.name}</div>
                 <div className="text-[12px] text-[#cfc4ff]">({m.type})</div>

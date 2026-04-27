@@ -183,6 +183,24 @@ select:focus-visible {
   animation: scrollGuideSwipeUp 1.8s ease-in-out infinite;
 }
 
+/* 카드 등장 회전 애니메이션 */
+@keyframes cardRevealSpin {
+  0% {
+    transform: translateX(-50%) scale(0.3) rotate(45deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+.card-reveal-spin {
+  animation: cardRevealSpin 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 /* 폭죽 파티클 애니메이션 */
 @keyframes confettiPop {
   0% { transform: translate(0, 0) scale(1); opacity: 1; }
