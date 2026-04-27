@@ -13,7 +13,7 @@
     "blog:generate": "node scripts/generate-blog.js",
     "blog:json50": "node scripts/generate-blog-json-batch.cjs",
     "prebuild": "npm run faq:sync && npm run blog:generate && node scripts/write-sitemap-xml.cjs",
-    "build": "next build && cp -r public/blog/* out/blog/",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "cards:tint-test": "node scripts/adjust-master-card-saturation.mjs",
