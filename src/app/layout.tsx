@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { GithubPagesToMainSiteRedirect } from "@/components/GithubPagesToMainSiteRedirect";
-import { GoogleTagManagerNoScript, GoogleTagManagerScript } from "@/components/GoogleTagManager";
+import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 import { SiteFrame } from "@/components/SiteFrame";
 import { WebSiteJsonLd } from "@/components/WebSiteJsonLd";
 import { OG_IMAGE_PATH } from "@/lib/seo/pageMeta";
@@ -72,10 +72,12 @@ export default function RootLayout({
       lang="ko"
       className="h-full antialiased"
     >
+      <head>
+        <GoogleTagManagerHead />
+      </head>
       <body className="min-h-full flex flex-col bg-neutral-90 text-neutral-10">
         <GithubPagesToMainSiteRedirect />
         <GoogleTagManagerNoScript />
-        <GoogleTagManagerScript />
         <WebSiteJsonLd />
         <SiteFrame>{children}</SiteFrame>
       </body>
