@@ -34,10 +34,14 @@ export function HomeHeroBackground() {
     }
   }, []);
 
-  /** autoplay 정책·Safari/iOS에서 loadedData 없이 playing만 오는 경우 대비 */
+  /** autoplay 정책·Safari/iOS/모바일 Chrome 대비 */
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
+    // 모바일 Chrome에서 muted 속성을 명시적으로 설정
+    el.muted = true;
+    el.setAttribute("muted", "");
+    el.setAttribute("playsinline", "");
     void el.play().catch(() => {
       setOverlayDismissed(true);
     });
