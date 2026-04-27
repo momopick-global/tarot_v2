@@ -4,6 +4,8 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { AuthReturnRedirect } from "@/components/AuthReturnRedirect";
 import { MenuContent } from "@/components/MenuContent";
+import { BottomNav } from "@/components/BottomNav";
+import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { MYPAGE_PATH } from "@/lib/authReturnPath";
 import { Header } from "./Header";
@@ -61,7 +63,8 @@ export function SiteFrame({
   return (
     <div className="min-h-screen w-full bg-bg-outer text-neutral-10">
       <AuthReturnRedirect />
-      {!hideHeader ? <Header onMenuClick={() => setIsMenuOpen(true)} /> : null}
+      {!hideHeader ? <Header onMenuClick={() => setIsMenuOpen(true)} autoHide={!hideScrollTop} /> : null}
+      {!hideHeader ? <div className="h-[42px]" /> : null}
       <div className="mx-auto min-h-[1px] max-w-[390px] bg-bg-content">{children}</div>
       {!hideFooter && !hideFooterByPath ? (
         <>
@@ -70,7 +73,14 @@ export function SiteFrame({
         </>
       ) : null}
 
+      {!hideScrollTop ? <ScrollProgressBar /> : null}
       {!hideScrollTop ? <ScrollToTopButton /> : null}
+      {!hideScrollTop ? (
+        <>
+          <div className="h-[68px]" />
+          <BottomNav />
+        </>
+      ) : null}
 
       {isMenuMounted ? (
         <div

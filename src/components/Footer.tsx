@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { withAssetBase } from "@/lib/publicPath";
 
-const ICON_EYE = withAssetBase("/assets/svg-logo-yourtarot.svg-699577b6-cedf-4beb-8082-e9fc60a6227c.png");
+const ICON_EYE = withAssetBase("/assets/icon-eye-header-v2.png");
 const ICON_INSTAGRAM = withAssetBase(
   "/assets/svg-ic-social-instagram.svg-2aa4e1f6-9ec8-47a4-8c99-29d5317dd055.png",
 );
@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-bg-outer pt-0">
       <div className="mx-auto flex max-w-[390px] flex-col items-center gap-6 bg-bg-content pb-5">
-        <Image src={ICON_EYE} alt="" width={37} height={28} />
+        <Image src={ICON_EYE} alt="" width={46} height={28} />
 
         <div className="w-[86%] border-t border-[#666666]" />
 

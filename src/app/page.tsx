@@ -72,7 +72,7 @@ export default function Home() {
             href="/tarot/draw?master=sera"
             className="flex flex-col items-center rounded-xl bg-[rgba(255,107,157,0.12)] p-3 transition-colors hover:bg-[rgba(255,107,157,0.2)]"
           >
-            <span className="mb-2 text-center text-[15px] font-semibold text-[#ffd1e0]">연애 운세</span>
+            <span className="mb-2 text-center text-[18px] font-semibold text-[#ffd1e0]">연애 운세</span>
             <div className="relative aspect-square w-full overflow-hidden rounded-xl">
               <Image
                 src={FLOW_MASTERS[0].image}
@@ -92,7 +92,7 @@ export default function Home() {
             href="/tarot/draw?master=kai"
             className="flex flex-col items-center rounded-xl bg-[rgba(74,158,255,0.12)] p-3 transition-colors hover:bg-[rgba(74,158,255,0.2)]"
           >
-            <span className="mb-2 text-center text-[15px] font-semibold text-[#c8e2ff]">오늘의 운세</span>
+            <span className="mb-2 text-center text-[18px] font-semibold text-[#c8e2ff]">오늘의 운세</span>
             <div className="relative aspect-square w-full overflow-hidden rounded-xl">
               <Image
                 src={FLOW_MASTERS[1].image}
@@ -131,7 +131,7 @@ export default function Home() {
         </nav>
       </section>
       <section className="mx-auto w-full max-w-[390px] bg-bg-content px-5 pb-8">
-        <p className="text-center text-[14px] font-semibold text-[#c9b8ff]">인기 블로그 글</p>
+        <h2 className="page-title">인기 블로그 글</h2>
         <div className="mt-4 flex flex-col gap-3">
           <Link href="/blog/attachment-anxiety-in-love/" className="block rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] p-4 transition-colors hover:bg-[rgba(255,255,255,0.06)]">
             <div className="text-[15px] font-semibold text-white">불안형 애착이 연애에 미치는 영향</div>
@@ -145,8 +145,44 @@ export default function Home() {
             <div className="text-[15px] font-semibold text-white">오늘의 타로 한 장, 어떻게 읽으면 좋을까</div>
             <p className="mt-1 text-[13px] text-[#d7ccff]">질문과 맥락으로 읽는 방법을 단계별로 설명합니다</p>
           </Link>
+          <Link href="/blog/psychology-attachment-styles-love/" className="block rounded-xl border border-white/10 bg-[rgba(255,255,255,0.03)] p-4 transition-colors hover:bg-[rgba(255,255,255,0.06)]">
+            <div className="text-[15px] font-semibold text-white">애착 유형은 연애에서 어떻게 드러날까</div>
+            <p className="mt-1 text-[13px] text-[#d7ccff]">불안·회피·안정적 패턴이 관계 습관에 미치는 영향</p>
+          </Link>
           <Link href="/blog/" className="mt-1 block text-center text-[13px] text-[#8E63FF] hover:text-[#BFA8FF]">
             블로그 전체 보기 →
+          </Link>
+        </div>
+      </section>
+      <section className="mx-auto w-full max-w-[390px] bg-bg-content px-5 pb-8">
+        <h2 className="page-title">자주 묻는 질문</h2>
+        <div className="mt-4 flex flex-col">
+          <Link href="/faq/" className="flex items-center justify-between border-b border-white/10 py-3 text-[14px] text-white hover:text-[#d8ccff]">
+            <span>타로는 무엇인가요?</span>
+            <span className="text-[#999]">›</span>
+          </Link>
+          <Link href="/faq/" className="flex items-center justify-between border-b border-white/10 py-3 text-[14px] text-white hover:text-[#d8ccff]">
+            <span>타로는 정말 미래를 맞추나요?</span>
+            <span className="text-[#999]">›</span>
+          </Link>
+          <Link href="/faq/" className="flex items-center justify-between border-b border-white/10 py-3 text-[14px] text-white hover:text-[#d8ccff]">
+            <span>타로 결과는 왜 사람마다 다른가요?</span>
+            <span className="text-[#999]">›</span>
+          </Link>
+          <Link href="/faq/" className="flex items-center justify-between border-b border-white/10 py-3 text-[14px] text-white hover:text-[#d8ccff]">
+            <span>타로는 과학인가요?</span>
+            <span className="text-[#999]">›</span>
+          </Link>
+          <Link href="/faq/" className="flex items-center justify-between border-b border-white/10 py-3 text-[14px] text-white hover:text-[#d8ccff]">
+            <span>타로를 믿어도 되나요?</span>
+            <span className="text-[#999]">›</span>
+          </Link>
+          <Link href="/faq/" className="flex items-center justify-between border-b border-white/10 py-3 text-[14px] text-white hover:text-[#d8ccff]">
+            <span>타로는 초보자도 사용할 수 있나요?</span>
+            <span className="text-[#999]">›</span>
+          </Link>
+          <Link href="/faq/" className="mt-2 block text-center text-[13px] text-[#8E63FF] hover:text-[#BFA8FF]">
+            질문 더 보기 →
           </Link>
         </div>
       </section>
