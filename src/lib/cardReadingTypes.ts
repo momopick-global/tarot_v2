@@ -24,6 +24,18 @@ export type CardReadingJson = {
     health: string;
     /** 기회/행운 */
     luck: string;
+    /** 현재 연애 (세라 전용) */
+    currentLove?: string;
+    /** 상대방 (세라 전용) */
+    partner?: string;
+    /** 소통 (세라 전용) */
+    communication?: string;
+    /** 감정 (세라 전용) */
+    emotion?: string;
+    /** 자기 돌봄 (세라 전용) */
+    selfCare?: string;
+    /** 연애운 (세라 전용) */
+    loveChance?: string;
   };
   advice: {
     /** 오늘의 조언 (인용 문장) */
