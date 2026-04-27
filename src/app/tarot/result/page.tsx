@@ -65,6 +65,7 @@ function Page07ReadingResultTypeAInner() {
   const cardIndex = clampCardIndex(card, 5);
   const frontCardSrc = getMasterCardFrontSrc(current.id, cardIndex);
   const reading = resolveCardReading(current.id, cardIndex);
+  const cats = reading.categories as Record<string, string | undefined>;
   const interpretationText = buildInterpretationText(reading);
   const kw = reading.keywords.length ? reading.keywords.join(" · ") : "—";
 
@@ -117,7 +118,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">현재 연애</span>
                         <br />
-                        {formatBoldSegments(reading.categories.currentLove || reading.categories.love || "—")}
+                        {formatBoldSegments(cats.currentLove || cats.love || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -125,7 +126,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">상대방</span>
                         <br />
-                        {formatBoldSegments(reading.categories.partner || reading.categories.relationship || "—")}
+                        {formatBoldSegments(cats.partner || cats.relationship || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -133,7 +134,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">소통</span>
                         <br />
-                        {formatBoldSegments(reading.categories.communication || reading.categories.work || "—")}
+                        {formatBoldSegments(cats.communication || cats.work || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -141,7 +142,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">감정</span>
                         <br />
-                        {formatBoldSegments(reading.categories.emotion || reading.categories.money || "—")}
+                        {formatBoldSegments(cats.emotion || cats.money || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -149,7 +150,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">자기 돌봄</span>
                         <br />
-                        {formatBoldSegments(reading.categories.selfCare || reading.categories.health || "—")}
+                        {formatBoldSegments(cats.selfCare || cats.health || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -157,7 +158,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">연애운</span>
                         <br />
-                        {formatBoldSegments(reading.categories.loveChance || reading.categories.luck || "—")}
+                        {formatBoldSegments(cats.loveChance || cats.luck || "—")}
                       </span>
                     </p>
                   </>
@@ -168,7 +169,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">업무/학업</span>
                         <br />
-                        {formatBoldSegments(reading.categories.work || "—")}
+                        {formatBoldSegments(cats.work || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -176,7 +177,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">애정</span>
                         <br />
-                        {formatBoldSegments(reading.categories.love || "—")}
+                        {formatBoldSegments(cats.love || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -184,7 +185,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">금전</span>
                         <br />
-                        {formatBoldSegments(reading.categories.money || "—")}
+                        {formatBoldSegments(cats.money || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -192,7 +193,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">인간관계</span>
                         <br />
-                        {formatBoldSegments(reading.categories.relationship || "—")}
+                        {formatBoldSegments(cats.relationship || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -200,7 +201,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">건강</span>
                         <br />
-                        {formatBoldSegments(reading.categories.health || "—")}
+                        {formatBoldSegments(cats.health || "—")}
                       </span>
                     </p>
                     <p className="flex gap-2">
@@ -208,7 +209,7 @@ function Page07ReadingResultTypeAInner() {
                       <span>
                         <span className="font-semibold text-[#f0e8ff]">기회/행운</span>
                         <br />
-                        {formatBoldSegments(reading.categories.luck || "—")}
+                        {formatBoldSegments(cats.luck || "—")}
                       </span>
                     </p>
                   </>
