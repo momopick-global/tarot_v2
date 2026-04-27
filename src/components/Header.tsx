@@ -34,8 +34,8 @@ function HeaderInner({
   const loginHref = loginUrlWithReturnTo(returnTo || "/");
 
   return (
-    <header className="mx-auto w-full max-w-[390px] bg-[#17182E]">
-      <div className="flex h-[42px] w-full items-center justify-between px-0">
+    <header className="w-full bg-bg-outer">
+      <div className="mx-auto flex h-[42px] w-full max-w-[390px] items-center justify-between bg-bg-content px-0">
         <button
           type="button"
           onClick={onMenuClick}
@@ -52,18 +52,19 @@ function HeaderInner({
         {isLoggedIn ? (
           <Link
             href="/mypage"
-            className="flex h-[42px] w-[42px] items-center justify-center overflow-hidden rounded-full"
+            className="relative flex h-[42px] w-[42px] items-center justify-center"
             aria-label="마이페이지로 이동"
           >
-            <Image src={getMasterThumbSrc(profileMaster)} alt="" width={36} height={36} className="h-[36px] w-[36px] rounded-full object-cover" />
+            <Image src={ICON_GUEST} alt="" width={42} height={42} />
+            <span className="absolute right-[2px] top-[2px] h-[10px] w-[10px] rounded-full border-2 border-bg-content bg-[#4ade80]" />
           </Link>
         ) : (
           <Link
             href={loginHref}
-            className="flex h-[42px] w-[42px] items-center justify-center overflow-hidden rounded-full"
+            className="flex h-[42px] w-[42px] items-center justify-center"
             aria-label="로그인 페이지로 이동"
           >
-            <Image src={getMasterThumbSrc(profileMaster)} alt="" width={36} height={36} className="h-[36px] w-[36px] rounded-full object-cover opacity-60" />
+            <Image src={ICON_GUEST} alt="" width={42} height={42} />
           </Link>
         )}
       </div>

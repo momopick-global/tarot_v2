@@ -10,8 +10,8 @@ const ICON_TALK = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-4
 
 export function Footer() {
   return (
-    <footer className="mx-auto w-full max-w-[390px] bg-[#17182E] pb-5 pt-0">
-      <div className="flex flex-col items-center gap-6">
+    <footer className="w-full bg-bg-outer pt-0">
+      <div className="mx-auto flex max-w-[390px] flex-col items-center gap-6 bg-bg-content pb-5">
         <Image src={ICON_EYE} alt="" width={37} height={28} />
 
         <div className="w-[86%] border-t border-[#666666]" />

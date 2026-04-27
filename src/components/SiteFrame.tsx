@@ -53,13 +53,13 @@ export function SiteFrame({
   }, [isMenuOpen]);
 
   return (
-    <div className="min-h-screen w-full bg-[#202139] text-neutral-10">
+    <div className="min-h-screen w-full bg-bg-outer text-neutral-10">
       <AuthReturnRedirect />
       {!hideHeader ? <Header onMenuClick={() => setIsMenuOpen(true)} /> : null}
-      <div className="min-h-[1px]">{children}</div>
+      <div className="mx-auto min-h-[1px] max-w-[390px] bg-bg-content">{children}</div>
       {!hideFooter && !hideFooterByPath ? (
         <>
-          <div className="mx-auto h-[20px] w-full max-w-[390px] bg-[#17182E]" />
+          <div className="mx-auto h-[20px] w-full max-w-[390px] bg-bg-content" />
           <Footer />
         </>
       ) : null}

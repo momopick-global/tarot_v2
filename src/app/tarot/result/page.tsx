@@ -6,18 +6,14 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 import { FlowScene } from "@/components/FlowScene";
 import { ResultActionButtons } from "@/components/ResultActionButtons";
+import { ShareSection } from "@/components/ShareSection";
 import { clampCardIndex, getMasterCardFrontSrc } from "@/lib/masterCardAssets";
 import { resolveCardReading } from "@/lib/resolveCardReading";
 import { buildInterpretationText } from "@/lib/tarotResultsDb";
 import { FLOW_MASTERS } from "@/lib/flowData";
 import { withAssetBase } from "@/lib/publicPath";
-import { copyShareUrl, shareToFacebook, shareToKakao, shareToX } from "@/lib/share";
 import { ROUTES, tarotDrawWithMaster, tarotResultWith } from "@/lib/routes";
 
-const SHARE_LINK = withAssetBase("/assets/svg-ic-share-link.svg-26940f47-d010-498b-b1e1-68303b31e59e.png");
-const SHARE_KAKAO = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.png");
-const SHARE_FB = withAssetBase("/assets/svg-ic-share-facebook.svg-527221c9-1874-4fae-83ed-579ce7d4210b.png");
-const SHARE_X = withAssetBase("/assets/svg-ic-share-x.svg-4ef9a083-7b44-439e-bfa4-3c305b5bf580.png");
 const RESULT_BG = withAssetBase("/images/bg_final.png");
 
 function formatBoldSegments(text: string): ReactNode {
@@ -71,10 +67,6 @@ function Page07ReadingResultTypeAInner() {
   const reading = resolveCardReading(current.id, cardIndex);
   const interpretationText = buildInterpretationText(reading);
   const kw = reading.keywords.length ? reading.keywords.join(" · ") : "—";
-  const onCopy = async () => {
-    const ok = await copyShareUrl();
-    window.alert(ok ? "링크가 복사되었습니다." : "링크 복사에 실패했습니다.");
-  };
 
   return (
     <main className="w-full">
@@ -264,66 +256,40 @@ function Page07ReadingResultTypeAInner() {
             interpretation={interpretationText}
           />
 
-          <div className="mt-6 text-center text-[18px] text-[#d8ccff]">🧿 친구에게 공유하기</div>
-          <div className="mt-3 flex justify-center gap-3">
-            <button type="button" onClick={onCopy} aria-label="링크 복사" className="inline-flex">
-              <Image src={SHARE_LINK} alt="" width={40} height={40} />
-            </button>
-            <button
-              type="button"
-              onClick={async () => {
-                await shareToKakao({
-                  title: "유어타로 결과",
-                  description: "당신의 운세를 확인하세요",
-                  imageUrl: frontCardSrc,
-                  url: tarotResultWith(current.id, card),
-                  resultUrl: tarotResultWith(current.id, card),
-                  testUrl: tarotDrawWithMaster(current.id),
-                });
-              }}
-              aria-label="카카오 공유"
-              className="inline-flex"
-            >
-              <Image src={SHARE_KAKAO} alt="" width={40} height={40} />
-            </button>
-            <button
-              type="button"
-              onClick={() => shareToFacebook()}
-              aria-label="페이스북 공유"
-              className="inline-flex"
-            >
-              <Image src={SHARE_FB} alt="" width={40} height={40} />
-            </button>
-            <button type="button" onClick={() => shareToX()} aria-label="X 공유" className="inline-flex">
-              <Image src={SHARE_X} alt="" width={40} height={40} />
-            </button>
-          </div>
+          <ShareSection
+            shareUrl={tarotResultWith(current.id, card)}
+            shareTitle="유어타로 결과"
+            shareDescription="당신의 운세를 확인하세요"
+            shareImageUrl={frontCardSrc}
+          />
 
-          {/* 다른 마스터 해석 보기 */}
-          <div className="mt-7 rounded-xl border border-primary/40 bg-[rgba(8,7,22,0.72)] p-4">
-            <div className="text-[15px] font-semibold text-center text-white">다른 마스터 해석 보기</div>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              {FLOW_MASTERS.filter((m) => m.id !== current.id).map((m) => (
+          {/* 다른 테스트하기 */}
+          <div className="mt-7">
+            <div className="text-[15px] font-semibold text-center text-white mb-4">다른 테스트하기</div>
+            <div className="flex justify-center">
+              {current.id !== "sera" ? (
                 <Link
-                  key={m.id}
-                  href={tarotResultWith(m.id, card)}
-                  className="flex flex-col items-center gap-2 rounded-xl bg-[rgba(255,255,255,0.03)] p-3 transition-colors hover:bg-[rgba(255,255,255,0.06)]"
+                  href="/tarot/draw?master=sera"
+                  className="flex w-full max-w-[180px] flex-col items-center rounded-xl bg-[rgba(255,107,157,0.12)] p-3 transition-colors hover:bg-[rgba(255,107,157,0.2)]"
                 >
                   <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-                    <Image
-                      src={m.image}
-                      alt={`${m.name} 해석 보기`}
-                      width={150}
-                      height={150}
-                      className="h-auto w-full rounded-xl"
-                    />
+                    <Image src={FLOW_MASTERS[0].image} alt="세라" width={150} height={150} className="h-auto w-full rounded-xl" />
                   </div>
-                  <div className="text-center">
-                    <div className="text-[14px] font-semibold text-white">{m.name}</div>
-                    <div className="text-[12px] text-[#cfc4ff]">({m.type})</div>
-                  </div>
+                  <span className="mt-2 text-center text-[15px] font-semibold text-[#ffd1e0]">연애 운세</span>
+                  <span className="mt-1 text-center text-[12px] text-[#ff9dbe]">세라와 함께</span>
                 </Link>
-              ))}
+              ) : (
+                <Link
+                  href="/tarot/draw?master=kai"
+                  className="flex w-full max-w-[180px] flex-col items-center rounded-xl bg-[rgba(74,158,255,0.12)] p-3 transition-colors hover:bg-[rgba(74,158,255,0.2)]"
+                >
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                    <Image src={FLOW_MASTERS[1].image} alt="카이" width={150} height={150} className="h-auto w-full rounded-xl" />
+                  </div>
+                  <span className="mt-2 text-center text-[15px] font-semibold text-[#c8e2ff]">오늘의 운세</span>
+                  <span className="mt-1 text-center text-[12px] text-[#7db8ff]">카이와 함께</span>
+                </Link>
+              )}
             </div>
           </div>
 

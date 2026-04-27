@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { FlowScene } from "@/components/FlowScene";
@@ -11,6 +11,17 @@ import { ROUTES, tarotAnalyzeWith } from "@/lib/routes";
 
 const TOTAL_CARDS = 74;
 const COLS = 4;
+
+const RANDOM_MESSAGES = [
+  "직감을 믿어보세요",
+  "끌리는 카드가 답입니다",
+  "천천히 느껴보세요",
+  "마음이 가는 카드를 선택하세요",
+  "카드가 당신을 기다리고 있어요",
+  "지금 떠오르는 카드를 골라보세요",
+  "첫 느낌이 중요해요",
+  "카드 속에 답이 있어요",
+];
 
 function spawnConfetti(x: number, y: number) {
   const colors = ["#FFD700", "#FF6B8A", "#7B3BC7", "#4FC3F7", "#69F0AE", "#FF8A65", "#E040FB"];
@@ -53,6 +64,9 @@ function Page03CardSelection1Inner() {
   const router = useRouter();
   const master = (searchParams?.get("master") ?? "sera").toLowerCase();
   const [isCardStage, setIsCardStage] = useState(false);
+  const [guideLineIndex, setGuideLineIndex] = useState(0);
+  const [guideTypedCount, setGuideTypedCount] = useState(0);
+  const [guidePhase, setGuidePhase] = useState<"typing" | "showing" | "fading">("typing");
   const [cardImageReady, setCardImageReady] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [typedCount, setTypedCount] = useState(0);
@@ -127,6 +141,45 @@ function Page03CardSelection1Inner() {
     }, 50);
     return () => clearTimeout(timer);
   }, [typedCount, isCardStage, introText.length]);
+
+  // 가이드 문구 리스트
+  const guideLines = useMemo(() => {
+    const fixed = [
+      "카드를 위아래로 드래그해 조절하세요",
+      "원하는 카드를 두 번 터치하세요",
+    ];
+    const shuffled = [...RANDOM_MESSAGES].sort(() => Math.random() - 0.5);
+    return [...fixed, ...shuffled];
+  }, []);
+
+  // 가이드 문구 타이핑 + 사라짐 반복
+  useEffect(() => {
+    if (!isCardStage) return;
+    const currentLine = guideLines[guideLineIndex % guideLines.length];
+
+    if (guidePhase === "typing") {
+      if (guideTypedCount >= currentLine.length) {
+        const timer = setTimeout(() => setGuidePhase("showing"), 1200);
+        return () => clearTimeout(timer);
+      }
+      const timer = setTimeout(() => setGuideTypedCount((c) => c + 1), 60);
+      return () => clearTimeout(timer);
+    }
+
+    if (guidePhase === "showing") {
+      const timer = setTimeout(() => setGuidePhase("fading"), 800);
+      return () => clearTimeout(timer);
+    }
+
+    if (guidePhase === "fading") {
+      const timer = setTimeout(() => {
+        setGuideLineIndex((i) => (i + 1) % guideLines.length);
+        setGuideTypedCount(0);
+        setGuidePhase("typing");
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isCardStage, guidePhase, guideTypedCount, guideLineIndex, guideLines]);
 
   // 카드 뒷면 이미지 미리 로드
   useEffect(() => {
@@ -215,6 +268,18 @@ function Page03CardSelection1Inner() {
                   ))}
                 </div>
               </div>
+            </div>
+          ) : null}
+
+          {/* 카드 안내 문구 (타이핑 + 반복) */}
+          {isCardStage ? (
+            <div className="pointer-events-none absolute inset-x-0 bottom-[47%] z-[15] text-center">
+              <p className={`text-[16px] text-white/70 transition-opacity duration-500 ${guidePhase === "fading" ? "opacity-0" : "opacity-100"}`}>
+                {guideLines[guideLineIndex % guideLines.length].slice(0, guideTypedCount)}
+                {guidePhase === "typing" ? (
+                  <span className="inline-block w-[2px] h-[1em] bg-white/60 align-middle animate-pulse ml-[1px]" />
+                ) : null}
+              </p>
             </div>
           ) : null}
 

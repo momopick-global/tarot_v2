@@ -97,21 +97,35 @@ export function FlowScene({
     >
       {!hideBackgroundImage && !useSpillBackground ? (
         backgroundVideoSrc ? (
-          <video
-            key={backgroundVideoSrc}
-            src={backgroundVideoSrc}
-            poster={backgroundVideoPoster}
-            autoPlay
-            loop={backgroundVideoLoop}
-            muted
-            playsInline
-            preload="auto"
-            ref={(el) => { if (el) el.playbackRate = 0.5; }}
-            onLoadedData={(e) => { (e.currentTarget as HTMLVideoElement).playbackRate = 0.5; }}
-            onPlay={(e) => { (e.currentTarget as HTMLVideoElement).playbackRate = 0.5; }}
-            className={`absolute top-0 left-0 w-full object-cover object-top ${backgroundImageClassName ?? ""}`}
-            style={{ height: "auto", minWidth: "100%" }}
-          />
+          <>
+            {backgroundVideoPoster ? (
+              <img
+                key={`poster-${backgroundVideoSrc}`}
+                src={backgroundVideoPoster}
+                alt=""
+                className={`absolute top-0 left-0 z-[1] w-full object-cover object-top ${backgroundImageClassName ?? ""}`}
+                style={{ height: "auto", minWidth: "100%" }}
+              />
+            ) : null}
+            <video
+              key={backgroundVideoSrc}
+              src={backgroundVideoSrc}
+              autoPlay
+              loop={backgroundVideoLoop}
+              muted
+              playsInline
+              preload="auto"
+              ref={(el) => { if (el) el.playbackRate = 0.5; }}
+              onLoadedData={(e) => {
+                const v = e.currentTarget as HTMLVideoElement;
+                v.playbackRate = 0.5;
+                v.style.opacity = "1";
+              }}
+              onPlay={(e) => { (e.currentTarget as HTMLVideoElement).playbackRate = 0.5; }}
+              className={`absolute top-0 left-0 z-[2] w-full object-cover object-top ${backgroundImageClassName ?? ""}`}
+              style={{ height: "auto", minWidth: "100%", opacity: 0 }}
+            />
+          </>
         ) : (
           <img
             src={resolvedBgSrc}
@@ -125,7 +139,7 @@ export function FlowScene({
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,3,20,0.35)_0%,rgba(10,8,30,0.85)_100%)]" />
       ) : null}
       {bottomFadeToBody ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[80px] bg-gradient-to-b from-transparent to-[#202139]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[80px] bg-gradient-to-b from-transparent to-bg-content" />
       ) : null}
 
       <div

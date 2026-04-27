@@ -3,7 +3,7 @@
  * 구 경로는 각 레거시 페이지에서 새 경로로 리다이렉트합니다.
  */
 export const ROUTES = {
-  tarotStart: "/tarot/start",
+  tarotStart: "/",
   tarotDraw: "/tarot/draw",
   tarotReveal: "/tarot/reveal",
   tarotAnalyze: "/tarot/analyze",

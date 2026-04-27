@@ -20,9 +20,9 @@ export default function MastersPage() {
     <main className="flex-1">
       <section className="mx-auto w-full max-w-[390px] px-5 pt-8 pb-6">
         <div className="mx-auto w-full max-w-[350px]">
-          <h1 className="text-[18px] font-semibold">타로 마스터 소개</h1>
-          <p className="mt-3 text-[16px] leading-[22px] text-white">
-            9명의 마스터 중 한 명을 선택해, 당신에게 맞는 리딩 스타일을 확인해보세요.
+          <h1 className="page-title">타로 마스터 소개</h1>
+          <p className="page-lead">
+            타로 마스터를 선택해, 당신에게 맞는 리딩 스타일을 확인해보세요.
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-4">

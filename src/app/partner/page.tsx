@@ -59,11 +59,11 @@ export default function PartnerPage() {
   return (
     <main className="flex-1">
       <section className="mx-auto w-full max-w-[390px] px-5 pt-8 pb-4">
-        <h1 className="text-[16px] font-semibold">
+        <h1 className="page-title">
           📩 제휴 문의(Partnership)
         </h1>
 
-        <p className="mt-3 text-[16px] leading-[22px] text-neutral-10">
+        <p className="page-lead">
           유어타로는 함께 새로운 경험을 만들어보세요.
           <br />
           국내외의 다양한 파트너들과 함께 성장할 수 있는 제휴 제안을

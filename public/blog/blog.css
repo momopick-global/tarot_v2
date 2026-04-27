@@ -1,14 +1,14 @@
 /* 유어타로 블로그 — 가독성·경량 */
 :root {
   /* 메인 앱(SiteFrame) 톤에 맞춤 */
-  --bg: #202139;
+  --bg: #1C1D2C;
   --surface: rgba(9, 7, 28, 0.55);
   --text: #f7f7f7;
   --muted: #b8b3c9;
   --accent: #d8ccff;
   --border: rgba(255, 255, 255, 0.12);
   --link: #d8ccff;
-  --header-bg: #17182e;
+  --header-bg: #171828;
   --frame: 390px;
   --content: 350px;
 }
@@ -46,6 +46,7 @@ a:hover {
   max-width: var(--frame);
   margin: 0 auto;
   padding: 0 0 3rem;
+  background: #171828;
 }
 
 /* SiteFrame과 동일: 푸터 위 20px 띠 + 푸터 */
@@ -55,7 +56,7 @@ a:hover {
   width: 100%;
   max-width: var(--frame);
   margin: 0 auto;
-  background: #17182e;
+  background: #171828;
 }
 
 .blog-site-footer {
@@ -63,7 +64,7 @@ a:hover {
   width: 100%;
   max-width: var(--frame);
   margin: 0 auto;
-  background: #17182e;
+  background: #171828;
   padding: 0 0 1.25rem;
 }
 
@@ -520,7 +521,7 @@ button.blog-icon-btn {
   max-width: 330px;
   overflow-y: auto;
   background: #f7f7f7;
-  color: #202139;
+  color: #171828;
   padding: 2.5rem 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transform: translateX(-100%);
@@ -544,7 +545,7 @@ button.blog-icon-btn {
   border: none;
   background: transparent;
   cursor: pointer;
-  color: #202139;
+  color: #171828;
   font-size: 16px;
   line-height: 1;
   transform: scale(1.5);
@@ -554,7 +555,7 @@ button.blog-icon-btn {
   margin-top: 0.5rem;
   font-size: 22px;
   font-weight: 600;
-  color: #202139;
+  color: #171828;
 }
 
 .blog-menu-nav {
@@ -578,7 +579,7 @@ button.blog-icon-btn {
   gap: 0.75rem;
   font-size: 18px;
   font-weight: 600;
-  color: #202139;
+  color: #171828;
   text-decoration: none;
 }
 
@@ -622,7 +623,7 @@ button.blog-icon-btn {
 .blog-menu-withdraw-link {
   display: inline-block;
   margin-top: 0.25rem;
-  color: #202139;
+  color: #171828;
   text-decoration: none;
 }
 

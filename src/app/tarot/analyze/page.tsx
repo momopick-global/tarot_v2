@@ -30,12 +30,12 @@ function Page06AnalyzingInner() {
     preloadImg.src = frontCardSrc;
 
     const timer = setInterval(() => {
-      setProgress((p) => (p >= 100 ? 100 : p + 7));
-    }, 220);
+      setProgress((p) => (p >= 100 ? 100 : p + 20));
+    }, 100);
 
     const move = setTimeout(() => {
       router.push(resultHref);
-    }, 2600);
+    }, 1000);
 
     return () => {
       clearInterval(timer);
@@ -47,11 +47,11 @@ function Page06AnalyzingInner() {
     <main className="w-full min-h-[calc(100dvh-42px)]">
       <FlowScene
         backgroundSrc={getMasterBackgroundSrc(master, 3)}
-        backgroundSpillColor="#202139"
+        backgroundSpillColor="var(--ds-bg-content)"
         sceneClassName="!min-h-[calc(100dvh-42px)]"
       >
         <div className="flex min-h-[max(460px,calc(100dvh-58px))] flex-col items-center justify-center pb-8">
-          <div className="mt-7 w-full max-w-[350px] rounded-xl border border-primary bg-[rgba(9,7,28,0.94)] p-4 text-white shadow-2xl">
+          <div className="mt-7 w-full max-w-[350px] rounded-xl bg-[rgba(9,7,28,0.94)] p-4 text-white shadow-2xl">
             <div className="mb-3 flex justify-center">
               <div className="relative h-[124px] w-[124px] overflow-hidden rounded-full">
                 <Image src={POPUP_IMAGE_PATH} alt="가이드 마스터 이미지" fill className="object-cover" />

@@ -8,37 +8,27 @@ export function MarkdownArticle({
   markdown: string;
 }>) {
   return (
-    <article className="text-[16px] leading-[22px] text-neutral-10">
+    <article className="page-body">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ ...props }) => (
-            <h1 className="text-[18px] font-semibold text-neutral-10">
-              {props.children}
-            </h1>
+            <h1 className="page-title">{props.children}</h1>
           ),
           h2: ({ ...props }) => (
-            <h2 className="mt-5 text-[16px] font-semibold text-neutral-10">
-              {props.children}
-            </h2>
+            <h2 className="page-section-title">{props.children}</h2>
           ),
           p: ({ ...props }) => (
-            <p className="mt-4 whitespace-pre-wrap text-neutral-10">
-              {props.children}
-            </p>
+            <p className="mt-4 whitespace-pre-wrap">{props.children}</p>
           ),
           ul: ({ ...props }) => (
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-neutral-10">
-              {props.children}
-            </ul>
+            <ul className="mt-3 list-disc space-y-1 pl-5">{props.children}</ul>
           ),
           ol: ({ ...props }) => (
-            <ol className="mt-3 list-decimal space-y-1 pl-5 text-neutral-10">
-              {props.children}
-            </ol>
+            <ol className="mt-3 list-decimal space-y-1 pl-5">{props.children}</ol>
           ),
           li: ({ ...props }) => (
-            <li className="text-neutral-10">{props.children}</li>
+            <li>{props.children}</li>
           ),
         }}
       >

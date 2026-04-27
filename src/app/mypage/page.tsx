@@ -276,14 +276,15 @@ export default function MyPage() {
           <button
             type="button"
             onClick={() => setShowProfilePicker(!showProfilePicker)}
-            className="relative h-[100px] w-[100px] overflow-hidden rounded-full border-2 border-[#8E63FF]/60 shadow-[0_0_20px_rgba(123,59,199,0.3)] transition-transform hover:scale-105"
+            className="relative h-[100px] w-[100px] overflow-hidden rounded-full transition-transform hover:scale-105"
           >
             <Image
               src={getMasterThumbSrc(profileMaster)}
               alt="프로필"
               width={100}
               height={100}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-top"
+              style={{ objectPosition: "center 15%", transform: "scale(1.3)" }}
             />
             <div className="absolute inset-x-0 bottom-0 bg-black/50 py-0.5 text-[10px] text-white">변경</div>
           </button>
