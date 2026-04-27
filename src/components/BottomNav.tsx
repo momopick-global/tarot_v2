@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 function IconHome({ active }: { active: boolean }) {
   return (
@@ -51,14 +52,45 @@ const NAV_ITEMS = [
 
 export function BottomNav() {
   const pathname = usePathname() ?? "";
+  const navRef = useRef<HTMLElement>(null);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href.split("?")[0]);
   };
 
+  // 카카오 인앱 등 safe-area 미지원 브라우저 대응
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+
+    const adjust = () => {
+      // window.innerHeight는 실제 보이는 영역, visualViewport는 더 정확
+      const vv = window.visualViewport;
+      if (vv) {
+        const offset = window.innerHeight - (vv.offsetTop + vv.height);
+        el.style.bottom = offset > 0 ? `${offset}px` : "0px";
+      }
+    };
+
+    adjust();
+    window.visualViewport?.addEventListener("resize", adjust);
+    window.visualViewport?.addEventListener("scroll", adjust);
+    window.addEventListener("resize", adjust);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", adjust);
+      window.visualViewport?.removeEventListener("scroll", adjust);
+      window.removeEventListener("resize", adjust);
+    };
+  }, []);
+
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-[9999] w-full" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+    <nav
+      ref={navRef}
+      className="fixed bottom-0 left-0 right-0 z-[9999] w-full"
+      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+    >
       <div className="mx-auto flex h-[68px] max-w-[390px] items-center justify-around rounded-t-2xl bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
         {NAV_ITEMS.map((item) => {
           const active = isActive(item.href);
