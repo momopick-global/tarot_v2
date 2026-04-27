@@ -131,32 +131,20 @@ export default function Home() {
         <h2 className="page-title">인기 블로그 글</h2>
         <div className="mt-4 flex flex-col gap-3">
           <Link href="/blog/attachment-anxiety-in-love/" className="flex items-center gap-3 border-b border-white/10 py-3 hover:opacity-80">
-            <Image src="/images/blog/attachment-anxiety-in-love.png" alt="" width={56} height={56} className="h-[56px] w-[80px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0">
-              <div className="text-[14px] font-semibold text-white truncate">불안형 애착이 연애에 미치는 영향</div>
-              <p className="mt-0.5 text-[12px] text-[#b8b3c9] truncate">확인 욕구와 거리감에 민감한 패턴을 이해하고 다루는 법</p>
-            </div>
+            <Image src="/images/blog/attachment-anxiety-in-love.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
+            <div className="min-w-0 text-[14px] font-semibold text-white">불안형 애착이 연애에 미치는 영향</div>
           </Link>
           <Link href="/blog/love-failure-pattern/" className="flex items-center gap-3 border-b border-white/10 py-3 hover:opacity-80">
-            <Image src="/images/blog/love-failure-pattern.png" alt="" width={56} height={56} className="h-[56px] w-[80px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0">
-              <div className="text-[14px] font-semibold text-white truncate">연애가 항상 실패하는 이유</div>
-              <p className="mt-0.5 text-[12px] text-[#b8b3c9] truncate">연애 패턴이 반복되는 이유를 심리적으로 분석합니다</p>
-            </div>
+            <Image src="/images/blog/love-failure-pattern.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
+            <div className="min-w-0 text-[14px] font-semibold text-white">연애가 항상 실패하는 이유</div>
           </Link>
           <Link href="/blog/tarot-daily-one-card-meaning/" className="flex items-center gap-3 border-b border-white/10 py-3 hover:opacity-80">
-            <Image src="/images/blog/blog-default-thumb.png" alt="" width={56} height={56} className="h-[56px] w-[80px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0">
-              <div className="text-[14px] font-semibold text-white truncate">오늘의 타로 한 장, 어떻게 읽으면 좋을까</div>
-              <p className="mt-0.5 text-[12px] text-[#b8b3c9] truncate">질문과 맥락으로 읽는 방법을 단계별로 설명합니다</p>
-            </div>
+            <Image src="/images/blog/blog-default-thumb.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
+            <div className="min-w-0 text-[14px] font-semibold text-white">오늘의 타로 한 장, 어떻게 읽으면 좋을까</div>
           </Link>
           <Link href="/blog/psychology-attachment-styles-love/" className="flex items-center gap-3 border-b border-white/10 py-3 hover:opacity-80">
-            <Image src="/images/blog/blog-default-thumb.png" alt="" width={56} height={56} className="h-[56px] w-[80px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0">
-              <div className="text-[14px] font-semibold text-white truncate">애착 유형은 연애에서 어떻게 드러날까</div>
-              <p className="mt-0.5 text-[12px] text-[#b8b3c9] truncate">불안·회피·안정적 패턴이 관계 습관에 미치는 영향</p>
-            </div>
+            <Image src="/images/blog/blog-default-thumb.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
+            <div className="min-w-0 text-[14px] font-semibold text-white">애착 유형은 연애에서 어떻게 드러날까</div>
           </Link>
           <Link href="/blog/" className="mt-1 block text-center text-[13px] text-[#8E63FF] hover:text-[#BFA8FF]">
             블로그 전체 보기 →
