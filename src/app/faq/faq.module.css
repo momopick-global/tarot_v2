@@ -104,15 +104,17 @@
 .cardStack {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
 }
 
 .card {
-  border-radius: 0.875rem;
-  border: 1px solid rgba(142, 99, 255, 0.28);
-  background: rgba(9, 7, 28, 0.88);
-  box-shadow: 0 6px 24px rgba(2, 1, 10, 0.25);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
   overflow: hidden;
+}
+
+.card:last-child {
+  border-bottom: none;
 }
 
 .questionHeading {
@@ -132,11 +134,12 @@
 .questionBtn {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
   text-align: left;
-  padding: 1.2rem 1.25rem;
-  min-height: 3.5rem;
+  padding: 1rem 0;
+  min-height: 3rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -144,12 +147,12 @@
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.45;
-  transition: background 0.15s ease;
+  transition: color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .questionBtn:hover {
-  background: rgba(100, 34, 171, 0.12);
+  color: #d8ccff;
 }
 
 .questionBtn:focus-visible {
@@ -159,11 +162,11 @@
 
 .chevron {
   flex-shrink: 0;
-  margin-top: 0.15rem;
   width: 1.25rem;
   height: 1.25rem;
   color: #bfa8ff;
   transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: auto;
 }
 
 .chevronOpen {
@@ -187,16 +190,15 @@
 
 .answer {
   margin: 0;
-  padding: 0 1.25rem 1.2rem 3.05rem;
+  padding: 0 0 1rem 0;
   font-size: 0.875rem;
   line-height: 1.75;
-  color: rgba(214, 203, 255, 0.95);
+  color: #b8b3c9;
   opacity: 0;
   transform: translateY(-0.4rem);
   transition:
     opacity 0.28s ease,
-    transform 0.34s cubic-bezier(0.4, 0, 0.2, 1),
-    padding 0.32s ease;
+    transform 0.34s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .answerWrapOpen .answer {

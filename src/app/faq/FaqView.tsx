@@ -200,6 +200,7 @@ export function FaqView({ data }: Readonly<{ data: FaqData }>) {
                         id={`faq-q-${item.id}`}
                         onClick={() => onToggleItem(item.id)}
                       >
+                        <span className={styles.questionText}>{item.question}</span>
                         <span
                           className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
                           aria-hidden
@@ -208,7 +209,6 @@ export function FaqView({ data }: Readonly<{ data: FaqData }>) {
                             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
-                        <span className={styles.questionText}>{item.question}</span>
                       </button>
                     </h3>
                     <div
