@@ -38,13 +38,24 @@ export function HomeHeroBackground() {
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
-    // 모바일 Chrome에서 muted 속성을 명시적으로 설정
     el.muted = true;
     el.setAttribute("muted", "");
     el.setAttribute("playsinline", "");
-    void el.play().catch(() => {
-      setOverlayDismissed(true);
-    });
+
+    const tryPlay = () => {
+      void el.play().catch(() => {});
+    };
+
+    // 즉시 시도
+    tryPlay();
+    // 소스 로드 후 재시도
+    el.addEventListener("canplay", tryPlay, { once: true });
+    el.addEventListener("loadeddata", tryPlay, { once: true });
+
+    return () => {
+      el.removeEventListener("canplay", tryPlay);
+      el.removeEventListener("loadeddata", tryPlay);
+    };
   }, []);
 
   useEffect(() => {
@@ -67,6 +78,7 @@ export function HomeHeroBackground() {
       />
       <video
         ref={videoRef}
+        src={HOME_HERO_VIDEO}
         width={390}
         height={620}
         playsInline
@@ -88,9 +100,7 @@ export function HomeHeroBackground() {
         className={`absolute inset-0 z-[1] h-full w-full object-cover object-top transition-opacity duration-500 ${
           videoReady ? "opacity-100" : "opacity-0"
         }`}
-      >
-        <source src={HOME_HERO_VIDEO} type="video/mp4" />
-      </video>
+      />
       {!overlayDismissed ? (
         <div className="pointer-events-none absolute inset-0 z-[15]" aria-hidden>
           <div className="absolute left-1/2 top-[26%] w-[100px] -translate-x-1/2">
