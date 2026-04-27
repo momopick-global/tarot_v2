@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useRef, useCallback, type ReactNode } from "react";
+import { Suspense, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { FlowScene } from "@/components/FlowScene";
 import { ResultActionButtons } from "@/components/ResultActionButtons";
 import { KakaoShareButton, ShareSection } from "@/components/ShareSection";
@@ -12,6 +12,7 @@ import { resolveCardReading } from "@/lib/resolveCardReading";
 import { buildInterpretationText } from "@/lib/tarotResultsDb";
 import { FLOW_MASTERS } from "@/lib/flowData";
 import { withAssetBase } from "@/lib/publicPath";
+import { trackResultView } from "@/lib/gtmEvents";
 import { ROUTES, tarotDrawWithMaster, tarotResultWith } from "@/lib/routes";
 
 const RESULT_BG = withAssetBase("/images/bg_final.png");
@@ -84,6 +85,12 @@ function Page07ReadingResultTypeAInner() {
     link.href = canvas.toDataURL("image/png");
     link.click();
   }, [current.name, reading.titleEn]);
+
+  useEffect(() => {
+    const resultType = current.id === "sera" ? "love" : "daily";
+    trackResultView(current.name, reading.titleEn, resultType);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main className="w-full">

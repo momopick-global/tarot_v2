@@ -7,6 +7,7 @@ import { FlowScene } from "@/components/FlowScene";
 import { FLOW_MASTERS } from "@/lib/flowData";
 import { getMasterBackgroundSrc, getMasterBackgroundVideoSrc, getMasterBackgroundVideoPoster, getMasterCardBackSrc } from "@/lib/masterCardAssets";
 import { withAssetBase } from "@/lib/publicPath";
+import { trackCardSelect } from "@/lib/gtmEvents";
 import { ROUTES, tarotAnalyzeWith } from "@/lib/routes";
 
 const TOTAL_CARDS = 74;
@@ -234,6 +235,7 @@ function Page03CardSelection1Inner() {
                         if (selectedCard === cardIdx) {
                           const rect = e.currentTarget.getBoundingClientRect();
                           spawnConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                          trackCardSelect(cardIdx, current.name);
                           router.push(tarotAnalyzeWith(current.id, String(cardIdx)));
                         } else {
                           setSelectedCard(cardIdx);

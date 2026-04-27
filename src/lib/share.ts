@@ -1,5 +1,6 @@
 "use client";
 
+import { trackShareClick } from "@/lib/gtmEvents";
 import { ensureKakaoShareReady, hasKakaoJavaScriptKey, toAbsolutePublicUrl } from "@/lib/kakaoShareSdk";
 import { absoluteSiteUrl, siteOrigin } from "@/lib/siteUrl";
 
@@ -55,6 +56,7 @@ export function getCurrentShareUrl(): string {
 }
 
 export async function copyShareUrl(url = getCurrentShareUrl()): Promise<boolean> {
+  trackShareClick("link_copy");
   try {
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(url);
@@ -115,6 +117,7 @@ function kakaoFeedImageUrl(resolvedAbsolute: string | undefined): string {
  * 없거나 실패 시 기존 sharer.kakao.com 링크 피커로 폴백.
  */
 export async function shareToKakao(payload: KakaoSharePayload = {}): Promise<boolean> {
+  trackShareClick("kakao");
   const title = payload.title?.trim() || DEFAULT_KAKAO_FEED_TITLE;
   const description = payload.description?.trim() || DEFAULT_KAKAO_FEED_DESCRIPTION;
 
@@ -157,11 +160,13 @@ export async function shareToKakao(payload: KakaoSharePayload = {}): Promise<boo
 }
 
 export function shareToFacebook(url = getCurrentShareUrl()): void {
+  trackShareClick("facebook");
   const target = encodeURIComponent(url);
   openShareWindow(`https://www.facebook.com/sharer/sharer.php?u=${target}`);
 }
 
 export function shareToX(url = getCurrentShareUrl()): void {
+  trackShareClick("x");
   const target = encodeURIComponent(url);
   openShareWindow(`https://x.com/intent/post?url=${target}`);
 }

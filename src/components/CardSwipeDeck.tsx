@@ -1,5 +1,6 @@
 "use client";
 
+import { trackCardSelect } from "@/lib/gtmEvents";
 import { getMasterCardBackSrc } from "@/lib/masterCardAssets";
 import { tarotAnalyzeWith } from "@/lib/routes";
 import { useRouter } from "next/navigation";
@@ -407,6 +408,7 @@ export function CardSwipeDeck({
                 return;
               }
               const chosen = String(liveSelectedCardRef.current);
+              trackCardSelect(liveSelectedCardRef.current, masterId);
               router.push(tarotAnalyzeWith(masterId, chosen));
             }}
             disabled={isShuffling}

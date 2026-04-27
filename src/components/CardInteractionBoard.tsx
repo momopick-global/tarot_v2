@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { useRouter } from "next/navigation";
 
+import { trackCardSelect } from "@/lib/gtmEvents";
 import { withAssetBase } from "@/lib/publicPath";
 import { tarotRevealWith } from "@/lib/routes";
 
@@ -460,6 +461,7 @@ export function CardInteractionBoard({
   const startOpenFlow = () => {
     if (isOpening) return;
     setIsOpening(true);
+    trackCardSelect(Number(cardQueryParam) || 0, masterId);
     window.setTimeout(() => {
       router.push(tarotRevealWith(masterId, cardQueryParam));
     }, 520);
