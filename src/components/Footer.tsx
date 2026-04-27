@@ -72,7 +72,9 @@ export function Footer() {
             <Image src={ICON_INSTAGRAM} alt="" width={36} height={36} />
           </a>
           <a
-            href="#"
+            href="http://pf.kakao.com/_xjUxdTX"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="카카오톡"
             className="inline-flex h-10 w-10 items-center justify-center rounded-md"
           >

@@ -71,7 +71,7 @@ export default function Home() {
         <div className="mb-6 grid grid-cols-2 gap-4">
           <Link
             href="/tarot/draw?master=sera"
-            className="flex flex-col items-center rounded-xl border border-[#ff6b9d]/30 bg-[rgba(255,107,157,0.06)] p-3 transition-colors hover:bg-[rgba(255,107,157,0.12)]"
+            className="flex flex-col items-center rounded-xl bg-[rgba(255,107,157,0.12)] p-3 transition-colors hover:bg-[rgba(255,107,157,0.2)]"
           >
             <div className="relative aspect-square w-full overflow-hidden rounded-xl">
               <Image
@@ -82,12 +82,12 @@ export default function Home() {
                 className="h-auto w-full rounded-xl"
               />
             </div>
-            <span className="mt-2 text-center text-[15px] font-semibold text-white">연애 운세</span>
+            <span className="mt-2 text-center text-[15px] font-semibold text-[#ffd1e0]">연애 운세</span>
             <span className="mt-1 text-center text-[12px] text-[#ff9dbe]">세라와 함께</span>
           </Link>
           <Link
             href="/tarot/draw?master=kai"
-            className="flex flex-col items-center rounded-xl border border-[#7B3BC7]/30 bg-[rgba(123,59,199,0.06)] p-3 transition-colors hover:bg-[rgba(123,59,199,0.12)]"
+            className="flex flex-col items-center rounded-xl bg-[rgba(74,158,255,0.12)] p-3 transition-colors hover:bg-[rgba(74,158,255,0.2)]"
           >
             <div className="relative aspect-square w-full overflow-hidden rounded-xl">
               <Image
@@ -98,8 +98,8 @@ export default function Home() {
                 className="h-auto w-full rounded-xl"
               />
             </div>
-            <span className="mt-2 text-center text-[15px] font-semibold text-white">오늘의 운세</span>
-            <span className="mt-1 text-center text-[12px] text-[#c9b8ff]">카이와 함께</span>
+            <span className="mt-2 text-center text-[15px] font-semibold text-[#c8e2ff]">오늘의 운세</span>
+            <span className="mt-1 text-center text-[12px] text-[#7db8ff]">카이와 함께</span>
           </Link>
         </div>
         <nav aria-label="주요 페이지로 이동" className="mt-6">
