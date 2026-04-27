@@ -58,25 +58,21 @@
 
 .tab {
   flex: 0 0 auto;
-  padding: 0.65rem 1rem;
+  padding: 0.4rem 0.65rem;
   border-radius: 9999px;
-  border: 1px solid rgba(142, 99, 255, 0.35);
-  background: rgba(14, 10, 36, 0.75);
-  color: rgba(214, 203, 255, 0.92);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(9, 7, 28, 0.55);
+  color: #f7f7f7;
+  font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  line-height: 1.2;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 
 .tab:hover {
-  border-color: rgba(191, 168, 255, 0.55);
+  border-color: #d8ccff;
   color: #fff;
 }
 
@@ -86,15 +82,9 @@
 }
 
 .tabActive {
-  background: linear-gradient(145deg, #7b2cbf 0%, #5c1d99 52%, #451069 100%);
-  border: 2px solid rgba(230, 210, 255, 0.95);
-  color: #fff;
-  font-weight: 700;
-  box-shadow:
-    0 0 0 1px rgba(142, 99, 255, 0.45),
-    0 8px 28px rgba(100, 34, 171, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  transform: translateY(-1px);
+  border-color: #d8ccff;
+  background: rgba(216, 204, 255, 0.12);
+  color: #d8ccff;
 }
 
 .panel {

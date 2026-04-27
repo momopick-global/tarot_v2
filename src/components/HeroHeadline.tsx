@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HEADLINES = [
   ["오늘 당신의 마음은", "어떤 별을 품고 있나요?"],
@@ -15,8 +15,14 @@ const HEADLINES = [
   ["당신의 선택을 도울", "타로 한 장을 뽑아보세요"],
 ];
 
+const DEFAULT = HEADLINES[0];
+
 export function HeroHeadline() {
-  const [headline] = useState(() => HEADLINES[Math.floor(Math.random() * HEADLINES.length)]);
+  const [headline, setHeadline] = useState(DEFAULT);
+
+  useEffect(() => {
+    setHeadline(HEADLINES[Math.floor(Math.random() * HEADLINES.length)]);
+  }, []);
 
   return (
     <h1 className="text-center text-[24px] font-semibold leading-[34px] text-neutral-10">
