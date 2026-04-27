@@ -14,22 +14,30 @@ function push(payload: DataLayerEvent): void {
   w.dataLayer.push(payload);
 }
 
-/** 카드 선택 확정 시 (두 번 탭으로 최종 선택) */
-export function trackCardSelect(cardIndex: number, masterName: string): void {
+/** 카드 선택 확정 시 */
+export function trackCardSelect(
+  cardIndex: number,
+  masterName: string,
+  cardName?: string,
+  resultType?: string,
+): void {
   push({
     event: "card_select",
     cardIndex,
     masterName,
+    cardName: cardName ?? "",
+    resultType: resultType ?? "",
+    platform: "web",
   });
 }
 
 /** 결과 페이지 진입 시 (중복 방지는 호출 측에서 useEffect로 처리) */
-export function trackResultView(masterName: string, cardName: string, resultType: string): void {
+export function trackResultView(masterName: string, resultType: string): void {
   push({
     event: "result_view",
-    masterName,
-    cardName,
     resultType,
+    masterName,
+    platform: "web",
   });
 }
 

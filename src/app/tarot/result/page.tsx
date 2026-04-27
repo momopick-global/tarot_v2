@@ -88,7 +88,7 @@ function Page07ReadingResultTypeAInner() {
 
   useEffect(() => {
     const resultType = current.id === "sera" ? "love" : "daily";
-    trackResultView(current.name, reading.titleEn, resultType);
+    trackResultView(current.name, resultType);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
