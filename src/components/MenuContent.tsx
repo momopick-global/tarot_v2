@@ -10,7 +10,7 @@ export function MenuContent({
   mypageHref: string;
   onLinkClick?: () => void;
 }>) {
-  const blogHref = withAssetBase("/blog/index.html");
+  const blogHref = withAssetBase("/blog/");
 
   const navLinkClass =
     "flex items-center gap-3 text-[18px] font-semibold text-neutral-90 transition-colors hover:text-primary";
