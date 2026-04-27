@@ -37,7 +37,7 @@ export function KakaoShareButton({
           testUrl: shareUrl,
         });
       }}
-      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#FEE500] py-3 font-semibold text-[#3C1E1E] transition-colors hover:bg-[#FDD835]"
+      className="kakao-glow-btn flex w-full items-center justify-center gap-2 rounded-xl bg-[#FEE500] py-5 text-lg font-semibold text-[#3C1E1E] transition-colors hover:bg-[#FDD835]"
     >
       <Image src={ICON_SHARE_TALK} alt="" width={24} height={24} />
       <span>친구에게 공유하기</span>
