@@ -12,6 +12,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yourtarot.cc";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {

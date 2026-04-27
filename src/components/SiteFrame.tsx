@@ -76,7 +76,7 @@ export function SiteFrame({
       {!hideScrollTop ? <ScrollToTopButton /> : null}
       {!hideScrollTop ? (
         <>
-          <div className="h-[68px]" />
+          <div style={{ height: "calc(68px + env(safe-area-inset-bottom))" }} />
           <BottomNav />
         </>
       ) : null}

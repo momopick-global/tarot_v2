@@ -102,7 +102,14 @@
   --color-ds-border-purple: var(--ds-border-purple);
 }
 
+html {
+  /* iOS Safari/Chrome viewport 안정화 */
+  height: -webkit-fill-available;
+}
+
 body {
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
   background: var(--ds-bg-outer);
   color: var(--ds-neutral-10);
   font-size: var(--ds-font-base);
