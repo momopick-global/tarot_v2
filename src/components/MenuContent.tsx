@@ -23,7 +23,11 @@ export function MenuContent({
 
       <div className="mt-[30px] space-y-7">
         <div className="space-y-3">
-          <Link href="/tarot/start" onClick={onLinkClick} className={navLinkClass}>
+          <Link href="/tarot/draw?master=sera" onClick={onLinkClick} className={navLinkClass}>
+            <span aria-hidden>💕</span>
+            연애 운세 보기
+          </Link>
+          <Link href="/tarot/draw?master=kai" onClick={onLinkClick} className={navLinkClass}>
             <span aria-hidden>🔮</span>
             오늘의 운세 보기
           </Link>
