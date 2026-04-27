@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense, type ReactNode } from "react";
+import { Suspense, useRef, useCallback, type ReactNode } from "react";
 import { FlowScene } from "@/components/FlowScene";
 import { ResultActionButtons } from "@/components/ResultActionButtons";
 import { KakaoShareButton, ShareSection } from "@/components/ShareSection";
@@ -68,9 +68,26 @@ function Page07ReadingResultTypeAInner() {
   const cats = reading.categories as Record<string, string | undefined>;
   const interpretationText = buildInterpretationText(reading);
   const kw = reading.keywords.length ? reading.keywords.join(" · ") : "—";
+  const captureRef = useRef<HTMLDivElement>(null);
+
+  const onCapture = useCallback(async () => {
+    const el = captureRef.current;
+    if (!el) return;
+    const html2canvas = (await import("html2canvas")).default;
+    const canvas = await html2canvas(el, {
+      backgroundColor: "#171828",
+      scale: 2,
+      useCORS: true,
+    });
+    const link = document.createElement("a");
+    link.download = `yourtarot-${current.name}-${reading.titleEn.replace(/\s+/g, "-")}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  }, [current.name, reading.titleEn]);
 
   return (
     <main className="w-full">
+      <div ref={captureRef}>
       <FlowScene
         backgroundSrc={RESULT_BG}
         backgroundFit="cover"
@@ -276,7 +293,11 @@ function Page07ReadingResultTypeAInner() {
               <p>{kw}</p>
             </Section>
           </div>
+        </section>
+      </div>
+      </div>
 
+      <div className="mx-auto w-full max-w-[350px] px-0">
           <div className="mt-6">
             <KakaoShareButton
               shareUrl={tarotResultWith(current.id, card)}
@@ -294,6 +315,7 @@ function Page07ReadingResultTypeAInner() {
             masterName={current.name}
             cardImagePath={frontCardSrc}
             interpretation={interpretationText}
+            onSaveImage={onCapture}
           />
 
           <ShareSection
@@ -350,7 +372,6 @@ function Page07ReadingResultTypeAInner() {
               <span className="font-semibold text-white">의견 보내기</span>
             </Link>
           </div>
-        </section>
 
         <div className="mx-auto w-full max-w-[350px] pb-8 pt-4">
           <Link

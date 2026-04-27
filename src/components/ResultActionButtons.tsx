@@ -23,6 +23,7 @@ export function ResultActionButtons({
   masterName,
   cardImagePath,
   interpretation,
+  onSaveImage,
 }: Readonly<{
   masterId: string;
   cardIndex: number;
@@ -32,6 +33,7 @@ export function ResultActionButtons({
   /** `/images/...` 형태 권장 */
   cardImagePath: string;
   interpretation: string;
+  onSaveImage?: () => void;
 }>) {
   const router = useRouter();
   const { user, loading: authLoading } = useUser();
@@ -258,17 +260,13 @@ export function ResultActionButtons({
         >
           카드 다시 뽑기
         </Link>
-        {hasSupabase ? (
-          cloudSaveButton()
-        ) : (
-          <button
-            type="button"
-            onClick={onSaveLocal}
-            className="rounded-xl border border-primary bg-surface px-4 py-3 text-sm text-text-muted"
-          >
-            {savedLocal ? "저장 취소" : "기기에 저장"}
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={onSaveImage}
+          className="rounded-xl border border-primary bg-surface px-4 py-3 font-semibold text-text-muted"
+        >
+          이미지 저장
+        </button>
       </div>
       {cloudHint()}
       {toast ? (
