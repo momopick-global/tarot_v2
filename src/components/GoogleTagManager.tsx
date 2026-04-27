@@ -1,5 +1,5 @@
 /** 미설정 시 운영 컨테이너. 스테이징·로컬은 .env에서 덮어쓰기 */
-const GTM_DEFAULT_ID = "GTM-5D6VW4MD";
+const GTM_DEFAULT_ID = "GTM-MGCK6P97";
 
 function gtmContainerId(): string {
   return process.env.NEXT_PUBLIC_GTM_ID?.trim() || GTM_DEFAULT_ID;
