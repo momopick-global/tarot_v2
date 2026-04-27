@@ -149,10 +149,71 @@ a:hover {
   display: block;
 }
 
-/* 메인 Header.tsx와 동일 레이아웃 */
+/* 헤더 자동 숨김 */
 .blog-site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background: var(--header-bg);
+  z-index: 40;
+  transition: transform 0.3s ease;
+}
+.blog-site-header.is-hidden {
+  transform: translateY(-100%);
+}
+.blog-header-spacer {
+  height: 42px;
+}
+
+/* 스크롤 프로그레스 바 */
+.blog-progress-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 45;
+  height: 2px;
+  width: 100%;
+  max-width: var(--frame);
+  transition: top 0.3s ease;
+  pointer-events: none;
+}
+.blog-progress-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: #7B3BC7;
+  transition: width 0.1s;
+}
+
+/* 위로가기 버튼 */
+.blog-scroll-top {
+  position: fixed;
+  bottom: 80px;
+  z-index: 40;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #7B3BC7;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  left: min(calc(50% + 195px - 52px), calc(100% - 52px));
+}
+.blog-scroll-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.blog-scroll-top:hover {
+  background: #9655e0;
 }
 
 .blog-site-header-inner {
