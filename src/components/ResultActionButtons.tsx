@@ -270,7 +270,10 @@ export function ResultActionButtons({
       </div>
       {cloudHint()}
       {toast ? (
-        <div className="pointer-events-none fixed inset-x-0 bottom-6 z-[700] mx-auto w-[calc(100%-32px)] max-w-[358px] rounded-xl border border-[#8d6cd8]/70 bg-[rgba(22,16,48,0.94)] px-3 py-2 text-center text-sm text-text-highlight shadow-[0_10px_30px_rgba(0,0,0,0.35)] animate-[toastIn_160ms_ease-out]">
+        <div
+          className="pointer-events-none fixed inset-x-0 z-[700] mx-auto w-[calc(100%-32px)] max-w-[358px] rounded-xl border border-[#8d6cd8]/70 bg-[rgba(22,16,48,0.94)] px-3 py-2 text-center text-sm text-text-highlight shadow-[0_10px_30px_rgba(0,0,0,0.35)] animate-[toastIn_160ms_ease-out]"
+          style={{ bottom: "calc(80px + env(safe-area-inset-bottom))" }}
+        >
           {toast}
         </div>
       ) : null}

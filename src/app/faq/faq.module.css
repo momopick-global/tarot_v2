@@ -19,7 +19,8 @@
 
 .introTitle {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  /* 인앱 브라우저별 vw 해석 차이 제거 (컨테이너 max-width 390px) */
+  font-size: 1.2rem;
   font-weight: 600;
   color: #f7f7f7;
 }

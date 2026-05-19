@@ -105,6 +105,10 @@
 html {
   /* iOS Safari/Chrome viewport 안정화 */
   height: -webkit-fill-available;
+  /* 카카오톡/iOS 인앱 브라우저의 자동 텍스트 확대 차단 → Chrome 모바일과 글자 크기 일치 */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -115,6 +119,10 @@ body {
   font-size: var(--ds-font-base);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  /* 인앱 브라우저에서 가로 스크롤이 잡히는 현상 방지 + 한글 단어 단위 줄바꿈 */
+  overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 html,
@@ -236,7 +244,8 @@ select:focus-visible {
 /* 페이지 공통 타이포그래피 (블로그 기준) */
 @layer base {
   .page-title {
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    /* 인앱 브라우저별 vw 해석 차이를 제거하기 위해 정적 값 사용 (컨테이너 max-width 390px) */
+    font-size: 1.2rem;
     font-weight: 600;
     color: #f7f7f7;
     margin: 0 0 0.5rem;

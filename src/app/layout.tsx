@@ -75,7 +75,7 @@ export default function RootLayout({
       <head>
         <GoogleTagManagerHead />
       </head>
-      <body className="min-h-full flex flex-col bg-neutral-90 text-neutral-10">
+      <body className="min-h-dvh flex flex-col bg-neutral-90 text-neutral-10">
         <GithubPagesToMainSiteRedirect />
         <GoogleTagManagerNoScript />
         <WebSiteJsonLd />

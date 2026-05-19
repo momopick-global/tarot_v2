@@ -60,7 +60,7 @@ export function SiteFrame({
   }, [isMenuOpen]);
 
   return (
-    <div className="min-h-screen w-full bg-bg-outer text-neutral-10">
+    <div className="min-h-dvh w-full bg-bg-outer text-neutral-10">
       <AuthReturnRedirect />
       {!hideHeader ? <Header onMenuClick={() => setIsMenuOpen(true)} autoHide={!hideScrollTop} /> : null}
       {!hideHeader ? <div className="h-[52px]" /> : null}
