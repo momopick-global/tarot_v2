@@ -263,7 +263,7 @@ export function ResultActionButtons({
         <button
           type="button"
           onClick={onSaveImage}
-          className="rounded-xl border border-primary bg-surface px-4 py-3 font-semibold text-text-muted"
+          className="rounded-xl border border-primary bg-surface px-4 py-3 text-sm font-semibold text-text-muted"
         >
           이미지 저장
         </button>

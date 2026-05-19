@@ -48,7 +48,7 @@ function Section({
         {title}
       </div>
       <div className="rounded-xl border border-[#5c4a8a]/60 bg-[rgba(10,8,28,0.88)] px-3 py-3">
-        <div className="leading-[1.65] text-text-highlight">{children}</div>
+        <div className="text-sm leading-[1.65] text-text-highlight">{children}</div>
       </div>
     </div>
   );
@@ -102,7 +102,7 @@ function Page07ReadingResultTypeAInner() {
         hideDimOverlay
       >
         <div className="relative min-h-[560px]">
-          <div className="absolute left-1/2 -top-[10px] z-10 -translate-x-1/2 px-3 text-center text-2xl font-semibold text-white">
+          <div className="absolute left-1/2 -top-[10px] z-10 -translate-x-1/2 px-3 text-center text-xl font-semibold text-white">
             {reading.titleKo}
           </div>
           {/* 폭죽 */}
@@ -146,10 +146,10 @@ function Page07ReadingResultTypeAInner() {
             />
           </div>
           <div className="absolute bottom-[2px] left-1/2 z-10 w-full max-w-[350px] -translate-x-1/2 p-3">
-            <div className="pt-3 text-center text-2xl font-semibold tracking-tight text-white">
+            <div className="pt-3 text-center text-xl font-semibold tracking-tight text-white">
               {reading.titleEn}
             </div>
-            <div className="pt-1 text-center text-md leading-snug text-text-muted">
+            <div className="pt-1 text-center text-sm leading-snug text-text-muted">
               {reading.cardSubtitle}
             </div>
           </div>

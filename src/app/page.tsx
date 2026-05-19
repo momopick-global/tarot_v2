@@ -57,7 +57,7 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-8 z-20 px-5">
           <HeroHeadline />
 
-          <p className="mt-3 text-center leading-[24px] text-text-sub">
+          <p className="mt-3 text-center text-sm leading-[22px] text-text-sub">
             카드가 전하는 오늘의 감정 흐름과 행동 힌트를 1분 안에 확인해 보세요.
           </p>
 

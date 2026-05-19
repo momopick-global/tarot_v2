@@ -276,7 +276,7 @@ function Page03CardSelection1Inner() {
           {/* 카드 안내 문구 (타이핑 + 반복) */}
           {isCardStage ? (
             <div className="pointer-events-none absolute inset-x-0 bottom-[47%] z-[15] text-center">
-              <p className={`text-white/70 transition-opacity duration-500 ${guidePhase === "fading" ? "opacity-0" : "opacity-100"}`}>
+              <p className={`text-sm text-white/70 transition-opacity duration-500 ${guidePhase === "fading" ? "opacity-0" : "opacity-100"}`}>
                 {guideLines[guideLineIndex % guideLines.length].slice(0, guideTypedCount)}
                 {guidePhase === "typing" ? (
                   <span className="inline-block w-[2px] h-[1em] bg-white/60 align-middle animate-pulse ml-[1px]" />
@@ -295,7 +295,7 @@ function Page03CardSelection1Inner() {
           {/* 하단 메시지 + 버튼 */}
           {!isCardStage ? (
             <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center px-5 pb-10">
-              <div className="w-full max-w-[350px] rounded-2xl border border-[#8E63FF]/40 bg-surface px-5 py-4 text-center text-md leading-[1.7] text-white backdrop-blur-sm whitespace-pre-line">
+              <div className="w-full max-w-[350px] rounded-2xl border border-[#8E63FF]/40 bg-surface px-5 py-4 text-center text-sm leading-[1.6] text-white backdrop-blur-sm whitespace-pre-line">
                 {introText.slice(0, typedCount)}
                 {typedCount < introText.length ? (
                   <span className="inline-block w-[2px] h-[1em] bg-white/80 align-middle animate-pulse ml-[1px]" />
@@ -306,7 +306,7 @@ function Page03CardSelection1Inner() {
                 onClick={() => {
                   setIsCardStage(true);
                 }}
-                className="mt-3 w-full max-w-[350px] rounded-2xl bg-btn-primary py-4 text-center text-lg font-semibold text-white"
+                className="mt-3 w-full max-w-[350px] rounded-2xl bg-btn-primary py-3.5 text-center text-md font-semibold text-white"
               >
                 카드받기
               </button>
