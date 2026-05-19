@@ -17,14 +17,14 @@
   --ds-error: #e94444;
   --ds-success: #28a745;
 
-  /* 글자 크기 — 이 값만 바꾸면 전체 반영 */
-  --ds-font-base: 18px;
-  --ds-font-sm: 18px;
-  --ds-font-md: 20px;
-  --ds-font-lg: 22px;
-  --ds-font-xl: 24px;
-  --ds-font-2xl: 26px;
-  --ds-font-3xl: 30px;
+  /* 글자 크기 — 이 값만 바꾸면 전체 반영 (모바일 인앱 브라우저 가독성을 위해 5~10% 축소) */
+  --ds-font-base: 17px;
+  --ds-font-sm: 15px;
+  --ds-font-md: 18px;
+  --ds-font-lg: 20px;
+  --ds-font-xl: 22px;
+  --ds-font-2xl: 24px;
+  --ds-font-3xl: 27px;
 
   /* 텍스트 색상 */
   --ds-text-white: #f7f7f7;
@@ -245,7 +245,7 @@ select:focus-visible {
 @layer base {
   .page-title {
     /* 인앱 브라우저별 vw 해석 차이를 제거하기 위해 정적 값 사용 (컨테이너 max-width 390px) */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #f7f7f7;
     margin: 0 0 0.5rem;
@@ -257,7 +257,7 @@ select:focus-visible {
     margin: 0 0 1.5rem;
   }
   .page-section-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #f7f7f7;
     margin-top: 1.5rem;
