@@ -14,6 +14,9 @@ const IN_APP_PATTERNS = [
   /Daum/i,
 ];
 
+const FAILURE_HINT =
+  "브라우저가 자동으로 열리지 않으면 주소를 복사한 뒤 Safari, Chrome 또는 사용 중인 브라우저에 붙여넣어 주세요.";
+
 type OsType = "android" | "ios" | "other";
 
 function isInAppBrowser(ua: string): boolean {
@@ -87,30 +90,34 @@ export function InAppBrowserNotice() {
     );
   };
 
-  const handleOpenChrome = async () => {
+  const handleOpenExternal = () => {
     const url = window.location.href;
 
     if (os === "android") {
-      // Chrome intent URL — 설치되어 있으면 외부 크롬으로 이동
+      // Chrome 우선 시도 + S.browser_fallback_url 로 미설치 시 기본 브라우저로 폴백
       const stripped = url.replace(/^https?:\/\//, "");
-      window.location.href = `intent://${stripped}#Intent;scheme=https;package=com.android.chrome;end`;
+      const fallback = encodeURIComponent(url);
+      window.location.href =
+        `intent://${stripped}#Intent;scheme=https;` +
+        `package=com.android.chrome;` +
+        `S.browser_fallback_url=${fallback};end`;
+
+      // 일부 인앱 브라우저는 intent를 차단 — 일정 시간 뒤에도 페이지가 그대로면 안내
+      window.setTimeout(() => {
+        if (!document.hidden) setHint(FAILURE_HINT);
+      }, 1500);
       return;
     }
 
     if (os === "ios") {
-      // iOS에서는 강제 실행이 제한적이라 시도 후 실패 시 복사 안내
+      // googlechrome(s):// 스킴 시도 — 미설치/차단 시 페이지가 유지됨
       const chromeUrl = url.replace(/^https/, "googlechromes").replace(/^http/, "googlechrome");
       const startedAt = Date.now();
       window.location.href = chromeUrl;
-      window.setTimeout(async () => {
-        // 700ms 안에 페이지가 그대로면 Chrome이 안 열린 것으로 간주
+      window.setTimeout(() => {
+        // 1.5초 안에 페이지가 떠난 흔적이 없으면 실패로 간주 (Safari 자동 실행은 보장되지 않음)
         if (Date.now() - startedAt < 1500 && !document.hidden) {
-          const ok = await copyToClipboard(url);
-          setHint(
-            ok
-              ? "크롬 앱을 열 수 없어 주소를 복사했어요. 사파리·크롬에서 붙여넣어 주세요."
-              : "크롬 앱을 열 수 없어요. 주소창에서 직접 복사해 주세요.",
-          );
+          setHint(FAILURE_HINT);
         }
       }, 700);
       return;
@@ -142,7 +149,7 @@ export function InAppBrowserNotice() {
             인앱 브라우저 안내
           </p>
           <p className="mt-2 text-sm leading-relaxed text-text-muted">
-            현재 인앱브라우저에서 열려 있어 화면이 다르게 보일 수 있어요. 안정적인 이용을 위해 크롬 또는 기본 브라우저에서 열어주세요.
+            현재 인앱브라우저에서 열려 있어 화면이 다르게 보일 수 있어요. 안정적인 이용을 위해 외부 브라우저에서 열어주세요.
           </p>
 
           {hint ? (
@@ -158,10 +165,10 @@ export function InAppBrowserNotice() {
           <div className="mt-4 flex flex-col gap-2">
             <button
               type="button"
-              onClick={handleOpenChrome}
+              onClick={handleOpenExternal}
               className="h-11 w-full rounded-xl bg-btn-primary text-sm font-semibold text-white"
             >
-              크롬으로 열기
+              외부 브라우저로 열기
             </button>
             <button
               type="button"
