@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { GithubPagesToMainSiteRedirect } from "@/components/GithubPagesToMainSiteRedirect";
 import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
+import { InAppBrowserNotice } from "@/components/InAppBrowserNotice";
 import { SiteFrame } from "@/components/SiteFrame";
 import { WebSiteJsonLd } from "@/components/WebSiteJsonLd";
 import { OG_IMAGE_PATH } from "@/lib/seo/pageMeta";
@@ -80,6 +81,7 @@ export default function RootLayout({
         <GoogleTagManagerNoScript />
         <WebSiteJsonLd />
         <SiteFrame>{children}</SiteFrame>
+        <InAppBrowserNotice />
       </body>
     </html>
   );
