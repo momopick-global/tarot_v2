@@ -241,6 +241,23 @@ select:focus-visible {
   animation: homeHeroLoading 1.2s ease-in-out infinite;
 }
 
+/* 카카오 인앱 등 viewport 높이가 작은 환경: Hero 텍스트만 컴팩트하게 */
+@media (max-height: 700px) {
+  .hero-headline {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .hero-subtitle {
+    display: none;
+  }
+}
+@media (max-height: 600px) {
+  .hero-headline {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
 /* 페이지 공통 타이포그래피 (블로그 기준) */
 @layer base {
   .page-title {

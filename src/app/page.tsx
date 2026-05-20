@@ -51,13 +51,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex-1">
-      <section className="relative mx-auto h-[620px] w-full max-w-[390px] overflow-hidden">
+      <section className="relative mx-auto h-[620px] max-h-[calc(100dvh-128px)] w-full max-w-[390px] overflow-hidden">
         <HomeHeroBackground />
         <div className="absolute inset-0 z-[5] bg-[linear-gradient(180deg,rgba(8,6,25,0.12)_0%,rgba(8,6,25,0.24)_45%,rgba(8,6,25,0.72)_100%)]" />
         <div className="absolute inset-x-0 bottom-8 z-20 px-5">
           <HeroHeadline />
 
-          <p className="mt-3 text-center text-sm leading-[22px] text-text-sub">
+          <p className="hero-subtitle mt-3 text-center text-sm leading-[22px] text-text-sub">
             카드가 전하는 오늘의 감정 흐름과 행동 힌트를 1분 안에 확인해 보세요.
           </p>
 
