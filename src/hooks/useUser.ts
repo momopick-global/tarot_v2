@@ -6,12 +6,11 @@ import { OAUTH_PENDING_KEY } from "@/lib/authReturnPath";
 import { withAssetBase } from "@/lib/publicPath";
 import { getSupabaseClient } from "@/lib/supabase";
 
-export type OAuthProvider = "google" | "kakao" | "facebook";
+export type OAuthProvider = "google" | "kakao";
 
 const PROVIDER_MAP: Record<OAuthProvider, Provider> = {
   google: "google",
   kakao: "kakao",
-  facebook: "facebook",
 };
 
 const OAUTH_SCOPES: Partial<Record<OAuthProvider, string>> = {

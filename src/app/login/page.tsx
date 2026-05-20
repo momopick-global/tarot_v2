@@ -13,9 +13,6 @@ import { formatOAuthLoginError } from "@/lib/oauthErrors";
 import { withAssetBase } from "@/lib/publicPath";
 
 const ICON_TALK = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.png");
-const ICON_FACEBOOK = withAssetBase(
-  "/assets/svg-ic-share-facebook.svg-527221c9-1874-4fae-83ed-579ce7d4210b.png",
-);
 
 function parseReturnToParam(raw: string | null): string | null {
   if (raw == null || raw === "") return null;
@@ -53,7 +50,7 @@ function LoginPageInner() {
     router.replace(returnToSafe);
   }, [user, loading, returnToSafe, router]);
 
-  const onSocialLogin = async (provider: "google" | "kakao" | "facebook") => {
+  const onSocialLogin = async (provider: "google" | "kakao") => {
     try {
       await loginWithProvider(provider);
     } catch (error) {
@@ -94,15 +91,6 @@ function LoginPageInner() {
           >
             <Image src={ICON_TALK} alt="" width={26} height={26} />
             카카오톡 로그인
-          </button>
-
-          <button
-            type="button"
-            onClick={() => onSocialLogin("facebook")}
-            className="flex h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-xl bg-[#3b72ff] font-semibold text-neutral-10"
-          >
-            <Image src={ICON_FACEBOOK} alt="" width={26} height={26} />
-            페이스북 로그인
           </button>
         </div>
 

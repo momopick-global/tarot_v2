@@ -1,4 +1,4 @@
-export type OAuthProviderId = "google" | "kakao" | "facebook";
+export type OAuthProviderId = "google" | "kakao";
 
 function errorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
@@ -20,9 +20,6 @@ export function formatOAuthLoginError(error: unknown, provider: OAuthProviderId)
   ) {
     if (provider === "google") {
       return "구글 로그인이 아직 켜져 있지 않아요. Supabase → Authentication → Providers → Google 에서 켠 뒤, Google Cloud OAuth 클라이언트 ID·비밀을 입력해 주세요.";
-    }
-    if (provider === "facebook") {
-      return "페이스북 로그인이 아직 켜져 있지 않아요. Supabase → Providers → Facebook 을 확인해 주세요.";
     }
     if (provider === "kakao") {
       return "카카오 로그인 설정을 확인해 주세요. Supabase → Providers → Kakao 를 확인해 주세요.";
