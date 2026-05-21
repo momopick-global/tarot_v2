@@ -99,7 +99,7 @@ const MARKDOWN = `# 이용약관
 
 서비스 이용과 관련된 문의는 아래 이메일을 통해 할 수 있습니다.
 
-이메일: momopick.global@gmail.com`;
+이메일: yourtarot.global@gmail.com`;
 
 export default function TermsPage() {
   return (

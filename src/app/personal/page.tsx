@@ -69,7 +69,7 @@ const MARKDOWN = `# 개인정보처리방침
 
 9. 문의
 
-개인정보 관련 문의: momopick.global@gmail.com`;
+개인정보 관련 문의: yourtarot.global@gmail.com`;
 
 export default function PersonalPolicyPage() {
   return (
