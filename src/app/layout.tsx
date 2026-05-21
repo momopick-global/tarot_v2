@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { GithubPagesToMainSiteRedirect } from "@/components/GithubPagesToMainSiteRedirect";
+import { GoogleAdSenseScript } from "@/components/GoogleAdSense";
 import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 import { InAppBrowserNotice } from "@/components/InAppBrowserNotice";
 import { SiteFrame } from "@/components/SiteFrame";
@@ -75,6 +76,7 @@ export default function RootLayout({
     >
       <head>
         <GoogleTagManagerHead />
+        <GoogleAdSenseScript />
       </head>
       <body className="min-h-dvh flex flex-col bg-neutral-90 text-neutral-10">
         <GithubPagesToMainSiteRedirect />
