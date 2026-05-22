@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { trackSubmenuClick } from "@/lib/gtmEvents";
 import { withAssetBase } from "@/lib/publicPath";
 
@@ -18,10 +19,13 @@ type Props = {
 };
 
 /**
- * 카테고리 서브메인 페이지의 카드.
- * - 정사각형 썸네일만 라운드 처리, 글자 영역은 라운드/배경 없음
- * - 썸네일 이미지가 없거나 404일 경우 그라데이션 fallback이 그대로 노출
- *   (background-image 방식이라 깨진 이미지 아이콘 없음)
+ * 카테고리 서브메인의 카드.
+ * 썸네일은 정사각형 + 라운드. 글자 영역은 라운드/배경 없음.
+ *
+ * 이전 구현 노트:
+ *   부모 div에 `bg-gradient-to-br` + inline `style.backgroundImage`를 같이 넣으면
+ *   둘 다 `background-image` 속성을 건드려 서로 덮어쓰면서, 이미지 404 시 그라데이션까지
+ *   사라져 영역이 투명해 보였음. 그래서 이미지를 자식 <img>로 분리.
  */
 export function TarotSubmenuCard({
   href,
@@ -34,6 +38,8 @@ export function TarotSubmenuCard({
   slug,
 }: Props) {
   const thumbSrc = withAssetBase(thumbnail);
+  const [imageFailed, setImageFailed] = useState(false);
+
   return (
     <Link
       href={href}
@@ -42,12 +48,29 @@ export function TarotSubmenuCard({
       }
       className="group block transition-opacity hover:opacity-90"
     >
-      <div
-        role="img"
-        aria-label={altText || title}
-        className="aspect-square w-full rounded-2xl bg-gradient-to-br from-[#3b1e6e] via-[#1c0c3a] to-[#100422] bg-cover bg-center"
-        style={{ backgroundImage: `url("${thumbSrc}")` }}
-      />
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#3b1e6e] via-[#1c0c3a] to-[#100422] shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
+        {!imageFailed ? (
+          <img
+            src={thumbSrc}
+            alt={altText || title}
+            loading="lazy"
+            decoding="async"
+            onError={() => setImageFailed(true)}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : null}
+
+        {/* 가독성·통일감을 위한 옅은 하단 어둠 오버레이 (이미지 유무 무관) */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+
+        {/* 이미지 로드 실패 시에만 placeholder 텍스트 노출 */}
+        {imageFailed ? (
+          <div className="absolute bottom-3 left-3 right-3 text-center">
+            <span className="text-xs text-white/70">이미지 준비중</span>
+          </div>
+        ) : null}
+      </div>
+
       <div className="px-1 pt-3">
         <h3 className="text-md font-semibold text-white">{title}</h3>
         <p className="mt-1 text-sm leading-relaxed text-text-muted">{description}</p>
