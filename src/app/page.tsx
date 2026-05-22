@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CategoryTabs } from "@/components/CategoryTabs";
 import { HeroHeadline } from "@/components/HeroHeadline";
 import { HomeHeroBackground } from "@/components/HomeHeroBackground";
 import { HomeParticipantCount } from "@/components/HomeParticipantCount";
@@ -51,6 +52,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex-1">
+      <CategoryTabs />
       <section className="relative mx-auto h-[620px] max-h-[calc(100dvh-128px)] w-full max-w-[390px] overflow-hidden">
         <HomeHeroBackground />
         <div className="absolute inset-0 z-[5] bg-[linear-gradient(180deg,rgba(8,6,25,0.12)_0%,rgba(8,6,25,0.24)_45%,rgba(8,6,25,0.72)_100%)]" />

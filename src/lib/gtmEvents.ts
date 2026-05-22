@@ -48,3 +48,25 @@ export function trackShareClick(platform: "kakao" | "facebook" | "x" | "link_cop
     platform,
   });
 }
+
+/** 메인 상단 카테고리 탭 클릭 시 */
+export function trackCategoryClick(categoryName: string): void {
+  push({
+    event: "tarot_category_click",
+    categoryName,
+  });
+}
+
+/** 카테고리 서브메인 페이지의 서브메뉴 카드 클릭 시 */
+export function trackSubmenuClick(params: {
+  categoryName: string;
+  menuTitle: string;
+  menuSlug: string;
+}): void {
+  push({
+    event: "tarot_submenu_click",
+    categoryName: params.categoryName,
+    menuTitle: params.menuTitle,
+    menuSlug: params.menuSlug,
+  });
+}
