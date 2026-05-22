@@ -72,9 +72,10 @@ export function TarotSubmenuCard({
       </div>
 
       <div className="px-1 pt-3">
-        <h3 className="text-md font-semibold text-white">{title}</h3>
-        <p className="mt-1 text-sm leading-relaxed text-text-muted">{description}</p>
-        <span className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-text-purple-link">
+        {/* SEO·접근성: 헤딩과 설명을 크롤러·스크린리더에 노출, 시각만 가림 */}
+        <h3 className="sr-only">{title}</h3>
+        <p className="sr-only">{description}</p>
+        <span className="inline-flex items-center gap-1 text-sm font-medium text-text-purple-link">
           {ctaText}
           <span aria-hidden>→</span>
         </span>

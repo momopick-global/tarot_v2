@@ -105,36 +105,6 @@ function Page07ReadingResultTypeAInner() {
           <div className="absolute left-1/2 -top-[10px] z-10 -translate-x-1/2 px-3 text-center text-xl font-semibold text-white">
             {reading.titleKo}
           </div>
-          {/* 폭죽 */}
-          <div className="card-fireworks" aria-hidden>
-            <div className="fw-ring" />
-            <div className="fw-ring" />
-            <div className="fw-ring" />
-            {Array.from({ length: 20 }).map((_, i) => {
-              const angle = (360 / 20) * i;
-              const dist = 150 + Math.random() * 150;
-              const tx = Math.cos((angle * Math.PI) / 180) * dist;
-              const ty = Math.sin((angle * Math.PI) / 180) * dist;
-              const colors = ["#FFD700", "#FF6B8A", "#7B3BC7", "#4FC3F7", "#69F0AE", "#FF8A65", "#E040FB"];
-              const color = colors[i % colors.length];
-              const delay = Math.random() * 0.3;
-              const size = 6 + Math.random() * 8;
-              return (
-                <div
-                  key={i}
-                  className="fw-dot"
-                  style={{
-                    width: size,
-                    height: size,
-                    backgroundColor: color,
-                    "--fw-end": `translate(${tx}px, ${ty}px)`,
-                    animation: `fireworkParticle ${0.8 + Math.random() * 0.5}s ease-out ${delay}s forwards`,
-                  } as React.CSSProperties}
-                />
-              );
-            })}
-          </div>
-
           <div className="card-reveal-spin absolute left-1/2 top-[27px] z-10">
             <Image
               src={frontCardSrc}
