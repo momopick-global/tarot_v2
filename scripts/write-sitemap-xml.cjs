@@ -46,6 +46,18 @@ const STATIC_PATHS = [
   "/tarot/result/",
   "/masters/profile/",
   "/result/today/demo/",
+  "/psych-tests/",
+];
+
+/**
+ * 심리테스트 — src/data/psychTests.ts 와 동기화.
+ * 새 테스트 추가 시: { slug, resultIds: [...] } 형태로 항목만 추가.
+ */
+const PSYCH_TESTS = [
+  {
+    slug: "love-style",
+    resultIds: ["result-1", "result-2", "result-3", "result-4"],
+  },
 ];
 
 /** mastersDetailSlugs.ts 와 동기화 */
@@ -133,6 +145,23 @@ function buildXml() {
       changefreq: "weekly",
       priority: "0.7",
     });
+  }
+
+  for (const test of PSYCH_TESTS) {
+    urls.push({
+      loc: absUrl(`/psych-tests/${test.slug}/`),
+      lastmod: buildDateStr,
+      changefreq: "monthly",
+      priority: "0.75",
+    });
+    for (const rid of test.resultIds) {
+      urls.push({
+        loc: absUrl(`/psych-tests/${test.slug}/${rid}/`),
+        lastmod: buildDateStr,
+        changefreq: "monthly",
+        priority: "0.6",
+      });
+    }
   }
 
   const blogPosts = loadBlogEntries();
