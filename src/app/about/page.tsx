@@ -3,7 +3,7 @@ import Image from "next/image";
 import { pageMetadata } from "@/lib/seo/pageMeta";
 import { withAssetBase } from "@/lib/publicPath";
 
-const ABOUT_TOP_LOGO = withAssetBase("/assets/about-logo-frame214.png");
+const ABOUT_TOP_LOGO = withAssetBase("/assets/about-logo-frame214.webp");
 
 export const metadata: Metadata = pageMetadata(
   "서비스 소개",

@@ -18,7 +18,7 @@ export const MASTER_CARD_FOLDER: Record<string, string> = {
 };
 
 /** 폴더 밖 기본 뒷면 (UI 폴백) */
-export const DEFAULT_CARD_BACK_SRC = withAssetBase("/assets/card-back-page04.png");
+export const DEFAULT_CARD_BACK_SRC = withAssetBase("/assets/card-back-page04.webp");
 
 export function getMasterCardFolder(masterId: string): string {
   return MASTER_CARD_FOLDER[masterId] ?? MASTER_CARD_FOLDER.sera;

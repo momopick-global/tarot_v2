@@ -4,14 +4,14 @@ import Image from "next/image";
 import { withAssetBase } from "@/lib/publicPath";
 import { copyShareUrl, shareToFacebook, shareToKakao, shareToX } from "@/lib/share";
 
-const ICON_SHARE_LINK = withAssetBase("/assets/svg-ic-share-link.svg-26940f47-d010-498b-b1e1-68303b31e59e.png");
+const ICON_SHARE_LINK = withAssetBase("/assets/svg-ic-share-link.svg-26940f47-d010-498b-b1e1-68303b31e59e.webp");
 const ICON_SHARE_TALK = withAssetBase(
-  "/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.png",
+  "/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.webp",
 );
 const ICON_SHARE_FACEBOOK = withAssetBase(
-  "/assets/svg-ic-share-facebook.svg-527221c9-1874-4fae-83ed-579ce7d4210b.png",
+  "/assets/svg-ic-share-facebook.svg-527221c9-1874-4fae-83ed-579ce7d4210b.webp",
 );
-const ICON_SHARE_X = withAssetBase("/assets/svg-ic-share-x.svg-4ef9a083-7b44-439e-bfa4-3c305b5bf580.png");
+const ICON_SHARE_X = withAssetBase("/assets/svg-ic-share-x.svg-4ef9a083-7b44-439e-bfa4-3c305b5bf580.webp");
 
 export function KakaoShareButton({
   shareTitle,

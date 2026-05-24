@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { withAssetBase } from "@/lib/publicPath";
 
-const ICON_EYE = withAssetBase("/assets/icon-eye-header-v2.png");
+const ICON_EYE = withAssetBase("/assets/icon-eye-header-v2.webp");
 const ICON_INSTAGRAM = withAssetBase(
-  "/assets/svg-ic-social-instagram.svg-2aa4e1f6-9ec8-47a4-8c99-29d5317dd055.png",
+  "/assets/svg-ic-social-instagram.svg-2aa4e1f6-9ec8-47a4-8c99-29d5317dd055.webp",
 );
-const ICON_TALK = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.png");
+const ICON_TALK = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.webp");
 
 export function Footer() {
   return (

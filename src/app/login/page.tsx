@@ -12,7 +12,7 @@ import {
 import { formatOAuthLoginError } from "@/lib/oauthErrors";
 import { withAssetBase } from "@/lib/publicPath";
 
-const ICON_TALK = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.png");
+const ICON_TALK = withAssetBase("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.webp");
 
 function parseReturnToParam(raw: string | null): string | null {
   if (raw == null || raw === "") return null;

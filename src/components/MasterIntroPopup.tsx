@@ -7,7 +7,7 @@ import type { Master } from "@/lib/flowData";
 import { withAssetBase } from "@/lib/publicPath";
 import { ROUTES, tarotRevealWith } from "@/lib/routes";
 
-const POPUP_IMAGE_PATH = withAssetBase("/images/ch.png");
+const POPUP_IMAGE_PATH = withAssetBase("/images/ch.webp");
 
 export function MasterIntroPopup({
   master,

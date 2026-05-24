@@ -281,9 +281,9 @@ function blogCategoryScript() {
 function renderSiteHeader(opts = {}) {
   const home = prefix("/");
   const login = prefix("/login");
-  const imgMenu = prefix("/assets/icon-menu-header-v3.png");
-  const imgEye = prefix("/assets/icon-eye-header-v2.png");
-  const imgGuest = prefix("/assets/icon-user-guest-v1.png");
+  const imgMenu = prefix("/assets/icon-menu-header-v3.webp");
+  const imgEye = prefix("/assets/icon-eye-header-v2.webp");
+  const imgGuest = prefix("/assets/icon-user-guest-v1.webp");
   const toolbar =
     opts.backHref && opts.backLabel
       ? `<div class="blog-toolbar">
@@ -353,9 +353,9 @@ function blogMenuScript() {
 
 /** 앱 `Footer.tsx`와 동일 구조·링크 (정적 HTML) */
 function renderBlogSiteFooter() {
-  const eye = prefix("/assets/svg-logo-yourtarot.svg-699577b6-cedf-4beb-8082-e9fc60a6227c.png");
-  const ig = prefix("/assets/svg-ic-social-instagram.svg-2aa4e1f6-9ec8-47a4-8c99-29d5317dd055.png");
-  const talk = prefix("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.png");
+  const eye = prefix("/assets/svg-logo-yourtarot.svg-699577b6-cedf-4beb-8082-e9fc60a6227c.webp");
+  const ig = prefix("/assets/svg-ic-social-instagram.svg-2aa4e1f6-9ec8-47a4-8c99-29d5317dd055.webp");
+  const talk = prefix("/assets/svg-ic-social-kakao.svg-20eca7d6-4d65-40b8-954f-17463d423b00.webp");
   const sep = '<span class="blog-footer-sep" aria-hidden="true">|</span>';
   const navLink = (href, label) =>
     `<a class="blog-footer-nav-link" href="${escapeHtml(prefix(href))}">${escapeHtml(label)}</a>`;

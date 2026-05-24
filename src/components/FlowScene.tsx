@@ -8,7 +8,7 @@ import { DEFAULT_FLOW_BACKGROUND_SRC } from "@/lib/masterCardAssets";
 import { withAssetBase } from "@/lib/publicPath";
 
 const BG = DEFAULT_FLOW_BACKGROUND_SRC;
-const BACK = withAssetBase("/assets/btn_back-de2e4927-d11f-4301-b319-3dee0a48266a.png");
+const BACK = withAssetBase("/assets/btn_back-de2e4927-d11f-4301-b319-3dee0a48266a.webp");
 
 export function FlowScene({
   children,
@@ -61,7 +61,7 @@ export function FlowScene({
   const pathname = usePathname() ?? "";
   const resolvedBackImageSrc =
     backImageSrc ??
-    (backVariant === "page03" ? withAssetBase("/assets/btn-back-page03.png") : BACK);
+    (backVariant === "page03" ? withAssetBase("/assets/btn-back-page03.webp") : BACK);
   const resolvedBackImageSize = backImageSize ?? (backVariant === "page03" ? 42 : 52);
   const resolvedBackLinkClassName =
     backLinkClassName ?? (backVariant === "page03" ? "ml-[20px]" : "");

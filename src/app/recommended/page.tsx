@@ -5,8 +5,8 @@ import { useMemo, useState } from "react";
 import { withAssetBase } from "@/lib/publicPath";
 import { submitFeedback } from "@/hooks/useFeedback";
 
-const ICON_EYE = withAssetBase("/assets/svg-logo-yourtarot.svg-699577b6-cedf-4beb-8082-e9fc60a6227c.png");
-const GUIDE_POPUP_IMAGE_PATH = withAssetBase("/images/ch.png");
+const ICON_EYE = withAssetBase("/assets/svg-logo-yourtarot.svg-699577b6-cedf-4beb-8082-e9fc60a6227c.webp");
+const GUIDE_POPUP_IMAGE_PATH = withAssetBase("/images/ch.webp");
 
 export default function RecommendedPage() {
   const [contact, setContact] = useState("");

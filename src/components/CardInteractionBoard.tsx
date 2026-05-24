@@ -8,7 +8,7 @@ import { trackCardSelect } from "@/lib/gtmEvents";
 import { withAssetBase } from "@/lib/publicPath";
 import { tarotRevealWith } from "@/lib/routes";
 
-const CARD_BACK = withAssetBase("/assets/card-back-page04.png");
+const CARD_BACK = withAssetBase("/assets/card-back-page04.webp");
 const TOTAL_CARDS = 78;
 const VISIBLE_CARDS = 7;
 const MAX_VISIBLE_OFFSET = Math.floor(VISIBLE_CARDS / 2);

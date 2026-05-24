@@ -7,7 +7,7 @@ type CardGuidePopupProps = {
   onClose: () => void;
 };
 
-const POPUP_IMAGE_PATH = withAssetBase("/images/ch.png");
+const POPUP_IMAGE_PATH = withAssetBase("/images/ch.webp");
 
 export function CardGuidePopup({ onClose }: Readonly<CardGuidePopupProps>) {
   return (

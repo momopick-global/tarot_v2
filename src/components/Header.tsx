@@ -9,9 +9,9 @@ import { loginUrlWithReturnTo } from "@/lib/authReturnPath";
 import { getMasterThumbSrc } from "@/lib/masterCardAssets";
 import { withAssetBase } from "@/lib/publicPath";
 
-const ICON_MENU = withAssetBase("/assets/icon-menu-header-v3.png");
-const ICON_EYE = withAssetBase("/assets/icon-eye-header-v2.png");
-const ICON_GUEST = withAssetBase("/assets/icon-user-guest-v1.png");
+const ICON_MENU = withAssetBase("/assets/icon-menu-header-v3.webp");
+const ICON_EYE = withAssetBase("/assets/icon-eye-header-v2.webp");
+const ICON_GUEST = withAssetBase("/assets/icon-user-guest-v1.webp");
 
 function HeaderInner({
   onMenuClick,

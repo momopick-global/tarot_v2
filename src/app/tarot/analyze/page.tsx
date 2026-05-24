@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { withAssetBase } from "@/lib/publicPath";
 import { tarotResultWith } from "@/lib/routes";
 
-const POPUP_IMAGE_PATH = withAssetBase("/images/ch.png");
+const POPUP_IMAGE_PATH = withAssetBase("/images/ch.webp");
 
 function Page06AnalyzingInner() {
   const router = useRouter();

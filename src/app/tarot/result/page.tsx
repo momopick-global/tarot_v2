@@ -15,7 +15,7 @@ import { withAssetBase } from "@/lib/publicPath";
 import { trackResultView } from "@/lib/gtmEvents";
 import { ROUTES, tarotDrawWithMaster, tarotResultWith } from "@/lib/routes";
 
-const RESULT_BG = withAssetBase("/images/bg_final.png");
+const RESULT_BG = withAssetBase("/images/bg_final.webp");
 
 function formatBoldSegments(text: string): ReactNode {
   const parts = text.split(/(\*\*.+?\*\*)/g);

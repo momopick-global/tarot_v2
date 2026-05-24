@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { submitPartnerInquiry } from "@/hooks/usePartnerInquiry";
 import { withAssetBase } from "@/lib/publicPath";
 
-const GUIDE_POPUP_IMAGE_PATH = withAssetBase("/images/ch.png");
+const GUIDE_POPUP_IMAGE_PATH = withAssetBase("/images/ch.webp");
 
 export default function PartnerPage() {
   const [company, setCompany] = useState("");
