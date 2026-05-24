@@ -140,6 +140,11 @@ export default async function PsychTestResultPage({
             다른 심리테스트 보기
           </Link>
         </div>
+
+        <p className="mt-8 rounded-xl border border-ds-border bg-surface-light px-4 py-3 text-xs leading-relaxed text-text-sub">
+          본 결과는 자기 이해를 돕기 위한 가벼운 해석이며, 의학·심리학적 진단을 대체하지 않습니다.
+          마음의 어려움이 크다면 전문가의 상담을 권장합니다.
+        </p>
       </section>
 
       <PsychResultClient

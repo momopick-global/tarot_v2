@@ -24,10 +24,12 @@ const ROBOTS_SITEMAP_ORIGIN =
 const STATIC_PATHS = [
   "/",
   "/about/",
+  "/contact/",
   "/menu/",
   "/masters/",
   "/terms/",
   "/personal/",
+  "/privacy-policy/",
   "/disclaimer/",
   "/recommended/",
   "/partner/",
@@ -48,6 +50,50 @@ const STATIC_PATHS = [
   "/result/today/demo/",
   "/psych-tests/",
 ];
+
+/** src/data/tarotMenus.ts 와 동기화 — 카테고리별 서브메뉴 슬러그 */
+const TAROT_MENU_BY_CATEGORY = {
+  emotion: [
+    "mind-temperature",
+    "holding-emotion",
+    "tired-heart",
+    "anxiety-reason",
+    "heart-wants",
+    "needed-words",
+  ],
+  relationship: [
+    "unspoken-heart",
+    "looking-at-me",
+    "reunion-signal",
+    "before-goodbye",
+    "next-scene",
+    "contact-now",
+  ],
+  choice: [
+    "choice-right-now",
+    "avoided-answer",
+    "new-beginning",
+    "money-flow",
+    "work-match",
+    "no-regret",
+  ],
+  destiny: [
+    "month-flow",
+    "coming-change",
+    "destiny-signal",
+    "turning-point",
+    "opportunity",
+    "guiding-flow",
+  ],
+  comfort: [
+    "tired-heart-card",
+    "will-be-okay",
+    "one-sentence",
+    "believe-myself",
+    "resting-place",
+    "letter-to-tomorrow",
+  ],
+};
 
 /**
  * 심리테스트 — src/data/psychTests.ts 와 동기화.
@@ -160,6 +206,24 @@ function buildXml() {
         lastmod: buildDateStr,
         changefreq: "monthly",
         priority: "0.6",
+      });
+    }
+  }
+
+  // 카테고리 서브메인 + 서브메뉴 상세
+  for (const [categoryId, slugs] of Object.entries(TAROT_MENU_BY_CATEGORY)) {
+    urls.push({
+      loc: absUrl(`/menu/${categoryId}/`),
+      lastmod: buildDateStr,
+      changefreq: "weekly",
+      priority: "0.8",
+    });
+    for (const slug of slugs) {
+      urls.push({
+        loc: absUrl(`/menu/${categoryId}/${slug}/`),
+        lastmod: buildDateStr,
+        changefreq: "monthly",
+        priority: "0.65",
       });
     }
   }

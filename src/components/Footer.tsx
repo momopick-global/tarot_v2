@@ -36,12 +36,16 @@ export function Footer() {
             이용약관
           </Link>
           <span className="text-neutral-60">|</span>
-          <Link className="text-white hover:text-neutral-10" href="/personal">
+          <Link className="text-white hover:text-neutral-10" href="/privacy-policy">
             개인정보처리방침
           </Link>
           <span className="text-neutral-60">|</span>
           <Link className="text-white hover:text-neutral-10" href="/disclaimer">
             면책조항
+          </Link>
+          <span className="text-neutral-60">|</span>
+          <Link className="text-white hover:text-neutral-10" href="/contact">
+            문의하기
           </Link>
           <span className="text-neutral-60">|</span>
           <Link className="text-white hover:text-neutral-10" href="/partner">

@@ -79,12 +79,16 @@ export function MenuContent({
             이용약관
           </Link>
           {" · "}
-          <Link href="/personal" onClick={onLinkClick} className="transition-colors hover:text-primary hover:underline">
+          <Link href="/privacy-policy" onClick={onLinkClick} className="transition-colors hover:text-primary hover:underline">
             개인정보처리방침
           </Link>
           {" · "}
           <Link href="/disclaimer" onClick={onLinkClick} className="transition-colors hover:text-primary hover:underline">
             면책조항
+          </Link>
+          {" · "}
+          <Link href="/contact" onClick={onLinkClick} className="transition-colors hover:text-primary hover:underline">
+            문의하기
           </Link>
         </div>
       </div>

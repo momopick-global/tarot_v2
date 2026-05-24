@@ -145,6 +145,18 @@ export default async function PsychTestDetailPage({
             );
           })}
         </ul>
+
+        <section className="mt-8 rounded-2xl border border-ds-border bg-surface-light p-5 text-sm leading-relaxed text-text-muted">
+          <h2 className="text-md font-semibold text-white">테스트 안내</h2>
+          <ul className="mt-2 list-disc space-y-1 pl-5">
+            <li>가장 솔직하게 떠오르는 답을 골라야 결과가 자신과 가까워집니다.</li>
+            <li>선택한 보기에 따라 미리 설계된 결과 화면으로 이동합니다.</li>
+            <li>결과는 카카오톡·링크 복사·페이스북·X 등으로 공유할 수 있습니다.</li>
+          </ul>
+          <p className="mt-3 text-xs text-text-sub">
+            본 테스트는 자기 이해를 돕기 위한 콘텐츠이며 의학·심리학적 진단을 대체하지 않습니다.
+          </p>
+        </section>
       </section>
 
       {/* JSON-LD Quiz 구조화 데이터 */}
