@@ -14,7 +14,8 @@ const OUT_DIR = path.join(ROOT, "public", "blog");
 const SITE_ORIGIN =
   (process.env.NEXT_PUBLIC_SITE_URL || "https://www.yourtarot.cc").replace(/\/$/, "");
 const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/$/, "");
-const DEFAULT_OG_IMAGE = "/next.svg";
+const DEFAULT_THUMB_PATH = "/images/blog/blog-default-thumb.webp";
+const DEFAULT_OG_IMAGE = DEFAULT_THUMB_PATH;
 const PUBLIC_DIR = path.join(ROOT, "public");
 
 function prefix(p) {
@@ -35,8 +36,14 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
+/**
+ * og:image 절대 URL.
+ *  1) JSON post.ogImage 직접 지정
+ *  2) /public/images/og/blog/{slug}.{jpg|png|webp} — Kakao 등 호환성 위해 jpg/png 권장
+ *  3) /public/images/blog/{slug}.{webp|jpg|png} — 인라인 썸네일 재사용
+ *  4) 기본 이미지
+ */
 function resolveOgImage(post) {
-  // 1) JSON에서 직접 지정한 절대/상대 경로 우선
   if (typeof post.ogImage === "string" && post.ogImage.trim()) {
     const raw = post.ogImage.trim();
     if (raw.startsWith("http://") || raw.startsWith("https://")) return raw;
@@ -44,16 +51,43 @@ function resolveOgImage(post) {
     return absoluteUrl(rel);
   }
 
-  // 2) /public/images/blog/{slug}.{ext} 자동 탐색
-  const exts = ["jpg", "jpeg", "png", "webp"];
-  for (const ext of exts) {
+  // OG 전용 경로 우선 (jpg/png 권장 — Kakao 등 호환성)
+  const ogExts = ["jpg", "jpeg", "png", "webp"];
+  for (const ext of ogExts) {
+    const rel = `/images/og/blog/${post.slug}.${ext}`;
+    const disk = path.join(PUBLIC_DIR, "images", "og", "blog", `${post.slug}.${ext}`);
+    if (fs.existsSync(disk)) return absoluteUrl(rel);
+  }
+
+  // 인라인 썸네일과 같은 파일로 fallback
+  const thumbExts = ["webp", "jpg", "jpeg", "png"];
+  for (const ext of thumbExts) {
     const rel = `/images/blog/${post.slug}.${ext}`;
     const disk = path.join(PUBLIC_DIR, "images", "blog", `${post.slug}.${ext}`);
     if (fs.existsSync(disk)) return absoluteUrl(rel);
   }
 
-  // 3) 기본 이미지
   return absoluteUrl(DEFAULT_OG_IMAGE);
+}
+
+/**
+ * 카드/목록용 썸네일 경로 (basePath 적용, 상대 경로 반환).
+ * Fallback 우선순위: post.thumbnail → post.image → post.ogImage
+ *   → /images/blog/{slug}.{webp|jpg|png} 자동 탐색 → blog-default-thumb.webp
+ */
+function resolveThumbnail(post) {
+  const manual = post.thumbnail || post.image || post.ogImage;
+  if (manual && typeof manual === "string") {
+    if (manual.startsWith("http://") || manual.startsWith("https://")) return manual;
+    return prefix(manual.startsWith("/") ? manual : `/${manual}`);
+  }
+  const exts = ["webp", "jpg", "jpeg", "png"];
+  for (const ext of exts) {
+    const rel = `/images/blog/${post.slug}.${ext}`;
+    const disk = path.join(PUBLIC_DIR, "images", "blog", `${post.slug}.${ext}`);
+    if (fs.existsSync(disk)) return prefix(rel);
+  }
+  return prefix(DEFAULT_THUMB_PATH);
 }
 
 function renderBlocks(content) {
@@ -227,10 +261,14 @@ function renderPostCards(posts) {
   for (const p of posts) {
     const u = prefix(`/blog/${p.slug}/`);
     const catKey = postCategoryKey(p);
+    const thumb = resolveThumbnail(p);
     body += `<a class="blog-card" data-blog-category="${escapeHtml(catKey)}" href="${escapeHtml(u)}">\n`;
+    body += `<div class="blog-card-thumb"><img src="${escapeHtml(thumb)}" alt="" loading="lazy" decoding="async" width="160" height="112" /></div>\n`;
+    body += `<div class="blog-card-body">\n`;
     body += `<h2>${escapeHtml(p.title)}</h2>\n`;
     body += `<p>${escapeHtml(p.description)}</p>\n`;
     body += `<div class="blog-card-meta"><span class="cat">${escapeHtml(p.category || "기타")}</span>${escapeHtml(p.date)}</div>\n`;
+    body += `</div>\n`;
     body += `</a>\n`;
   }
   return body;
@@ -467,7 +505,7 @@ function writeArticleHtml(post, allPosts) {
 ${faqLd ? `  <script type="application/ld+json">${JSON.stringify(faqLd)}</script>\n` : ""}</head>
 <body>
   <div class="blog-wrap">
-${renderSiteHeader({ backHref: prefix("/blog/"), backLabel: "← 블로그 목록" })}
+${renderSiteHeader({ backHref: prefix("/blog/"), backLabel: "← 블로그 목록으로 돌아가기" })}
     <main class="blog-main">
       <article class="blog-article" itemscope itemtype="https://schema.org/Article">
         <h1 itemprop="headline">${escapeHtml(post.title)}</h1>
@@ -488,6 +526,9 @@ ${renderBlocks(post.content)}
         </div>
       </article>
 ${faqSection}${relatedHtml}
+      <div class="blog-toolbar blog-toolbar--bottom">
+        <a class="blog-back" href="${escapeHtml(prefix("/blog/"))}">← 블로그 목록으로 돌아가기</a>
+      </div>
     </main>
   </div>
 ${renderBlogSiteFooter()}

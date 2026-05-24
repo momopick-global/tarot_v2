@@ -5,6 +5,7 @@ import { CategoryTabs } from "@/components/CategoryTabs";
 import { HomeCategoryCarousel } from "@/components/HomeCategoryCarousel";
 import { HomeParticipantCount } from "@/components/HomeParticipantCount";
 import { HomeShareSection } from "@/components/HomeShareSection";
+import { getFeaturedBlogPosts } from "@/lib/blogData";
 import { FLOW_MASTERS } from "@/lib/flowData";
 import { ROUTES } from "@/lib/routes";
 import { canonicalPath, OG_IMAGE_PATH } from "@/lib/seo/pageMeta";
@@ -49,6 +50,8 @@ export const metadata: Metadata = {
 
 
 export default function Home() {
+  const featuredPosts = getFeaturedBlogPosts(4);
+
   return (
     <main className="flex-1">
       <CategoryTabs />
@@ -122,22 +125,22 @@ export default function Home() {
       <section className="mx-auto w-full max-w-[390px] bg-bg-content px-5 pb-8">
         <h2 className="page-title">인기 블로그 글</h2>
         <div className="mt-4 flex flex-col gap-3">
-          <Link href="/blog/attachment-anxiety-in-love/" className="flex items-center gap-3 border-b border-ds-border py-3 hover:opacity-80">
-            <Image src="/images/blog/attachment-anxiety-in-love.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0 font-semibold text-white">불안형 애착이 연애에 미치는 영향</div>
-          </Link>
-          <Link href="/blog/love-failure-pattern/" className="flex items-center gap-3 border-b border-ds-border py-3 hover:opacity-80">
-            <Image src="/images/blog/love-failure-pattern.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0 font-semibold text-white">연애가 항상 실패하는 이유</div>
-          </Link>
-          <Link href="/blog/tarot-daily-one-card-meaning/" className="flex items-center gap-3 border-b border-ds-border py-3 hover:opacity-80">
-            <Image src="/images/blog/blog-default-thumb.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0 font-semibold text-white">오늘의 타로 한 장, 어떻게 읽으면 좋을까</div>
-          </Link>
-          <Link href="/blog/psychology-attachment-styles-love/" className="flex items-center gap-3 border-b border-ds-border py-3 hover:opacity-80">
-            <Image src="/images/blog/blog-default-thumb.png" alt="" width={160} height={112} className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover" />
-            <div className="min-w-0 font-semibold text-white">애착 유형은 연애에서 어떻게 드러날까</div>
-          </Link>
+          {featuredPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}/`}
+              className="flex items-center gap-3 border-b border-ds-border py-3 hover:opacity-80"
+            >
+              <Image
+                src={post.thumbnail}
+                alt=""
+                width={160}
+                height={112}
+                className="h-[112px] w-[160px] shrink-0 rounded-lg object-cover"
+              />
+              <div className="min-w-0 font-semibold text-white">{post.title}</div>
+            </Link>
+          ))}
           <Link href="/blog/" className="mt-1 block text-center text-text-purple-link hover:text-text-purple-link">
             블로그 전체 보기 →
           </Link>
