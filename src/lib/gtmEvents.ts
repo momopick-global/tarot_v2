@@ -70,3 +70,87 @@ export function trackSubmenuClick(params: {
     menuSlug: params.menuSlug,
   });
 }
+
+/* ─── 심리테스트 (psych-tests) ─────────────────────────────────── */
+
+/** /psych-tests 목록 페이지 진입 시 (useEffect로 1회) */
+export function trackPsychTestListView(params: { pagePath: string }): void {
+  push({
+    event: "psych_test_list_view",
+    pagePath: params.pagePath,
+  });
+}
+
+/** 목록에서 테스트 카드 클릭 시 */
+export function trackPsychTestStart(params: {
+  testSlug: string;
+  testTitle: string;
+  pagePath: string;
+}): void {
+  push({
+    event: "psych_test_start",
+    testSlug: params.testSlug,
+    testTitle: params.testTitle,
+    pagePath: params.pagePath,
+  });
+}
+
+/** 상세 페이지에서 옵션 카드 클릭 시 */
+export function trackPsychOptionSelect(params: {
+  testSlug: string;
+  testTitle: string;
+  optionId: string;
+  optionTitle: string;
+  resultId: string;
+  resultTitle: string;
+  pagePath: string;
+}): void {
+  push({
+    event: "psych_option_select",
+    testSlug: params.testSlug,
+    testTitle: params.testTitle,
+    optionId: params.optionId,
+    optionTitle: params.optionTitle,
+    resultId: params.resultId,
+    resultTitle: params.resultTitle,
+    pagePath: params.pagePath,
+  });
+}
+
+/** 결과 페이지 진입 시 (useEffect로 1회) */
+export function trackPsychResultView(params: {
+  testSlug: string;
+  testTitle: string;
+  resultId: string;
+  resultTitle: string;
+  pagePath: string;
+}): void {
+  push({
+    event: "psych_result_view",
+    testSlug: params.testSlug,
+    testTitle: params.testTitle,
+    resultId: params.resultId,
+    resultTitle: params.resultTitle,
+    pagePath: params.pagePath,
+  });
+}
+
+/** 결과 페이지의 공유 버튼 클릭 시 (kakao·facebook·x·link_copy) */
+export function trackPsychShareClick(params: {
+  testSlug: string;
+  testTitle: string;
+  resultId: string;
+  resultTitle: string;
+  platform: "kakao" | "facebook" | "x" | "link_copy";
+  pagePath: string;
+}): void {
+  push({
+    event: "psych_share_click",
+    testSlug: params.testSlug,
+    testTitle: params.testTitle,
+    resultId: params.resultId,
+    resultTitle: params.resultTitle,
+    platform: params.platform,
+    pagePath: params.pagePath,
+  });
+}

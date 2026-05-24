@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { PsychTestListCard } from "@/components/PsychTestListCard";
+import { PsychTestListViewTracker } from "@/components/PsychTestListViewTracker";
 import { getActivePsychTests } from "@/data/psychTests";
 import { pageMetadata } from "@/lib/seo/pageMeta";
 
@@ -16,6 +17,7 @@ export default function PsychTestsListPage() {
   return (
     <main className="flex-1">
       <CategoryTabs />
+      <PsychTestListViewTracker />
       <section className="mx-auto w-full max-w-[390px] px-5 pt-2 pb-10">
         <header className="mb-6">
           <h1 className="text-xl font-semibold text-white">심리테스트</h1>
@@ -33,6 +35,7 @@ export default function PsychTestsListPage() {
                   thumbnail={test.thumbnail}
                   title={test.title}
                   description={test.cardDescription}
+                  testSlug={test.slug}
                 />
               </li>
             ))}

@@ -125,17 +125,25 @@ export default async function PsychTestDetailPage({
         </div>
 
         <ul className="mt-6 grid grid-cols-2 gap-3">
-          {test.options.map((opt, i) => (
-            <li key={opt.id}>
-              <PsychTestOptionCard
-                href={`/psych-tests/${test.slug}/${opt.resultId}`}
-                image={opt.image}
-                title={opt.title}
-                description={opt.description}
-                number={i + 1}
-              />
-            </li>
-          ))}
+          {test.options.map((opt, i) => {
+            const linkedResult = test.results.find((r) => r.id === opt.resultId);
+            return (
+              <li key={opt.id}>
+                <PsychTestOptionCard
+                  href={`/psych-tests/${test.slug}/${opt.resultId}`}
+                  image={opt.image}
+                  title={opt.title}
+                  description={opt.description}
+                  number={i + 1}
+                  testSlug={test.slug}
+                  testTitle={test.title}
+                  optionId={opt.id}
+                  resultId={opt.resultId}
+                  resultTitle={linkedResult?.title ?? ""}
+                />
+              </li>
+            );
+          })}
         </ul>
       </section>
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { trackPsychOptionSelect } from "@/lib/gtmEvents";
 import { withAssetBase } from "@/lib/publicPath";
 
 type Props = {
@@ -11,6 +12,12 @@ type Props = {
   description: string;
   /** 이미지 좌상단에 표시할 번호 (1부터). 시각 보조용으로 aria-hidden 처리 */
   number: number;
+  /** GTM psych_option_select 이벤트용 컨텍스트 */
+  testSlug: string;
+  testTitle: string;
+  optionId: string;
+  resultId: string;
+  resultTitle: string;
 };
 
 /**
@@ -19,13 +26,40 @@ type Props = {
  * - 클릭 → 결과 페이지 이동
  * - 이미지 fallback: 그라데이션 + "이미지 준비중"
  */
-export function PsychTestOptionCard({ href, image, title, description, number }: Props) {
+export function PsychTestOptionCard({
+  href,
+  image,
+  title,
+  description,
+  number,
+  testSlug,
+  testTitle,
+  optionId,
+  resultId,
+  resultTitle,
+}: Props) {
   const [imageFailed, setImageFailed] = useState(false);
   const src = withAssetBase(image);
+
+  const handleClick = () => {
+    trackPsychOptionSelect({
+      testSlug,
+      testTitle,
+      optionId,
+      optionTitle: title,
+      resultId,
+      resultTitle,
+      pagePath:
+        typeof window !== "undefined"
+          ? window.location.pathname
+          : `/psych-tests/${testSlug}`,
+    });
+  };
 
   return (
     <Link
       href={href}
+      onClick={handleClick}
       className="group block rounded-2xl border border-white/10 bg-surface-light p-3 transition-colors hover:bg-surface-light-hover"
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-br from-[#3b1e6e] via-[#1c0c3a] to-[#100422]">

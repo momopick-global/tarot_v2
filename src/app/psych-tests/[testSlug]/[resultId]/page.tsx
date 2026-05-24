@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CategoryTabs } from "@/components/CategoryTabs";
+import { PsychResultClient } from "@/components/PsychResultClient";
 import { PsychTestResultImage } from "@/components/PsychTestResultImage";
-import { ShareSection } from "@/components/ShareSection";
 import {
   PSYCH_TESTS,
   getPsychTestBySlug,
@@ -142,8 +142,11 @@ export default async function PsychTestResultPage({
         </div>
       </section>
 
-      <ShareSection
-        title="결과 공유하기"
+      <PsychResultClient
+        testSlug={test.slug}
+        testTitle={test.title}
+        resultId={result.id}
+        resultTitle={result.title}
         shareUrl={shareUrl}
         shareTitle={result.title}
         shareDescription={shareDesc}

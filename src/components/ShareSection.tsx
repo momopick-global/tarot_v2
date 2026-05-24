@@ -45,6 +45,8 @@ export function KakaoShareButton({
   );
 }
 
+export type SharePlatform = "kakao" | "facebook" | "x" | "link_copy";
+
 export function ShareSection({
   title = "친구에게 공유하기",
   shareUrl,
@@ -52,6 +54,7 @@ export function ShareSection({
   shareDescription,
   shareImageUrl,
   className,
+  onShare,
 }: Readonly<{
   title?: string;
   shareUrl?: string;
@@ -59,8 +62,15 @@ export function ShareSection({
   shareDescription?: string;
   shareImageUrl?: string;
   className?: string;
+  /**
+   * 각 공유 버튼 클릭 시 함께 호출되는 옵셔널 콜백.
+   * 컨텍스트별 추가 GTM 이벤트(예: psych_share_click)를 발화시킬 때 사용.
+   * 기존 trackShareClick(공유 lib 내부)은 그대로 동작합니다.
+   */
+  onShare?: (platform: SharePlatform) => void;
 }>) {
   const onCopy = async () => {
+    onShare?.("link_copy");
     const ok = await copyShareUrl();
     window.alert(ok ? "링크가 복사되었습니다." : "링크 복사에 실패했습니다.");
   };
@@ -75,6 +85,7 @@ export function ShareSection({
         <button
           type="button"
           onClick={async () => {
+            onShare?.("kakao");
             await shareToKakao({
               title: shareTitle,
               description: shareDescription,
@@ -89,10 +100,26 @@ export function ShareSection({
         >
           <Image src={ICON_SHARE_TALK} alt="" width={28} height={28} />
         </button>
-        <button type="button" onClick={() => shareToFacebook()} aria-label="페이스북 공유" className="inline-flex">
+        <button
+          type="button"
+          onClick={() => {
+            onShare?.("facebook");
+            shareToFacebook();
+          }}
+          aria-label="페이스북 공유"
+          className="inline-flex"
+        >
           <Image src={ICON_SHARE_FACEBOOK} alt="" width={44} height={44} />
         </button>
-        <button type="button" onClick={() => shareToX()} aria-label="X 공유" className="inline-flex">
+        <button
+          type="button"
+          onClick={() => {
+            onShare?.("x");
+            shareToX();
+          }}
+          aria-label="X 공유"
+          className="inline-flex"
+        >
           <Image src={ICON_SHARE_X} alt="" width={44} height={44} />
         </button>
       </div>

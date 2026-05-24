@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { trackPsychTestStart } from "@/lib/gtmEvents";
 import { withAssetBase } from "@/lib/publicPath";
 
 type Props = {
@@ -9,20 +10,39 @@ type Props = {
   thumbnail: string;
   title: string;
   description: string;
+  /** GTM psych_test_start 이벤트용 */
+  testSlug: string;
 };
 
 /**
  * 심리테스트 목록 카드.
  * - 이미지 정사각형 라운드, 파일이 없으면 그라데이션 fallback 노출
  * - 시각 노출 제목/설명 + 우측 CTA 화살표
+ * - 클릭 시 psych_test_start 이벤트 push
  */
-export function PsychTestListCard({ href, thumbnail, title, description }: Props) {
+export function PsychTestListCard({
+  href,
+  thumbnail,
+  title,
+  description,
+  testSlug,
+}: Props) {
   const [imageFailed, setImageFailed] = useState(false);
   const src = withAssetBase(thumbnail);
+
+  const handleClick = () => {
+    trackPsychTestStart({
+      testSlug,
+      testTitle: title,
+      pagePath:
+        typeof window !== "undefined" ? window.location.pathname : "/psych-tests",
+    });
+  };
 
   return (
     <Link
       href={href}
+      onClick={handleClick}
       className="group block transition-opacity hover:opacity-90"
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#3b1e6e] via-[#1c0c3a] to-[#100422] shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
