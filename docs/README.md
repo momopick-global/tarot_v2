@@ -42,6 +42,7 @@
 - [current-status.md](project/current-status.md) — 현재 운영 상태 스냅샷
 - [roadmap.md](project/roadmap.md) — 단기·장기 작업 후보
 - [protected-areas.md](project/protected-areas.md) — **건드리지 말 것** 목록
+- [work-before-checklist.md](project/work-before-checklist.md) — 작업 시작 전 가드레일 체크
 - [folder-structure.md](project/folder-structure.md) — 디렉터리 구조 (legacy 참고)
 
 ### `setup/` — 로컬·운영 환경
@@ -54,6 +55,8 @@
 ### `seo/` — 검색·광고·구조화
 - [seo-checklist.md](seo/seo-checklist.md) — SEO 기본 체크
 - [adsense-review.md](seo/adsense-review.md) — AdSense 심사 상태/리스크
+- [adsense-final-audit.md](seo/adsense-final-audit.md) — 결제 중단 직전 최종 점검 리포트
+- [blog-content-audit.md](seo/blog-content-audit.md) — 블로그 콘텐츠 점검 (짧은 글·썸네일·OG)
 - [sitemap-robots.md](seo/sitemap-robots.md) — sitemap/robots 생성 구조
 - [metadata-og.md](seo/metadata-og.md) — pageMetadata·OG 사용 규칙
 - [search-console.md](seo/search-console.md) — Search Console 운영
@@ -84,6 +87,7 @@
 - [content-tone.md](content/content-tone.md) — 전체 톤·매너
 - [tarot-copy-style.md](content/tarot-copy-style.md) — 타로 결과 문구
 - [psych-test-writing-guide.md](content/psych-test-writing-guide.md) — 심리테스트 문구
+- [psych-test-template.md](content/psych-test-template.md) — 신규 심리테스트 추가 템플릿(데이터·이미지·SEO·이벤트 일괄)
 - [blog-writing-guide.md](content/blog-writing-guide.md) — 블로그 작성 기준
 - [blog-missing-thumbnails.md](content/blog-missing-thumbnails.md) — 썸네일 누락 감사 (현재 58개)
 
