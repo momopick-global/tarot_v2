@@ -1,3 +1,8 @@
+> ⚠️ **Deprecated** — 현재 운영 정책과 맞지 않을 수 있습니다. 참고용으로만 보존합니다.
+> 운영 캐논 도메인: `https://yourtarot.cc` (Vercel 배포). 최신 운영 기준은 `docs/project/current-status.md` 와 `docs/setup/deployment.md` 를 참고하세요.
+
+---
+
 # 문서 관리 가이드 (YourTarot)
 
 프로젝트 문서를 "읽기 쉽고, 최신 상태로, 유지 가능한 방식"으로 관리하기 위한 운영 기준입니다.

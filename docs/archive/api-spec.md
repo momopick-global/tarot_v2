@@ -1,3 +1,8 @@
+> ⚠️ **Deprecated** — 현재 운영 정책과 맞지 않을 수 있습니다. 참고용으로만 보존합니다.
+> 운영 캐논 도메인: `https://yourtarot.cc` (Vercel 배포). 최신 운영 기준은 `docs/project/current-status.md` 와 `docs/setup/deployment.md` 를 참고하세요.
+
+---
+
 # API 스펙 가이드
 
 유어타로 서비스의 RESTful API 엔드포인트를 정의한 문서입니다. 1차 릴리스 기준으로 결과 조회/저장, 의견·제휴 문의 제출, 계정 탈퇴 요청, reCAPTCHA 검증 등을 다룹니다.
