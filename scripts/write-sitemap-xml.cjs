@@ -16,9 +16,13 @@ const PUBLIC = path.join(ROOT, "public");
 const SITE_ORIGIN =
   (process.env.NEXT_PUBLIC_SITE_URL || "https://www.yourtarot.cc").replace(/\/$/, "");
 const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/$/, "");
-/** robots.txt Sitemap 줄 전용 */
+/**
+ * robots.txt 의 `Sitemap:` 라인 전용 호스트.
+ * 운영 캐논(apex)에 맞춰 기본값 https://yourtarot.cc 로 유지.
+ * env 로 별도 호스트가 필요할 경우 NEXT_PUBLIC_ROBOTS_SITEMAP_ORIGIN 으로 override.
+ */
 const ROBOTS_SITEMAP_ORIGIN =
-  (process.env.NEXT_PUBLIC_ROBOTS_SITEMAP_ORIGIN || "https://www.yourtarot.cc").replace(/\/$/, "");
+  (process.env.NEXT_PUBLIC_ROBOTS_SITEMAP_ORIGIN || "https://yourtarot.cc").replace(/\/$/, "");
 
 /** sitemap.ts와 동일한 정적 경로 (trailing slash) */
 const STATIC_PATHS = [
